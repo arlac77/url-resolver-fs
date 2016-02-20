@@ -11,9 +11,10 @@ const chai = require('chai'),
 
 class myScheme extends uri.URIScheme {
 
-  get name() {
+  static get name() {
     return 'my';
   }
+
   get type() {
     return myScheme.name;
   }
@@ -21,10 +22,10 @@ class myScheme extends uri.URIScheme {
 
 describe('resolver', () => {
   const r = new resolver.Resolver();
-  const ms = new myScheme();
+  //const ms = new myScheme();
 
   describe('register scheme', () => {
     r.registerScheme(myScheme);
-    it('registered', () => assert.equals(r.schemes.my.name, 'my'));
+    it('registered', () => assert.equal(r.schemes.my.name, 'my'));
   });
 });

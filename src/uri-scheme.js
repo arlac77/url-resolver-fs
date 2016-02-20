@@ -1,5 +1,7 @@
 /* jslint node: true, esnext: true */
 
+"use strict";
+
 class URIScheme {
 
   get name() {

@@ -1,5 +1,7 @@
 /* jslint node: true, esnext: true */
 
+"use strict";
+
 const rgm = require('registry-mixin');
 
 class Resolver {
