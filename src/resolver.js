@@ -18,6 +18,9 @@ class Resolver {
     return this.schemeForURI(uri).fetch(uri, options);
   }
 
+  list(uri, options) {
+    return this.schemeForURI(uri).list(uri, options);
+  }
 }
 
 exports.Resolver = Resolver;

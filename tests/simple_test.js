@@ -10,7 +10,6 @@ const chai = require('chai'),
   uri = require('../src/uri-scheme');
 
 class myScheme extends uri.URIScheme {
-
   static get name() {
     return 'my';
   }
@@ -27,5 +26,6 @@ describe('resolver', () => {
   describe('register scheme', () => {
     r.registerScheme(myScheme);
     it('registered', () => assert.equal(r.schemes.my.name, 'my'));
+    it('schemeForURI', () => assert.equal(r.schemeForURI('my:x/y/z').name, 'my'));
   });
 });
