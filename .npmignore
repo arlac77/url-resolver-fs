@@ -1,0 +1,15 @@
+coverage
+node_modules
+build
+tests
+*.log
+*.tmp
+.DS_Store
+.test
+.tmp
+.gitignore
+.npmrc
+.npmignore
+.vscode
+.travis.yml
+demo
