@@ -21,10 +21,13 @@ class Resolver {
   list(uri, options) {
     return this.schemeForURI(uri).list(uri, options);
   }
-  
+
   history(uri, options) {
     return this.schemeForURI(uri).history(uri, options);
   }
 }
 
 exports.Resolver = Resolver;
+const urs = require('./uri-scheme');
+exports.URIScheme = urs.URIScheme;
+exports.URIMapperScheme = urs.URIMapperScheme;
