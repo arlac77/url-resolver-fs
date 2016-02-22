@@ -12,16 +12,16 @@ class URIScheme {
     return URIScheme.name;
   }
 
-  list(uri,options) {
-  	return Promise.reject(new Error("not implemented"));
-  }
-  
-  fetch(uri,options) {
-  	return Promise.reject(new Error("not implemented"));
+  list(uri, options) {
+    return Promise.reject(new Error("not implemented"));
   }
 
-  history(uri,options) {
-  	return Promise.reject(new Error("not implemented"));
+  fetch(uri, options) {
+    return Promise.reject(new Error("not implemented"));
+  }
+
+  history(uri, options) {
+    return Promise.reject(new Error("not implemented"));
   }
 
 }
@@ -34,8 +34,9 @@ class URIDerivedScheme extends URIScheme {
     Object.defineProperty(this, 'baseScheme', {
       value: baseScheme
     });
-    
+
+  }
 }
 
 exports.URIScheme = URIScheme;
-exports.URIDErivedScheme = URIMapperScheme;
+exports.URIDerivedScheme = URIDerivedScheme;

@@ -2,7 +2,7 @@
   "name": "uri-resolver",
   "version": "0.0.0",
   "description": "uri resolver",
-  "main": "lib/resolver.js",
+  "main": "src/resolver.js",
   "esnext:main": "src/resolver.js",
   "scripts": {
     "cover": "node --harmony ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests",
