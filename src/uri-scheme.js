@@ -12,9 +12,21 @@ class URIScheme {
     return URIScheme.name;
   }
 
+  list(uri,options) {
+  	return Promise.reject(new Error("not implemented"));
+  }
+  
+  fetch(uri,options) {
+  	return Promise.reject(new Error("not implemented"));
+  }
+
+  history(uri,options) {
+  	return Promise.reject(new Error("not implemented"));
+  }
+
 }
 
-class URIMapperScheme extends URIScheme {
+class URIDerivedScheme extends URIScheme {
 
   constructor(baseScheme) {
     super();
@@ -22,8 +34,8 @@ class URIMapperScheme extends URIScheme {
     Object.defineProperty(this, 'baseScheme', {
       value: baseScheme
     });
-  }
+    
 }
 
 exports.URIScheme = URIScheme;
-exports.URIMapperScheme = URIMapperScheme;
+exports.URIDErivedScheme = URIMapperScheme;
