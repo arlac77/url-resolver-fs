@@ -2,8 +2,8 @@
   "name": "uri-resolver",
   "version": "0.0.0",
   "description": "uri resolver",
-  "main": "src/resolver.js",
-  "esnext:main": "src/resolver.js",
+  "main": "src/index.js",
+  "esnext:main": "src/index.js",
   "scripts": {
     "cover": "node --harmony ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests",
     "test": "mocha --recursive tests/*",
