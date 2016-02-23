@@ -23,7 +23,6 @@ class URIScheme {
   history(uri, options) {
     return Promise.reject(new Error("not implemented"));
   }
-
 }
 
 class URIDerivedScheme extends URIScheme {

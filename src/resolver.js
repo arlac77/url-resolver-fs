@@ -31,3 +31,6 @@ exports.Resolver = Resolver;
 const urs = require('./uri-scheme');
 exports.URIScheme = urs.URIScheme;
 exports.URIMapperScheme = urs.URIMapperScheme;
+
+const hs = require('./http-scheme');
+exports.HTTPScheme = hs.HTTPScheme;
