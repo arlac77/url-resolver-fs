@@ -19,7 +19,7 @@ class FileScheme extends urs.URIScheme {
   fetch(url, options) {
     const m = url.match(/^file:\/\/(.*)/);
     if (m) {
-      return Promise.resolve(fs.createReadFile(m[1]));
+      return Promise.resolve(fs.createReadStream(m[1]));
     }
 
     return Promise.reject(new Error(`invalid url: ${url}`));
