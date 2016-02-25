@@ -7,25 +7,15 @@ const chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   resolver = require('../src/resolver'),
-  uri = require('../src/uri-scheme');
-
-class myScheme extends uri.URIScheme {
-  static get name() {
-    return 'my';
-  }
-
-  get type() {
-    return myScheme.name;
-  }
-}
+  uri = require('../src/uri-scheme'),
+  FileScheme = require('../src/file-scheme');
 
 describe('resolver', () => {
   const r = new resolver.Resolver();
-  //const ms = new myScheme();
 
   describe('register scheme', () => {
-    r.registerScheme(myScheme);
-    it('registered', () => assert.equal(r.schemes.my.name, 'my'));
-    it('schemeForURI', () => assert.equal(r.schemeForURI('my:x/y/z').name, 'my'));
+    r.registerScheme(FileScheme);
+    it('registered', () => assert.equal(r.schemes.file.name, 'file'));
+    it('schemeForURI', () => assert.equal(r.schemeForURI('file:x/y/z').name, 'file'));
   });
 });

@@ -5,7 +5,6 @@
 const fs = require('fs'),
   urs = require('./uri-scheme');
 
-
 class FileScheme extends urs.URIScheme {
 
   static get name() {
@@ -26,4 +25,4 @@ class FileScheme extends urs.URIScheme {
   }
 }
 
-exports.FileScheme = FileScheme;
+module.exports = FileScheme;

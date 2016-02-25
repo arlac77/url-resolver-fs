@@ -7,11 +7,11 @@ const chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   path = require('path'),
-  file = require('../src/file-scheme');
+  FileScheme = require('../src/file-scheme');
 
 
 describe('file', () => {
-  const f = new file.FileScheme();
+  const f = new FileScheme();
 
   it('can fetch', () => {
     const aFile = path.join(__dirname, 'file_test.js');

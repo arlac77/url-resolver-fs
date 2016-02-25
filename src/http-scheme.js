@@ -63,4 +63,4 @@ class HTTPScheme extends urs.URIScheme {
   }
 }
 
-exports.HTTPScheme = HTTPScheme;
+module.exports = HTTPScheme;
