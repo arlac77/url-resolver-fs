@@ -8,6 +8,7 @@
 [![Dependency Status](https://david-dm.org/arlac77/uri-resolver.svg)](https://david-dm.org/arlac77/uri-resolver)
 [![devDependency Status](https://david-dm.org/arlac77/uri-resolver/dev-status.svg)](https://david-dm.org/arlac77/uri-resolver#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/uri-resolver.svg?branch=master)](http://inch-ci.org/github/arlac77/uri-resolver)
+[![API Doc](https://doclets.io/arlac77/uri-resolver/master.svg)](https://doclets.io/arlac77/uri-resolver/master)
 [![downloads](http://img.shields.io/npm/dm/uri-resolver.svg?style=flat-square)](https://npmjs.org/package/uri-resolver)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
