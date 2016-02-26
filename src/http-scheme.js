@@ -60,7 +60,7 @@ class HTTPScheme extends urs.URIScheme {
       authorization: this.basicAuthorization
     }, options.headers);
 
-    return fetch(url.resolve(this.uri, u), options);
+    return fetch(url.resolve(this.url, u), options);
   }
 }
 
