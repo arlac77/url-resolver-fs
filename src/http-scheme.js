@@ -5,6 +5,7 @@
 const btoa = require('btoa'),
   HttpsProxyAgent = require('https-proxy-agent'),
   fetch = require('node-fetch'),
+  url = require('url'),
   urs = require('./uri-scheme');
 
 
@@ -50,7 +51,7 @@ class HTTPScheme extends urs.URIScheme {
     return 'Basic ' + btoa(this.credentials.user + ':' + this.credentials.password);
   }
 
-  fetch(url, options) {
+  fetch(u, options) {
     options = Object.assign({}, {
       agent: this.agent,
     }, options);
@@ -59,7 +60,7 @@ class HTTPScheme extends urs.URIScheme {
       authorization: this.basicAuthorization
     }, options.headers);
 
-    return fetch(url, options);
+    return fetch(url.resolve(this.uri, u), options);
   }
 }
 
