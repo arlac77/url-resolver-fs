@@ -21,8 +21,26 @@ class FileScheme extends urs.URIScheme {
       return Promise.resolve(fs.createReadStream(m[1]));
     }
 
-    return Promise.reject(new Error(`invalid url: ${url}`));
+    return Promise.reject(new Error(`invalid file url: ${url}`));
   }
+
+  list(url, options) {
+    const m = url.match(/^file:\/\/(.*)/);
+    if (m) {
+      return new Promise((fullfill, reject) => {
+        fs.readdir(m[1], (err, files) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          fullfill(files);
+        });
+      });
+    }
+
+    return Promise.reject(new Error(`invalid file url: ${url}`));
+  }
+
 }
 
 module.exports = FileScheme;

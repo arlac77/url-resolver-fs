@@ -15,9 +15,18 @@ describe('file', () => {
 
   it('can fetch', () => {
     const aFile = path.join(__dirname, 'file_test.js');
-    f.fetch('file://' + aFile).then(s => {
+    return f.fetch('file://' + aFile).then(s => {
       //s.pipe(process.stdout);
       assert.isDefined(s);
     });
   });
+
+  it('can list', () => {
+    const aDir = path.join(__dirname);
+    return f.list('file://' + aDir).then(files => {
+      assert.isAtLeast(files.indexOf('file_test.js'), 0);
+      assert.isAtLeast(files.indexOf('simple_test.js'), 0);
+    });
+  });
+
 });

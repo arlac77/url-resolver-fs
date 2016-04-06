@@ -33,8 +33,9 @@ class URIDerivedScheme extends URIScheme {
     Object.defineProperty(this, 'baseScheme', {
       value: baseScheme
     });
-
   }
+
+  transposeURI(uri) {}
 }
 
 exports.URIScheme = URIScheme;
