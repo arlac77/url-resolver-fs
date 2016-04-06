@@ -1,6 +1,6 @@
 {
   "name": "uri-resolver",
-  "version": "0.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "uri resolver",
   "main": "src/index.js",
   "esnext:main": "src/index.js",
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/arlac77/uri-resolver#readme",
   "devDependencies": {
     "chai": "3.5.0",
-    "istanbul": "^1.0.0-alpha.2",
+    "istanbul": "^0.4.3",
     "mocha": "2.4.5",
     "semantic-release": "^6.2.1"
   },
@@ -34,5 +34,8 @@
     "https-proxy-agent": "^1.0.0",
     "node-fetch": "^1.5.0",
     "registry-mixin": "^1.3.1"
+  },
+  "engines": {
+    "node": ">=5"
   }
 }
