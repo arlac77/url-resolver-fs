@@ -12,4 +12,7 @@ tests
 .npmignore
 .vscode
 .travis.yml
+.doclets.yml
+SUMMARY.md
+doc
 demo
