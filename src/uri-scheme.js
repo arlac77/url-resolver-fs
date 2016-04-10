@@ -12,6 +12,14 @@ class URIScheme {
     return URIScheme.name;
   }
 
+  get name() {
+    return this.type;
+  }
+
+  toString() {
+    return this.name;
+  }
+
   list(uri, options) {
     return Promise.reject(new Error("not implemented"));
   }
