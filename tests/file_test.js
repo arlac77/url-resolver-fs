@@ -29,4 +29,11 @@ describe('file', () => {
     });
   });
 
+  it('list error ', () => {
+    return f.list('file://unknown').then(files => {
+      assert.ok(undefined);
+    }).catch(reject => {
+      assert.ok(reject);
+    })
+  });
 });
