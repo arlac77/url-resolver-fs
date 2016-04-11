@@ -22,6 +22,10 @@ class HTTPScheme extends urs.URIScheme {
   constructor(url, options) {
     super(url, options);
 
+    if (options === undefined) {
+      options = {};
+    }
+
     let agent;
 
     if (options.proxy) {
