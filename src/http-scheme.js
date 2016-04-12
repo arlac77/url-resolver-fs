@@ -12,7 +12,7 @@ const btoa = require('btoa'),
 class HTTPScheme extends urs.URIScheme {
 
   static get name() {
-    return "http";
+    return 'http';
   }
 
   get type() {

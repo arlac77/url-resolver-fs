@@ -21,15 +21,15 @@ class URIScheme {
   }
 
   list(uri, options) {
-    return Promise.reject(new Error("not implemented"));
+    return Promise.reject(new Error('Not implemented'));
   }
 
   fetch(uri, options) {
-    return Promise.reject(new Error("not implemented"));
+    return Promise.reject(new Error('Not implemented'));
   }
 
   history(uri, options) {
-    return Promise.reject(new Error("not implemented"));
+    return Promise.reject(new Error('Not implemented'));
   }
 }
 

@@ -8,7 +8,7 @@ const fs = require('fs'),
 class FileScheme extends urs.URIScheme {
 
   static get name() {
-    return "file";
+    return 'file';
   }
 
   get type() {
@@ -21,7 +21,7 @@ class FileScheme extends urs.URIScheme {
       return Promise.resolve(fs.createReadStream(m[1]));
     }
 
-    return Promise.reject(new Error(`invalid file url: ${url}`));
+    return Promise.reject(new Error(`Invalid file url: ${url}`));
   }
 
   list(url, options) {
@@ -38,7 +38,7 @@ class FileScheme extends urs.URIScheme {
       });
     }
 
-    return Promise.reject(new Error(`invalid file url: ${url}`));
+    return Promise.reject(new Error(`Invalid file url: ${url}`));
   }
 
 }
