@@ -33,18 +33,22 @@ class URIScheme {
   }
 }
 
-class URIDerivedScheme extends URIScheme {
+class URIMapperScheme extends URIScheme {
 
-  constructor(baseScheme) {
+  constructor(baseScheme,options) {
     super();
 
     Object.defineProperty(this, 'baseScheme', {
       value: baseScheme
     });
+    
+    Object.defineProperty(this, 'name', {
+      value: options.name
+    });
   }
 
-  transposeURI(uri) {}
+  remapURI(uri) { return uri; }
 }
 
 exports.URIScheme = URIScheme;
-exports.URIDerivedScheme = URIDerivedScheme;
+exports.URIMapperScheme = URIMapperScheme;
