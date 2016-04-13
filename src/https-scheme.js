@@ -5,7 +5,7 @@
 const btoa = require('btoa'),
   http = require('./http-scheme');
 
-class HTTPSScheme extends http.HTTPScheme {
+class HTTPSScheme extends http {
 
   static get name() {
     return 'https';
