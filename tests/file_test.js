@@ -34,6 +34,6 @@ describe('file', () => {
       assert.ok(undefined);
     }).catch(reject => {
       assert.ok(reject);
-    })
+    });
   });
 });

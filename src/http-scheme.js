@@ -55,7 +55,7 @@ class HTTPScheme extends urs.URIScheme {
     return 'Basic ' + btoa(this.credentials.user + ':' + this.credentials.password);
   }
 
-  fetch(u, options) {
+  _fetch(u, options) {
     options = Object.assign({}, {
       agent: this.agent,
     }, options);
@@ -65,6 +65,10 @@ class HTTPScheme extends urs.URIScheme {
     }, options.headers);
 
     return fetch(this.url === undefined ? u : url.resolve(this.url, u), options);
+  }
+
+  fetch(u, options) {
+    return this._fetch(u, options).then(r => r.body);
   }
 }
 
