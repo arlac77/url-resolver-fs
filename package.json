@@ -25,7 +25,7 @@
   "homepage": "https://github.com/arlac77/uri-resolver#readme",
   "devDependencies": {
     "chai": "3.5.0",
-    "istanbul": "^0.4.3",
+    "istanbul": "^0.4.4",
     "mocha": "2.5.3",
     "semantic-release": "6.3.0"
   },
