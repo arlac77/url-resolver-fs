@@ -1,6 +1,6 @@
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
 exports.Resolver = require('./resolver').Resolver;
 const urs = require('./uri-scheme');

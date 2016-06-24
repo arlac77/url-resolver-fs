@@ -1,9 +1,8 @@
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
-const btoa = require('btoa'),
-  http = require('./http-scheme');
+const http = require('./http-scheme');
 
 class HTTPSScheme extends http {
 

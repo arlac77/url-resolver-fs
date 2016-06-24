@@ -1,6 +1,6 @@
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
 const rgm = require('registry-mixin');
 
