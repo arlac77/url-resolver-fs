@@ -19,12 +19,8 @@ class HTTPScheme extends urs.URIScheme {
     return HTTPScheme.name;
   }
 
-  constructor(url, options) {
+  constructor(url, options = {}) {
     super(url, options);
-
-    if (options === undefined) {
-      options = {};
-    }
 
     let agent;
 
