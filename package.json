@@ -32,7 +32,7 @@
   "dependencies": {
     "btoa": "^1.1.2",
     "https-proxy-agent": "^1.0.0",
-    "node-fetch": "^1.5.3",
+    "node-fetch": "^1.6.0",
     "registry-mixin": "^2.0.0"
   },
   "engines": {
