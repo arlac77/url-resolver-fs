@@ -33,7 +33,7 @@
     "btoa": "^1.1.2",
     "https-proxy-agent": "^1.0.0",
     "node-fetch": "^1.6.1",
-    "registry-mixin": "^2.0.0"
+    "registry-mixin": "^2.1.0"
   },
   "engines": {
     "node": ">=6.2"
