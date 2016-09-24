@@ -2,11 +2,13 @@
   "name": "uri-resolver",
   "version": "0.0.0-semantic-release",
   "description": "uri resolver",
-  "main": "src/index.js",
-  "esnext:main": "src/index.js",
+  "main": "dist/index.js",
+  "jsnext:main": "src/index.js",
+  "module": "src/index.js",
   "scripts": {
-    "cover": "node --harmony ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests",
-    "test": "mocha --recursive tests/*",
+    "cover": "npm run build && node --harmony ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests",
+    "test": "npm run build && mocha --recursive tests/*",
+    "build": "./node_modules/rollup/bin/rollup --format=cjs --output=dist/index.js -- src/index.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -27,6 +29,7 @@
     "chai": "3.5.0",
     "istanbul": "^0.4.5",
     "mocha": "3.0.2",
+    "rollup": "^0.36.0",
     "semantic-release": "6.3.0"
   },
   "dependencies": {

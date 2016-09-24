@@ -2,10 +2,11 @@
 
 'use strict';
 
-const fs = require('fs'),
-  urs = require('./uri-scheme');
+const fs = require('fs');
 
-class FileScheme extends urs.URIScheme {
+import URIScheme from './URIScheme';
+
+export default class FileScheme extends URIScheme {
 
   static get name() {
     return 'file';
@@ -40,7 +41,4 @@ class FileScheme extends urs.URIScheme {
 
     return Promise.reject(new Error(`Invalid file url: ${url}`));
   }
-
 }
-
-module.exports = FileScheme;

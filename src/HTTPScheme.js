@@ -5,12 +5,11 @@
 const btoa = require('btoa'),
   HttpsProxyAgent = require('https-proxy-agent'),
   fetch = require('node-fetch'),
-  url = require('url'),
-  urs = require('./uri-scheme');
+  url = require('url');
 
+import URIScheme from './URIScheme';
 
-class HTTPScheme extends urs.URIScheme {
-
+export default class HTTPScheme extends URIScheme {
   static get name() {
     return 'http';
   }
@@ -67,5 +66,3 @@ class HTTPScheme extends urs.URIScheme {
     return this._fetch(u, options).then(r => r.body);
   }
 }
-
-module.exports = HTTPScheme;

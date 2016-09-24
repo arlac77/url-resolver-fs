@@ -6,12 +6,11 @@ const chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
   should = chai.should(),
-  resolver = require('../src/resolver'),
-  uri = require('../src/uri-scheme'),
-  FileScheme = require('../src/file-scheme');
+  Resolver = require('../dist/index').Resolver,
+  FileScheme = require('../dist/index').FileScheme;
 
 describe('resolver', () => {
-  const r = new resolver.Resolver();
+  const r = new Resolver();
 
   describe('register scheme', () => {
     r.registerScheme(FileScheme);

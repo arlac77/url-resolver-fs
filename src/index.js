@@ -2,10 +2,18 @@
 
 'use strict';
 
-exports.Resolver = require('./resolver').Resolver;
-const urs = require('./uri-scheme');
-exports.URIScheme = urs.URIScheme;
-exports.URIMapperScheme = urs.URIMapperScheme;
-exports.HTTPScheme = require('./http-scheme');
-exports.HTTPSScheme = require('./https-scheme');
-exports.FileScheme = require('./file-scheme');
+import Resolver from './Resolver';
+import HTTPScheme from './HTTPScheme';
+import HTTPSScheme from './HTTPSScheme';
+import FileScheme from './FileScheme';
+import URIScheme from './URIScheme';
+import URIMapperScheme from './URIMapperScheme';
+
+export {
+  Resolver,
+  HTTPScheme,
+  HTTPSScheme,
+  FileScheme,
+  URIScheme,
+  URIMapperScheme
+};

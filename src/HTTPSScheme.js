@@ -2,9 +2,9 @@
 
 'use strict';
 
-const http = require('./http-scheme');
+import HTTPScheme from './HTTPScheme';
 
-class HTTPSScheme extends http {
+export default class HTTPSScheme extends HTTPScheme {
 
   static get name() {
     return 'https';
@@ -14,5 +14,3 @@ class HTTPSScheme extends http {
     return HTTPSScheme.name;
   }
 }
-
-module.exports = HTTPSScheme;

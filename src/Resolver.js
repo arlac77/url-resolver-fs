@@ -4,7 +4,7 @@
 
 const rgm = require('registry-mixin');
 
-class Resolver {
+export default class Resolver {
   constructor() {
     rgm.defineRegistryProperties(this, 'scheme', {});
   }
@@ -26,5 +26,3 @@ class Resolver {
     return this.schemeForURI(uri).history(uri, options);
   }
 }
-
-exports.Resolver = Resolver;
