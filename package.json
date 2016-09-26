@@ -30,7 +30,7 @@
     "istanbul": "^0.4.5",
     "mocha": "3.0.2",
     "rollup": "^0.36.0",
-    "semantic-release": "6.3.0"
+    "semantic-release": "^6.3.1"
   },
   "dependencies": {
     "btoa": "^1.1.2",
