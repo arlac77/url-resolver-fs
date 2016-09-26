@@ -14,10 +14,6 @@ export default class HTTPScheme extends URIScheme {
     return 'http';
   }
 
-  get type() {
-    return HTTPScheme.name;
-  }
-
   constructor(url, options = {}) {
     super(url, options);
 

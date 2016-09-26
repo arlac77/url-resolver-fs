@@ -9,8 +9,4 @@ export default class HTTPSScheme extends HTTPScheme {
   static get name() {
     return 'https';
   }
-
-  get type() {
-    return HTTPSScheme.name;
-  }
 }

@@ -4,12 +4,8 @@
 
 export default class URIScheme {
 
-  static get name() {
-    return 'unknown';
-  }
-
   get type() {
-    return URIScheme.name;
+    return this.constructor.name();
   }
 
   get name() {

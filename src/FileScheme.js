@@ -12,10 +12,6 @@ export default class FileScheme extends URIScheme {
     return 'file';
   }
 
-  get type() {
-    return FileScheme.name;
-  }
-
   fetch(url, options) {
     const m = url.match(/^file:\/\/(.*)/);
     if (m) {
