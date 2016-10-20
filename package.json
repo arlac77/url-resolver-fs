@@ -39,6 +39,6 @@
     "registry-mixin": "^2.1.0"
   },
   "engines": {
-    "node": ">=6.2"
+    "node": ">=6.9.1"
   }
 }
