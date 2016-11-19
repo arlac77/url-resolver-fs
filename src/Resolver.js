@@ -2,11 +2,14 @@
 
 'use strict';
 
-const rgm = require('registry-mixin');
+import {
+  defineRegistryProperties
+} 
+from 'registry-mixin';
 
 export default class Resolver {
   constructor() {
-    rgm.defineRegistryProperties(this, 'scheme', {});
+    defineRegistryProperties(this, 'scheme', {});
   }
 
   schemeForURI(uri) {
