@@ -3,6 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/arlac77/uri-resolver.png)](http://travis-ci.org/arlac77/uri-resolver)
 [![bithound](https://www.bithound.io/github/arlac77/uri-resolver/badges/score.svg)](https://www.bithound.io/github/arlac77/uri-resolver)
 [![codecov.io](http://codecov.io/github/arlac77/uri-resolver/coverage.svg?branch=master)](http://codecov.io/github/arlac77/uri-resolver?branch=master)
+[![Coverage Status](https://coveralls.io/repos/arlac77/uri-resolver/badge.svg)](https://coveralls.io/r/arlac77/uri-resolver)
 [![Code Climate](https://codeclimate.com/github/arlac77/uri-resolver/badges/gpa.svg)](https://codeclimate.com/github/arlac77/uri-resolver)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/uri-resolver/badge.svg)](https://snyk.io/test/github/arlac77/uri-resolver)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/uri-resolver.svg?style=flat-square)](https://github.com/arlac77/uri-resolver/issues)
@@ -11,9 +12,6 @@
 [![docs](http://inch-ci.org/github/arlac77/uri-resolver.svg?branch=master)](http://inch-ci.org/github/arlac77/uri-resolver)
 [![downloads](http://img.shields.io/npm/dm/uri-resolver.svg?style=flat-square)](https://npmjs.org/package/uri-resolver)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
-install
-=======
 
 With [npm](http://npmjs.org) do:
 
