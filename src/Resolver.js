@@ -7,11 +7,19 @@ import {
 } 
 from 'registry-mixin';
 
+/**
+ *
+ */
 export default class Resolver {
   constructor() {
     defineRegistryProperties(this, 'scheme', {});
   }
 
+  /**
+   * get URIScheme for a given uri
+   * @param {String} uri
+   * @return {URIScheme} for a given uri
+   */
   schemeForURI(uri) {
     const m = uri.match(/^([^:]+):/);
     return this.schemes[m[1]];

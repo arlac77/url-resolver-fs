@@ -13,6 +13,55 @@
 [![downloads](http://img.shields.io/npm/dm/uri-resolver.svg?style=flat-square)](https://npmjs.org/package/uri-resolver)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+uri-resolver
+-------------------
+resolves uris and provides fs like access
+
+# API Reference
+
+* <a name="fetch"></a>
+
+## fetch(url) ⇒ <code>Promise</code>
+Creates a readable stream for the content of th file associated to a given file URL
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolving to a ReadableStream of the file content  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | of the a file |
+
+
+* <a name="list"></a>
+
+## list(url) ⇒ <code>Promise</code>
+List content of a directory
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolving to list of files  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | of the a directory |
+
+
+* <a name="schemeForURI"></a>
+
+## schemeForURI(uri) ⇒ <code>URIScheme</code>
+get URIScheme for a given uri
+
+**Kind**: global function  
+**Returns**: <code>URIScheme</code> - for a given uri  
+
+| Param | Type |
+| --- | --- |
+| uri | <code>String</code> | 
+
+
+* * *
+
+# install
+
 With [npm](http://npmjs.org) do:
 
 ```shell
