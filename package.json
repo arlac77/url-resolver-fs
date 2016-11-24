@@ -26,15 +26,15 @@
   "homepage": "https://github.com/arlac77/uri-resolver#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
-    "semantic-release": "^6.3.2",
     "cz-conventional-changelog": "^1.2.0",
+    "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^2.0.1",
     "markdown-doctest": "^0.9.0",
+    "mocha": "^3.1.2",
     "rollup": "0.36.4",
     "rollup-plugin-commonjs": "^5.0.5",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "semantic-release": "^6.3.3"
   },
   "dependencies": {
     "btoa": "^1.1.2",
@@ -45,10 +45,12 @@
   "engines": {
     "node": ">=6.9.1"
   },
-  "contributors": [{
-    "name": "Markus Felten",
-    "email": "markus.felten@gmx.de"
-  }],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
