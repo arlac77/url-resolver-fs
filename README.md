@@ -25,7 +25,7 @@ resolves uris and provides fs like access
 Creates a readable stream for the content of th file associated to a given file URL
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - resolving to a ReadableStream of the file content  
+**Fulfil**: <code>ReadableStream</code> - of the file content  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -38,7 +38,8 @@ Creates a readable stream for the content of th file associated to a given file 
 List content of a directory
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - resolving to list of files  
+**Fulfil**: <code>String[]</code> - file names  
+**Reject**: <code>Error</code> - as deliverd by fs.readdir()  
 
 | Param | Type | Description |
 | --- | --- | --- |
