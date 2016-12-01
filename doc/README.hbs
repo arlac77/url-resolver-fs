@@ -7,6 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/arlac77/uri-resolver/badges/gpa.svg)](https://codeclimate.com/github/arlac77/uri-resolver)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/uri-resolver/badge.svg)](https://snyk.io/test/github/arlac77/uri-resolver)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/uri-resolver.svg?style=flat-square)](https://github.com/arlac77/uri-resolver/issues)
+[![Stories in Ready](https://badge.waffle.io/arlac77/uri-resolver.svg?label=ready&title=Ready)](http://waffle.io/arlac77/uri-resolver)
 [![Dependency Status](https://david-dm.org/arlac77/uri-resolver.svg)](https://david-dm.org/arlac77/uri-resolver)
 [![devDependency Status](https://david-dm.org/arlac77/uri-resolver/dev-status.svg)](https://david-dm.org/arlac77/uri-resolver#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/uri-resolver.svg?branch=master)](http://inch-ci.org/github/arlac77/uri-resolver)
