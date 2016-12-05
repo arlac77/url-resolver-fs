@@ -20,7 +20,19 @@ export default class URIScheme {
     return Promise.reject(new Error('Not implemented'));
   }
 
-  fetch(uri, options) {
+  get(uri, options) {
+    return Promise.reject(new Error('Not implemented'));
+  }
+
+  stat(uri, options) {
+    return Promise.reject(new Error('Not implemented'));
+  }
+
+  put(uri, stream, options) {
+    return Promise.reject(new Error('Not implemented'));
+  }
+
+  delete(uri) {
     return Promise.reject(new Error('Not implemented'));
   }
 

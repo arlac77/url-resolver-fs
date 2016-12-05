@@ -25,8 +25,8 @@ export default class Resolver {
     return this.schemes[m[1]];
   }
 
-  fetch(uri, options) {
-    return this.schemeForURI(uri).fetch(uri, options);
+  get(uri, options) {
+    return this.schemeForURI(uri).get(uri, options);
   }
 
   list(uri, options) {

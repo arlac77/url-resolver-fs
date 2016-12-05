@@ -1,6 +1,6 @@
 /* global describe, it, xit, before, after */
 /* jslint node: true, esnext: true */
-"use strict";
+'use strict';
 
 const chai = require('chai'),
   assert = chai.assert,
@@ -12,10 +12,18 @@ const chai = require('chai'),
 describe('file', () => {
   const f = new FileScheme();
 
-  it('can fetch', () => {
+  it('can get', () => {
     const aFile = path.join(__dirname, 'file_test.js');
-    return f.fetch('file://' + aFile).then(s => {
+    return f.get('file://' + aFile).then(s => {
       //s.pipe(process.stdout);
+      assert.isDefined(s);
+    });
+  });
+
+  it('can head', () => {
+    const aFile = path.join(__dirname, 'file_test.js');
+    return f.head('file://' + aFile).then(s => {
+      //console.log(s);
       assert.isDefined(s);
     });
   });

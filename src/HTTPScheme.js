@@ -58,7 +58,7 @@ export default class HTTPScheme extends URIScheme {
     return fetch(this.url === undefined ? u : url.resolve(this.url, u), options);
   }
 
-  fetch(u, options) {
+  get(u, options) {
     return this._fetch(u, options).then(r => r.body);
   }
 }
