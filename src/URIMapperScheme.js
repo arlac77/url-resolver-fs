@@ -22,8 +22,20 @@ export default class URIMapperScheme extends URIScheme {
     return this.baseScheme.list(uri, options);
   }
 
-  fetch(uri, options) {
-    return this.baseScheme.fetch(uri, options);
+  get(uri, options) {
+    return this.baseScheme.get(uri, options);
+  }
+
+  put(uri, options) {
+    return this.baseScheme.put(uri, options);
+  }
+  
+  delete(uri, options) {
+    return this.baseScheme.delete(uri, options);
+  }
+  
+  stat(uri, options) {
+    return this.baseScheme.stat(uri, options);
   }
 
   history(uri, options) {

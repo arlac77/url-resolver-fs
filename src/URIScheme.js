@@ -2,6 +2,11 @@
 
 'use strict';
 
+function notImplementedError()
+{
+  return Promise.reject(new Error('Not implemented'));
+}
+
 export default class URIScheme {
 
   get type() {
@@ -17,26 +22,26 @@ export default class URIScheme {
   }
 
   list(uri, options) {
-    return Promise.reject(new Error('Not implemented'));
+    return notImplementedError();
   }
 
   get(uri, options) {
-    return Promise.reject(new Error('Not implemented'));
+    return notImplementedError();
   }
 
   stat(uri, options) {
-    return Promise.reject(new Error('Not implemented'));
+    return notImplementedError();
   }
 
   put(uri, stream, options) {
-    return Promise.reject(new Error('Not implemented'));
+    return notImplementedError();
   }
 
   delete(uri) {
-    return Promise.reject(new Error('Not implemented'));
+    return notImplementedError();
   }
 
   history(uri, options) {
-    return Promise.reject(new Error('Not implemented'));
+    return notImplementedError();
   }
 }

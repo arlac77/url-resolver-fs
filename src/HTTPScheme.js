@@ -61,4 +61,9 @@ export default class HTTPScheme extends URIScheme {
   get(u, options) {
     return this._fetch(u, options).then(r => r.body);
   }
+  
+  stat(u, options={}) {
+    options.method = 'head';
+    return this._fetch(u, options);
+  }
 }

@@ -6,6 +6,11 @@ const fs = require('fs');
 
 import URIScheme from './URIScheme';
 
+function invalidURLError(url)
+{
+  Promise.reject(new Error(`Invalid file url: ${url}`));
+}
+
 /**
  * URIScheme for file system access
  */
@@ -27,7 +32,7 @@ export default class FileScheme extends URIScheme {
       return Promise.resolve(fs.createReadStream(m[1]));
     }
 
-    return Promise.reject(new Error(`Invalid file url: ${url}`));
+    return invalidURLError(url);
   }
 
   /**
@@ -37,7 +42,7 @@ export default class FileScheme extends URIScheme {
    * @fulfil {Object} - as delivered by fs.stat()
    * @reject {Error} - if url is not a file url or fs.stat() error
    */
-  head(url, options) {
+  stat(url, options) {
     const m = url.match(/^file:\/\/(.*)/);
     if (m) {
       return new Promise((fullfill, reject) => {
@@ -51,7 +56,7 @@ export default class FileScheme extends URIScheme {
       });
     }
 
-    return Promise.reject(new Error(`Invalid file url: ${url}`));
+    return invalidURLError(url);
   }
 
   /**
@@ -71,7 +76,7 @@ export default class FileScheme extends URIScheme {
       });
     }
 
-    return Promise.reject(new Error(`Invalid file url: ${url}`));
+    return invalidURLError(url);
   }
 
   /**
@@ -94,7 +99,8 @@ export default class FileScheme extends URIScheme {
         });
       });
     }
-    return Promise.reject(new Error(`Invalid file url: ${url}`));
+    
+    return invalidURLError(url);
   }
 
   /**
@@ -118,6 +124,6 @@ export default class FileScheme extends URIScheme {
       });
     }
 
-    return Promise.reject(new Error(`Invalid file url: ${url}`));
+    return invalidURLError(url);
   }
 }

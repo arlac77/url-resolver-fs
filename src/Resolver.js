@@ -29,6 +29,18 @@ export default class Resolver {
     return this.schemeForURI(uri).get(uri, options);
   }
 
+  stat(uri, options) {
+    return this.schemeForURI(uri).stat(uri, options);
+  }
+
+  put(uri, options) {
+    return this.schemeForURI(uri).put(uri, options);
+  }
+
+  delete(uri, options) {
+    return this.schemeForURI(uri).delete(uri, options);
+  }
+  
   list(uri, options) {
     return this.schemeForURI(uri).list(uri, options);
   }
