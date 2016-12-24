@@ -20,13 +20,55 @@ resolves uris and provides fs like access
 
 # API Reference
 
-* <a name="fetch"></a>
+* <a name="get"></a>
 
-## fetch(url) ⇒ <code>Promise</code>
+## get(url) ⇒ <code>Promise</code>
 Creates a readable stream for the content of th file associated to a given file URL
 
 **Kind**: global function  
 **Fulfil**: <code>ReadableStream</code> - of the file content  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | of the a file |
+
+
+* <a name="stat"></a>
+
+## stat(url) ⇒ <code>Promise</code>
+Read stat of a file assiciacted to a given file URL
+
+**Kind**: global function  
+**Fulfil**: <code>Object</code> - as delivered by fs.stat()  
+**Reject**: <code>Error</code> - if url is not a file url or fs.stat() error  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | of the a file |
+
+
+* <a name="put"></a>
+
+## put(url) ⇒ <code>Promise</code>
+Put content of a stream to a file assiciacted to a given file URL
+
+**Kind**: global function  
+**Fulfil**: <code>Void</code> - undefined  
+**Reject**: <code>Error</code> - if url is not a file url  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | of the a file |
+
+
+* <a name="delete"></a>
+
+## delete(url) ⇒ <code>Promise</code>
+Deletes the file assiciacted to a given file URL
+
+**Kind**: global function  
+**Fulfil**: <code>Void</code> - undefined  
+**Reject**: <code>Error</code> - as delivered by fs.unlink()  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -40,7 +82,7 @@ List content of a directory
 
 **Kind**: global function  
 **Fulfil**: <code>String[]</code> - file names  
-**Reject**: <code>Error</code> - as deliverd by fs.readdir()  
+**Reject**: <code>Error</code> - as delivered by fs.readdir()  
 
 | Param | Type | Description |
 | --- | --- | --- |
