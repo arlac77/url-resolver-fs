@@ -43,7 +43,7 @@ export default class HTTPScheme extends URIScheme {
   }
 
   get basicAuthorization() {
-    return 'Basic ' + btoa(this.credentials.user + ':' + this.credentials.password);
+    return this.credentials ? 'Basic ' + btoa(this.credentials.user + ':' + this.credentials.password) : undefined;
   }
 
   _fetch(u, options) {
@@ -51,9 +51,13 @@ export default class HTTPScheme extends URIScheme {
       agent: this.agent,
     }, options);
 
-    options.headers = Object.assign({
-      authorization: this.basicAuthorization
-    }, options.headers);
+    const ba = this.basicAuthorization;
+
+    if (ba !== undefined) {
+      options.headers = Object.assign({
+        authorization: this.basicAuthorization
+      }, options.headers);
+    }
 
     return fetch(this.url === undefined ? u : url.resolve(this.url, u), options);
   }
@@ -61,8 +65,8 @@ export default class HTTPScheme extends URIScheme {
   get(u, options) {
     return this._fetch(u, options).then(r => r.body);
   }
-  
-  stat(u, options={}) {
+
+  stat(u, options = {}) {
     options.method = 'head';
     return this._fetch(u, options);
   }
