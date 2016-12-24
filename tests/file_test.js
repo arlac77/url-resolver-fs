@@ -20,9 +20,9 @@ describe('file', () => {
     });
   });
 
-  it('can head', () => {
+  it('can stat', () => {
     const aFile = path.join(__dirname, 'file_test.js');
-    return f.head('file://' + aFile).then(s => {
+    return f.stat('file://' + aFile).then(s => {
       //console.log(s);
       assert.isDefined(s);
     });
@@ -39,8 +39,6 @@ describe('file', () => {
   it('list error', () => {
     return f.list('file://unknown').then(files => {
       assert.ok(undefined);
-    }).catch(reject => {
-      assert.ok(reject);
-    });
+    }).catch(reject => assert.ok(reject));
   });
 });
