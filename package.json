@@ -1,5 +1,5 @@
 {
-  "name": "url-resolver",
+  "name": "url-resolver-fs",
   "version": "0.0.0-semantic-release",
   "description": "resolves urls and provides fs like access",
   "main": "dist/index.js",
@@ -15,17 +15,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arlac77/url-resolver.git"
+    "url": "git+https://github.com/arlac77/url-resolver-fs.git"
   },
   "keywords": [
     "url",
-    "resolver"
+    "resolver",
+    "url-resolver-fs"
   ],
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/arlac77/url-resolver/issues"
+    "url": "https://github.com/arlac77/url-resolver-fs/issues"
   },
-  "homepage": "https://github.com/arlac77/url-resolver#readme",
+  "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "cz-conventional-changelog": "^1.2.0",
@@ -45,12 +46,10 @@
   "engines": {
     "node": ">=6.9.2"
   },
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
