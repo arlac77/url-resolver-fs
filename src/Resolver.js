@@ -30,22 +30,22 @@ export default class Resolver {
   }
 
   stat(url, ...args) {
-    return this.schemeForURL(uri).stat(url, ...args);
+    return this.schemeForURL(url).stat(url, ...args);
   }
 
   put(url, ...args) {
-    return this.schemeForURL(uri).put(url, ...args);
+    return this.schemeForURL(url).put(url, ...args);
   }
 
   delete(url, ...args) {
-    return this.schemeForURL(uri).delete(url, ...args);
+    return this.schemeForURL(url).delete(url, ...args);
   }
-  
+
   list(url, ...args) {
-    return this.schemeForURL(uri).list(url, ...args);
+    return this.schemeForURL(url).list(url, ...args);
   }
 
   history(url, ...args) {
-    return this.schemeForURL(uri).history(url, ...args);
+    return this.schemeForURL(url).history(url, ...args);
   }
 }

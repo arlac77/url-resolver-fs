@@ -1,22 +1,22 @@
-[![npm](https://img.shields.io/npm/v/uri-resolver.svg)](https://www.npmjs.com/package/uri-resolver)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/arlac77/uri-resolver)
-[![Build Status](https://secure.travis-ci.org/arlac77/uri-resolver.png)](http://travis-ci.org/arlac77/uri-resolver)
-[![bithound](https://www.bithound.io/github/arlac77/uri-resolver/badges/score.svg)](https://www.bithound.io/github/arlac77/uri-resolver)
-[![codecov.io](http://codecov.io/github/arlac77/uri-resolver/coverage.svg?branch=master)](http://codecov.io/github/arlac77/uri-resolver?branch=master)
-[![Coverage Status](https://coveralls.io/repos/arlac77/uri-resolver/badge.svg)](https://coveralls.io/r/arlac77/uri-resolver)
-[![Code Climate](https://codeclimate.com/github/arlac77/uri-resolver/badges/gpa.svg)](https://codeclimate.com/github/arlac77/uri-resolver)
-[![Known Vulnerabilities](https://snyk.io/test/github/arlac77/uri-resolver/badge.svg)](https://snyk.io/test/github/arlac77/uri-resolver)
-[![GitHub Issues](https://img.shields.io/github/issues/arlac77/uri-resolver.svg?style=flat-square)](https://github.com/arlac77/uri-resolver/issues)
-[![Stories in Ready](https://badge.waffle.io/arlac77/uri-resolver.svg?label=ready&title=Ready)](http://waffle.io/arlac77/uri-resolver)
-[![Dependency Status](https://david-dm.org/arlac77/uri-resolver.svg)](https://david-dm.org/arlac77/uri-resolver)
-[![devDependency Status](https://david-dm.org/arlac77/uri-resolver/dev-status.svg)](https://david-dm.org/arlac77/uri-resolver#info=devDependencies)
-[![docs](http://inch-ci.org/github/arlac77/uri-resolver.svg?branch=master)](http://inch-ci.org/github/arlac77/uri-resolver)
-[![downloads](http://img.shields.io/npm/dm/uri-resolver.svg?style=flat-square)](https://npmjs.org/package/uri-resolver)
+[![npm](https://img.shields.io/npm/v/url-resolver.svg)](https://www.npmjs.com/package/url-resolver)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/arlac77/url-resolver)
+[![Build Status](https://secure.travis-ci.org/arlac77/url-resolver.png)](http://travis-ci.org/arlac77/url-resolver)
+[![bithound](https://www.bithound.io/github/arlac77/url-resolver/badges/score.svg)](https://www.bithound.io/github/arlac77/url-resolver)
+[![codecov.io](http://codecov.io/github/arlac77/url-resolver/coverage.svg?branch=master)](http://codecov.io/github/arlac77/url-resolver?branch=master)
+[![Coverage Status](https://coveralls.io/repos/arlac77/url-resolver/badge.svg)](https://coveralls.io/r/arlac77/url-resolver)
+[![Code Climate](https://codeclimate.com/github/arlac77/url-resolver/badges/gpa.svg)](https://codeclimate.com/github/arlac77/url-resolver)
+[![Known Vulnerabilities](https://snyk.io/test/github/arlac77/url-resolver/badge.svg)](https://snyk.io/test/github/arlac77/url-resolver)
+[![GitHub Issues](https://img.shields.io/github/issues/arlac77/url-resolver.svg?style=flat-square)](https://github.com/arlac77/url-resolver/issues)
+[![Stories in Ready](https://badge.waffle.io/arlac77/url-resolver.svg?label=ready&title=Ready)](http://waffle.io/arlac77/url-resolver)
+[![Dependency Status](https://david-dm.org/arlac77/url-resolver.svg)](https://david-dm.org/arlac77/url-resolver)
+[![devDependency Status](https://david-dm.org/arlac77/url-resolver/dev-status.svg)](https://david-dm.org/arlac77/url-resolver#info=devDependencies)
+[![docs](http://inch-ci.org/github/arlac77/url-resolver.svg?branch=master)](http://inch-ci.org/github/arlac77/url-resolver)
+[![downloads](http://img.shields.io/npm/dm/url-resolver.svg?style=flat-square)](https://npmjs.org/package/url-resolver)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-uri-resolver
+url-resolver
 -------------------
-resolves uris and provides fs like access
+resolves urls and provides fs like access
 
 # API Reference
 
@@ -89,17 +89,31 @@ List content of a directory
 | url | <code>String</code> | of the a directory |
 
 
-* <a name="schemeForURI"></a>
+* <a name="schemeForURL"></a>
 
-## schemeForURI(uri) ⇒ <code>URIScheme</code>
-get URIScheme for a given uri
+## schemeForURL(url) ⇒ <code>URLScheme</code>
+get URLScheme for a given url
 
 **Kind**: global function  
-**Returns**: <code>URIScheme</code> - for a given uri  
+**Returns**: <code>URLScheme</code> - for a given url  
 
 | Param | Type |
 | --- | --- |
-| uri | <code>String</code> | 
+| url | <code>String</code> | 
+
+
+* <a name="remap"></a>
+
+## remap(url) ⇒ <code>String</code>
+Remapps url by separating sheme from suffix
+and appending adding the suffix (in front)
+
+**Kind**: global function  
+**Returns**: <code>String</code> - remapped url  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | to be remapped |
 
 
 * * *
@@ -109,7 +123,7 @@ get URIScheme for a given uri
 With [npm](http://npmjs.org) do:
 
 ```shell
-npm install uri-resolver
+npm install url-resolver
 ```
 
 license

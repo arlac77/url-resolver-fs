@@ -2,7 +2,7 @@
 
 'use strict';
 
-import URIScheme from './URIScheme';
+import URLScheme from './URLScheme';
 
 /**
  * Remap url
@@ -11,7 +11,7 @@ import URIScheme from './URIScheme';
  * baseScheme: https
  * prefix: https://myserver.com/repo/
  */
-export default class URLMapperScheme extends URIScheme {
+export default class URLMapperScheme extends URLScheme {
 
   constructor(baseScheme, name, prefix) {
     super();
@@ -23,7 +23,7 @@ export default class URLMapperScheme extends URIScheme {
     Object.defineProperty(this, 'name', {
       value: name
     });
-    
+
     Object.defineProperty(this, 'prefix', {
       value: prefix
     });
@@ -40,7 +40,7 @@ export default class URLMapperScheme extends URIScheme {
   put(url, ...args) {
     return this.baseScheme.put(this.remap(url), ...args);
   }
- 
+
   delete(url, ...args) {
     return this.baseScheme.delete(this.remap(url), ...args);
   }

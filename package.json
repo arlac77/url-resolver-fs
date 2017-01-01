@@ -1,7 +1,7 @@
 {
-  "name": "uri-resolver",
+  "name": "url-resolver",
   "version": "0.0.0-semantic-release",
-  "description": "resolves uris and provides fs like access",
+  "description": "resolves urls and provides fs like access",
   "main": "dist/index.js",
   "module": "src/index.js",
   "scripts": {
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arlac77/uri-resolver.git"
+    "url": "git+https://github.com/arlac77/url-resolver.git"
   },
   "keywords": [
-    "uri",
+    "url",
     "resolver"
   ],
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/arlac77/uri-resolver/issues"
+    "url": "https://github.com/arlac77/url-resolver/issues"
   },
-  "homepage": "https://github.com/arlac77/uri-resolver#readme",
+  "homepage": "https://github.com/arlac77/url-resolver#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "cz-conventional-changelog": "^1.2.0",
@@ -45,12 +45,10 @@
   "engines": {
     "node": ">=6.9.2"
   },
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
