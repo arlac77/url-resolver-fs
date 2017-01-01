@@ -16,36 +16,36 @@ export default class Resolver {
   }
 
   /**
-   * get URIScheme for a given uri
-   * @param {String} uri
-   * @return {URIScheme} for a given uri
+   * get URLScheme for a given url
+   * @param {String} url
+   * @return {URLScheme} for a given url
    */
-  schemeForURI(uri) {
-    const m = uri.match(/^([^:]+):/);
+  schemeForURL(url) {
+    const m = url.match(/^([^:]+):/);
     return this.schemes[m[1]];
   }
 
-  get(uri, options) {
-    return this.schemeForURI(uri).get(uri, options);
+  get(url, ...args) {
+    return this.schemeForURL(url).get(url, ...args);
   }
 
-  stat(uri, options) {
-    return this.schemeForURI(uri).stat(uri, options);
+  stat(url, ...args) {
+    return this.schemeForURL(uri).stat(url, ...args);
   }
 
-  put(uri, options) {
-    return this.schemeForURI(uri).put(uri, options);
+  put(url, ...args) {
+    return this.schemeForURL(uri).put(url, ...args);
   }
 
-  delete(uri, options) {
-    return this.schemeForURI(uri).delete(uri, options);
+  delete(url, ...args) {
+    return this.schemeForURL(uri).delete(url, ...args);
   }
   
-  list(uri, options) {
-    return this.schemeForURI(uri).list(uri, options);
+  list(url, ...args) {
+    return this.schemeForURL(uri).list(url, ...args);
   }
 
-  history(uri, options) {
-    return this.schemeForURI(uri).history(uri, options);
+  history(url, ...args) {
+    return this.schemeForURL(uri).history(url, ...args);
   }
 }

@@ -7,9 +7,9 @@ const btoa = require('btoa'),
   fetch = require('node-fetch'),
   url = require('url');
 
-import URIScheme from './URIScheme';
+import URLScheme from './URLScheme';
 
-export default class HTTPScheme extends URIScheme {
+export default class HTTPScheme extends URLScheme {
   static get name() {
     return 'http';
   }

@@ -7,7 +7,7 @@ function notImplementedError()
   return Promise.reject(new Error('Not implemented'));
 }
 
-export default class URIScheme {
+export default class URLScheme {
 
   get type() {
     return this.constructor.name();
@@ -21,27 +21,27 @@ export default class URIScheme {
     return this.name;
   }
 
-  list(uri, options) {
+  list(url, options) {
     return notImplementedError();
   }
 
-  get(uri, options) {
+  get(url, options) {
     return notImplementedError();
   }
 
-  stat(uri, options) {
+  stat(url, options) {
     return notImplementedError();
   }
 
-  put(uri, stream, options) {
+  put(url, stream, options) {
     return notImplementedError();
   }
 
-  delete(uri) {
+  delete(url) {
     return notImplementedError();
   }
 
-  history(uri, options) {
+  history(url, options) {
     return notImplementedError();
   }
 }

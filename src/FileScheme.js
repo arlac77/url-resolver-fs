@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 
-import URIScheme from './URIScheme';
+import URLScheme from './URLScheme';
 
 function invalidURLError(url)
 {
@@ -12,9 +12,9 @@ function invalidURLError(url)
 }
 
 /**
- * URIScheme for file system access
+ * URLScheme for file system access
  */
-export default class FileScheme extends URIScheme {
+export default class FileScheme extends URLScheme {
 
   static get name() {
     return 'file';

@@ -15,6 +15,6 @@ describe('resolver', () => {
   describe('register scheme', () => {
     r.registerScheme(FileScheme);
     it('registered', () => assert.equal(r.schemes.file.name, 'file'));
-    it('schemeForURI', () => assert.equal(r.schemeForURI('file:x/y/z').name, 'file'));
+    it('schemeForURL', () => assert.equal(r.schemeForURL('file:x/y/z').name, 'file'));
   });
 });
