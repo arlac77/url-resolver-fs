@@ -60,7 +60,7 @@ export default class URLMapperScheme extends URLScheme {
    * @return {String} remapped url
    */
   remap(url) {
-    const m = url.match(/^[^:]+:\/\/(.})/)
-    return m ? this.prefix + m[1] : url;
+    const m = url.match(/^[^:]+:(\/\/)?(.*)/);
+    return m ? this.prefix + m[2] : url;
   }
 }
