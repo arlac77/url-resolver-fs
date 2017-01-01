@@ -7,7 +7,7 @@ const chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   path = require('path'),
-  FileScheme = require('../dist/index').FileScheme;
+  FileScheme = require('../dist/module').FileScheme;
 
 describe('file', () => {
   const f = new FileScheme();

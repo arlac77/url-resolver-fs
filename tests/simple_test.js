@@ -6,8 +6,9 @@ const chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
   should = chai.should(),
-  Resolver = require('../dist/index').Resolver,
-  FileScheme = require('../dist/index').FileScheme;
+  {
+    Resolver, FileScheme
+  } = require('../dist/module');
 
 describe('resolver', () => {
   const r = new Resolver();

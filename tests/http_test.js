@@ -6,7 +6,7 @@ const chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
   should = chai.should(),
-  HTTPScheme = require('../dist/index').HTTPScheme;
+  HTTPScheme = require('../dist/module').HTTPScheme;
 
 describe('http', () => {
   const h = new HTTPScheme();
