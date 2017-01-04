@@ -7,7 +7,7 @@
   "scripts": {
     "cover": "npm run prepublish && istanbul cover node_modules/.bin/_mocha -- -u exports tests/*_test.js",
     "test": "mocha tests/*_test.js",
-    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js > README.md",
+    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "prepublish": "rollup --output=dist/module.js -c -- src/module.js",
     "pretest": "npm run prepublish",
@@ -45,10 +45,12 @@
   "engines": {
     "node": ">=6.9.2"
   },
-  "contributors": [{
-    "name": "Markus Felten",
-    "email": "markus.felten@gmx.de"
-  }],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
