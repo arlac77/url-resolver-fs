@@ -14,60 +14,51 @@ export default class HTTPScheme extends URLScheme {
     return 'http';
   }
 
-  constructor(url, options = {}) {
+  /**
+   * @param options
+   */
+  constructor(options = {}) {
     super(url, options);
 
-    let agent;
+    this._options = {
+      headers: {}
+    };
 
     if (options.proxy) {
-      agent = new HttpsProxyAgent(options.proxy);
+      this._options.agent = new HttpsProxyAgent(options.proxy);
     }
 
-    Object.defineProperties(this, {
-      url: {
-        get() {
-          return url;
-        }
-      },
-      agent: {
-        get() {
-          return agent;
-        }
-      },
-      credentials: {
-        get() {
-          return options.credentials;
-        }
-      }
-    });
-  }
-
-  get basicAuthorization() {
-    return this.credentials ? 'Basic ' + btoa(this.credentials.user + ':' + this.credentials.password) : undefined;
-  }
-
-  _fetch(u, options) {
-    options = Object.assign({}, {
-      agent: this.agent,
-    }, options);
-
-    const ba = this.basicAuthorization;
-
-    if (ba !== undefined) {
-      options.headers = Object.assign({
-        authorization: this.basicAuthorization
-      }, options.headers);
+    if (options.credentials) {
+      this._options.headers.authorization = 'Basic ' + btoa(options.credentials.user + ':' + options.credentials.password);
     }
-
-    return fetch(this.url === undefined ? u : url.resolve(this.url, u), options);
   }
 
-  get(u, options) {
-    return this._fetch(u, options).then(r => r.body);
+  /**
+   * @param {String} url
+   * @param {Object} options
+   */
+  fetch(url, options = {}) {
+    return fetch(url, Object.assign({},
+      options,
+      this._options, {
+        headers: Object.assign({}, this._options.headers, options.headers)
+      }));
   }
 
-  stat(u, options = {}) {
-    options.method = 'head';
-    return this._fetch(u, options);
+  get(url, options) {
+    return this.fetch(url, options).then(r => r.body);
+  }
+
+  put(url, stream, options = {}) {
+    return this.fetch(url, Object.assign({
+      method: 'put',
+      data: stream
+    }, options));
+  }
+
+  stat(url, options = {}) {
+    return this.fetch(url, Object.assign({
+      method: 'head'
+    }, options));
   }
 }
