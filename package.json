@@ -40,8 +40,7 @@
   "dependencies": {
     "btoa": "^1.1.2",
     "https-proxy-agent": "^1.0.0",
-    "node-fetch": "^1.6.3",
-    "registry-mixin": "^2.1.10"
+    "node-fetch": "^1.6.3"
   },
   "engines": {
     "node": ">=6.9.2"

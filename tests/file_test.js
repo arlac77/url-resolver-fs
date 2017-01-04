@@ -32,7 +32,7 @@ describe('file', () => {
     const aDir = path.join(__dirname);
     return f.list('file://' + aDir).then(files => {
       assert.isAtLeast(files.indexOf('file_test.js'), 0);
-      assert.isAtLeast(files.indexOf('simple_test.js'), 0);
+      assert.isAtLeast(files.indexOf('resolver_test.js'), 0);
     });
   });
 

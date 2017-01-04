@@ -2,15 +2,14 @@
 
 'use strict';
 
-function notImplementedError()
-{
+function notImplementedError() {
   return Promise.reject(new Error('Not implemented'));
 }
 
 export default class URLScheme {
 
   get type() {
-    return this.constructor.name();
+    return this.constructor.name;
   }
 
   get name() {

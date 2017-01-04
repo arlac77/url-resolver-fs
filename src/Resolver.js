@@ -2,17 +2,18 @@
 
 'use strict';
 
-import {
-  defineRegistryProperties
-} 
-from 'registry-mixin';
-
 /**
  *
  */
 export default class Resolver {
   constructor() {
-    defineRegistryProperties(this, 'scheme', {});
+    Object.defineProperty(this, 'schemes', {
+      value: new Map()
+    });
+  }
+
+  registerScheme(scheme) {
+    this.schemes.set(scheme.name, scheme);
   }
 
   /**
@@ -22,7 +23,7 @@ export default class Resolver {
    */
   schemeForURL(url) {
     const m = url.match(/^([^:]+):/);
-    return this.schemes[m[1]];
+    return this.schemes.get(m[1]);
   }
 
   get(url, ...args) {
