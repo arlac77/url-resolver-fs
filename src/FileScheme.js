@@ -22,7 +22,8 @@ export default class FileScheme extends URLScheme {
 
   /**
    * Creates a readable stream for the content of th file associated to a given file URL
-   * @param {String} url of the a file
+   * @param {string} url of the a file
+   * @param {object} [options]
    * @returns {Promise}
    * @fulfil {ReadableStream} - of the file content
    */
@@ -37,9 +38,9 @@ export default class FileScheme extends URLScheme {
 
   /**
    * Read stat of a file assiciacted to a given file URL
-   * @param {String} url of the a file
+   * @param {string} url of the a file
    * @returns {Promise}
-   * @fulfil {Object} - as delivered by fs.stat()
+   * @fulfil {object} - as delivered by fs.stat()
    * @reject {Error} - if url is not a file url or fs.stat() error
    */
   stat(url, options) {
@@ -61,9 +62,9 @@ export default class FileScheme extends URLScheme {
 
   /**
    * Put content of a stream to a file assiciacted to a given file URL
-   * @param {String} url of the a file
+   * @param {string} url of the a file
    * @returns {Promise}
-   * @fulfil {Void} - undefined
+   * @fulfil {undefined} - undefined
    * @reject {Error} - if url is not a file url
    */
   put(url, stream, options) {
@@ -81,9 +82,9 @@ export default class FileScheme extends URLScheme {
 
   /**
    * Deletes the file assiciacted to a given file URL
-   * @param {String} url of the a file
+   * @param {string} url of the a file
    * @returns {Promise}
-   * @fulfil {Void} - undefined
+   * @fulfil {undefined} - undefined
    * @reject {Error} - as delivered by fs.unlink()
    */
   delete(url) {
@@ -105,9 +106,9 @@ export default class FileScheme extends URLScheme {
 
   /**
    * List content of a directory
-   * @param {String} url of the a directory
+   * @param {string} url of the a directory
    * @returns {Promise}
-   * @fulfil {String[]} - file names
+   * @fulfil {string[]} - file names
    * @reject {Error} - as delivered by fs.readdir()
    */
   list(url, options) {

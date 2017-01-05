@@ -13,6 +13,11 @@ import URLScheme from './URLScheme';
  */
 export default class URLMapperScheme extends URLScheme {
 
+  /**
+   * @param {URLScheme} baseScheme
+   * @param {string} name of the newly created scheme
+   * @param {string} prefix urls will be prefixed bz this value
+   */
   constructor(baseScheme, name, prefix) {
     super();
 
@@ -54,10 +59,10 @@ export default class URLMapperScheme extends URLScheme {
   }
 
   /**
-   * Remapps url by separating sheme from suffix
+   * Remapps url by separating sheme (and direct following '/') from suffix
    * and appending adding the suffix (in front)
-   * @param url {String} to be remapped
-   * @return {String} remapped url
+   * @param {string} url to be remapped
+   * @return {string} remapped url
    */
   remap(url) {
     const m = url.match(/^[^:]+:(\/\/)?(.*)/);

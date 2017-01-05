@@ -15,7 +15,7 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param options
+   * @param {object} [options={}]
    */
   constructor(options = {}) {
     super(url, options);
@@ -34,8 +34,8 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param {String} url
-   * @param {Object} options
+   * @param {string} url
+   * @param {object} [options={}]
    */
   fetch(url, options = {}) {
     return fetch(url, Object.assign({},
@@ -49,14 +49,14 @@ export default class HTTPScheme extends URLScheme {
     return this.fetch(url, options).then(r => r.body);
   }
 
-  put(url, stream, options = {}) {
+  put(url, stream, options) {
     return this.fetch(url, Object.assign({
       method: 'put',
       data: stream
     }, options));
   }
 
-  stat(url, options = {}) {
+  stat(url, options) {
     return this.fetch(url, Object.assign({
       method: 'head'
     }, options));

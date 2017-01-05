@@ -12,13 +12,17 @@ export default class Resolver {
     });
   }
 
+  /**
+   * register a scheme for later lookup
+   * @param {URLScheme} scheme
+   */
   registerScheme(scheme) {
     this.schemes.set(scheme.name, scheme);
   }
 
   /**
    * get URLScheme for a given url
-   * @param {String} url
+   * @param {string} url
    * @return {URLScheme} for a given url
    */
   schemeForURL(url) {
