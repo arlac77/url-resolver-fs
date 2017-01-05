@@ -3,6 +3,5 @@
 
 export default {
   format: 'cjs',
-  plugins: [],
-  external: ['registry-mixin']
+  plugins: []
 };
