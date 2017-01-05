@@ -9,10 +9,11 @@ const chai = require('chai'),
   HTTPSScheme = require('../dist/module').HTTPSScheme;
 
 describe('https', () => {
-  const h = new HTTPSScheme();
+  const scheme = new HTTPSScheme();
+  it('has name', () => assert.equal(scheme.name, 'https'));
 
   it('can get', done => {
-    h.get('https://www.heise.de/index.html').then(s => {
+    scheme.get('https://www.heise.de/index.html').then(s => {
       assert.isDefined(s);
 
       s.on('data', chunk => {
@@ -24,18 +25,18 @@ describe('https', () => {
   });
 
   it('can stat', () => {
-    return h.stat('https://www.heise.de/index.html').then(s => assert.equal(s.status, 200));
+    return scheme.stat('https://www.heise.de/index.html').then(s => assert.equal(s.status, 200));
   });
 
   describe('with proxy', () => {
-    const h = new HTTPSScheme({
+    const scheme = new HTTPSScheme({
       proxy: 'http://173.212.49.74:8080'
         //proxy: 'http://96.80.45.1:80'
         //proxy: 'http://85.28.193.95:8080'
         //proxy: 'http://localhost:8888'
     });
     xit('can get', done => {
-      h.get('https://www.mfelten.de/index.html').then(s => {
+      scheme.get('https://www.mfelten.de/index.html').then(s => {
         assert.isDefined(s);
 
         s.on('data', chunk => {
