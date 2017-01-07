@@ -2,6 +2,8 @@
 
 'use strict';
 
+const HttpsProxyAgent = require('https-proxy-agent');
+  
 import HTTPScheme from './HTTPScheme';
 
 export default class HTTPSScheme extends HTTPScheme {

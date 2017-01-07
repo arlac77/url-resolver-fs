@@ -3,6 +3,7 @@
 'use strict';
 
 const btoa = require('btoa'),
+  HttpProxyAgent = require('http-proxy-agent'),
   HttpsProxyAgent = require('https-proxy-agent'),
   fetch = require('node-fetch'),
   url = require('url');
@@ -25,7 +26,8 @@ export default class HTTPScheme extends URLScheme {
     };
 
     if (options.proxy) {
-      this._options.agent = new HttpsProxyAgent(options.proxy);
+      this._options.agent = this.name === 
+      'https' ? new HttpsProxyAgent(options.proxy) : new HttpProxyAgent(options.proxy);
     }
 
     if (options.credentials) {
