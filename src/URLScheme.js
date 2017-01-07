@@ -8,12 +8,38 @@ function notImplementedError() {
 
 export default class URLScheme {
 
+  /**
+   * @return {boolean} false
+   */
+  static get isSecure() {
+    return false;
+  }
+
+  static get defaultPort() {
+    return undefined;
+  }
+  
   get type() {
     return this.constructor.name;
   }
 
   get name() {
     return this.type;
+  }
+
+  
+  /**
+   * @return {number} default from static defaultPort
+   */
+  get defaultPort() {
+    return this.constructor.defaultPort;
+  }
+  
+  /**
+   * @return {boolean} default from static isSecure
+   */
+  get isSecure() {
+    return this.constructor.isSecure;
   }
 
   toString() {
