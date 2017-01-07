@@ -40,13 +40,13 @@ describe('https', () => {
         //proxy: 'http://85.28.193.95:8080'
         //proxy: 'http://localhost:8888'
     });
-    xit('can get', done => {
-      scheme.get('https://www.mfelten.de/index.html').then(s => {
+    it('can get', done => {
+      scheme.get('https://www.google.com/index.html').then(s => {
         assert.isDefined(s);
 
         s.on('data', chunk => {
           console.log(chunk.toString());
-          if (chunk.includes('Welcome to nginx')) {
+          if (chunk.includes('goolge')) {
             done();
           }
         });

@@ -49,12 +49,12 @@ describe('http', () => {
         // proxy: 'http://85.28.193.95:8080'
         //proxy: 'http://localhost:8888'
     });
-    xit('can get', done => {
+    it('can get', done => {
       scheme.get('http://www.mfelten.de/index.html').then(s => {
         assert.isDefined(s);
 
         s.on('data', chunk => {
-          //console.log(chunk.toString());
+          console.log(chunk.toString());
           if (chunk.includes('Welcome to nginx')) {
             done();
           }
