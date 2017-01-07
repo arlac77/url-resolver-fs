@@ -13,6 +13,10 @@ describe('https', () => {
  
   it('has name', () => assert.equal(scheme.name, 'https'));
 
+  it('is secure', () => assert.equal(scheme.isSecure, true));
+
+  it('default port', () => assert.equal(scheme.defaultPort, 443));
+  
   it('can get', done => {
     scheme.get('https://www.heise.de/index.html').then(s => {
       assert.isDefined(s);

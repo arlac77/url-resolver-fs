@@ -14,7 +14,11 @@ export default class HTTPScheme extends URLScheme {
   static get name() {
     return 'http';
   }
-
+  
+  static get defaultPort() {
+    return 80;
+  }
+  
   /**
    * @param {object} [options={}]
    */
@@ -26,15 +30,14 @@ export default class HTTPScheme extends URLScheme {
     };
 
     if (options.proxy) {
-      this._options.agent = this.name === 
-      'https' ? new HttpsProxyAgent(options.proxy) : new HttpProxyAgent(options.proxy);
+      this._options.agent = this.isSecure ? new HttpsProxyAgent(options.proxy) : new HttpProxyAgent(options.proxy);
     }
 
     if (options.credentials) {
       this._options.headers.authorization = 'Basic ' + btoa(options.credentials.user + ':' + options.credentials.password);
     }
   }
-
+  
   /**
    * @param {string} url
    * @param {object} [options={}]
