@@ -27,7 +27,6 @@ export default class URLScheme {
     return this.type;
   }
 
-  
   /**
    * @return {number} default from static defaultPort
    */

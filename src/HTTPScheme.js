@@ -15,6 +15,9 @@ export default class HTTPScheme extends URLScheme {
     return 'http';
   }
   
+  /**
+   * @return {number} 80 the http default port
+   */
   static get defaultPort() {
     return 80;
   }

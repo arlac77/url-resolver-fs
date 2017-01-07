@@ -12,6 +12,9 @@ export default class HTTPSScheme extends HTTPScheme {
     return 'https';
   }
   
+  /**
+   * @return {number} 443 the https default port
+   */
   static get defaultPort() {
     return 443;
   }

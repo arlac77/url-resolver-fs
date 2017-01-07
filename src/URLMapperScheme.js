@@ -34,26 +34,44 @@ export default class URLMapperScheme extends URLScheme {
     });
   }
 
+  /**
+   * Forward the request to the base schem after remapping the url
+   */
   list(url, ...args) {
     return this.baseScheme.list(this.remap(url), ...args);
   }
 
+  /**
+   * Forward the request to the base schem after remapping the url
+   */
   get(url, ...args) {
     return this.baseScheme.get(this.remap(url), ...args);
   }
 
+  /**
+   * Forward the request to the base schem after remapping the url
+   */
   put(url, ...args) {
     return this.baseScheme.put(this.remap(url), ...args);
   }
 
+  /**
+   * Forward the request to the base schem after remapping the url
+   */
   delete(url, ...args) {
     return this.baseScheme.delete(this.remap(url), ...args);
   }
 
+  /**
+   * Forward the request to the base schem after remapping the url
+   */
   stat(url, ...args) {
     return this.baseScheme.stat(this.remap(url), ...args);
   }
 
+  /**
+   * Forward the request to the base schem after remapping the url
+   */
   history(url, ...args) {
     return this.baseScheme.history(this.remap(url), ...args);
   }
