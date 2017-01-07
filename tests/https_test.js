@@ -34,6 +34,7 @@ describe('https', () => {
   });
 
   describe('with proxy', () => {
+    // https://www.sslproxies.org
     const scheme = new HTTPSScheme({
       proxy: 'http://104.236.241.128:8080/'
         //proxy: 'http://173.212.49.74:8080'
