@@ -11,9 +11,10 @@ const chai = require('chai'),
   } = require('../dist/module');
 
 describe('mapper', () => {
-  const mapper = new URLMapperScheme(new HTTPScheme(), 'brs', 'https://myserver.com/repo/');
+  const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'https://myserver.com/repo/');
 
   it('can simple map', () =>
-    assert.equal(mapper.remap('brs:some/path'), 'https://myserver.com/repo/some/path')
+    assert.equal(mapper.remap('myscheme:some/path'), 'https://myserver.com/repo/some/path')
   );
+
 });

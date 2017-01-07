@@ -36,6 +36,7 @@ export default class HTTPScheme extends URLScheme {
   /**
    * @param {string} url
    * @param {object} [options={}]
+   * @return {object} fetch result
    */
   fetch(url, options = {}) {
     return fetch(url, Object.assign({},
@@ -45,10 +46,24 @@ export default class HTTPScheme extends URLScheme {
       }));
   }
 
+
+  /**
+   * Execute a GET request
+   * @param {string} url
+   * @param {object} [options]
+   * @return {object} body of the response
+   */
   get(url, options) {
     return this.fetch(url, options).then(r => r.body);
   }
 
+
+  /**
+   * Execute a PUT request
+   * @param {string} url
+   * @param {Stream} stream content to be put to the url
+   * @param {object} [options]
+   */
   put(url, stream, options) {
     return this.fetch(url, Object.assign({
       method: 'put',
@@ -56,6 +71,12 @@ export default class HTTPScheme extends URLScheme {
     }, options));
   }
 
+  /**
+   * Execute a HEAD request
+   * @param {string} url
+   * @param {object} [options]
+   * @return {object} response object
+   */
   stat(url, options) {
     return this.fetch(url, Object.assign({
       method: 'head'

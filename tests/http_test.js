@@ -10,6 +10,7 @@ const chai = require('chai'),
 
 describe('http', () => {
   const scheme = new HTTPScheme();
+  
   it('has name', () => assert.equal(scheme.name, 'http'));
 
   it('can get', done => {

@@ -10,6 +10,7 @@ const chai = require('chai'),
 
 describe('https', () => {
   const scheme = new HTTPSScheme();
+ 
   it('has name', () => assert.equal(scheme.name, 'https'));
 
   it('can get', done => {
