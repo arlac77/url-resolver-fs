@@ -22,7 +22,7 @@ resolves urls and provides fs like access
 
 * <a name="get"></a>
 
-## get(url) ⇒ <code>Promise</code>
+## get(url, [options]) ⇒ <code>Promise</code>
 Creates a readable stream for the content of th file associated to a given file URL
 
 **Kind**: global function  
@@ -30,35 +30,39 @@ Creates a readable stream for the content of th file associated to a given file 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>String</code> | of the a file |
+| url | <code>string</code> | of the a file |
+| [options] | <code>object</code> &#124; <code>string</code> | passed as options to fs.createReadStream() |
 
 
 * <a name="stat"></a>
 
-## stat(url) ⇒ <code>Promise</code>
+## stat(url, [options]) ⇒ <code>Promise</code>
 Read stat of a file assiciacted to a given file URL
 
 **Kind**: global function  
-**Fulfil**: <code>Object</code> - as delivered by fs.stat()  
+**Fulfil**: <code>object</code> - as delivered by fs.stat()  
 **Reject**: <code>Error</code> - if url is not a file url or fs.stat() error  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>String</code> | of the a file |
+| url | <code>string</code> | of the a file |
+| [options] | <code>object</code> | unused for now |
 
 
 * <a name="put"></a>
 
-## put(url) ⇒ <code>Promise</code>
-Put content of a stream to a file assiciacted to a given file URL
+## put(url, stream, [options]) ⇒ <code>Promise</code>
+Put content of a stream to a file associacted to a given file URL
 
 **Kind**: global function  
-**Fulfil**: <code>Void</code> - undefined  
+**Fulfil**: <code>undefined</code> - undefined  
 **Reject**: <code>Error</code> - if url is not a file url  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>String</code> | of the a file |
+| url | <code>string</code> | of the a file |
+| stream | <code>Stream</code> | data source |
+| [options] | <code>object</code> &#124; <code>string</code> | passed as options to fs.createWriteStream() |
 
 
 * <a name="delete"></a>
@@ -67,26 +71,93 @@ Put content of a stream to a file assiciacted to a given file URL
 Deletes the file assiciacted to a given file URL
 
 **Kind**: global function  
-**Fulfil**: <code>Void</code> - undefined  
+**Fulfil**: <code>undefined</code> - undefined  
 **Reject**: <code>Error</code> - as delivered by fs.unlink()  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>String</code> | of the a file |
+| url | <code>string</code> | of the a file |
 
 
 * <a name="list"></a>
 
-## list(url) ⇒ <code>Promise</code>
+## list(url, [options]) ⇒ <code>Promise</code>
 List content of a directory
 
 **Kind**: global function  
-**Fulfil**: <code>String[]</code> - file names  
+**Fulfil**: <code>string[]</code> - file names  
 **Reject**: <code>Error</code> - as delivered by fs.readdir()  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>String</code> | of the a directory |
+| url | <code>string</code> | of the a directory |
+| [options] | <code>object</code> | unused for now |
+
+
+* <a name="fetch"></a>
+
+## fetch(url, [options]) ⇒ <code>object</code>
+**Kind**: global function  
+**Returns**: <code>object</code> - fetch result  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| url | <code>string</code> |  | 
+| [options] | <code>object</code> | <code>{}</code> | 
+
+
+* <a name="get"></a>
+
+## get(url, [options]) ⇒ <code>object</code>
+Execute a GET request
+
+**Kind**: global function  
+**Returns**: <code>object</code> - body of the response  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+| [options] | <code>object</code> | 
+
+
+* <a name="put"></a>
+
+## put(url, stream, [options])
+Execute a PUT request
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> |  |
+| stream | <code>Stream</code> | content to be put to the url |
+| [options] | <code>object</code> |  |
+
+
+* <a name="stat"></a>
+
+## stat(url, [options]) ⇒ <code>object</code>
+Execute a HEAD request
+
+**Kind**: global function  
+**Returns**: <code>object</code> - response object  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+| [options] | <code>object</code> | 
+
+
+* <a name="registerScheme"></a>
+
+## registerScheme(scheme)
+register a scheme for later lookup
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| scheme | <code>URLScheme</code> | 
 
 
 * <a name="schemeForURL"></a>
@@ -99,21 +170,105 @@ get URLScheme for a given url
 
 | Param | Type |
 | --- | --- |
-| url | <code>String</code> | 
+| url | <code>string</code> | 
 
+
+* <a name="get"></a>
+
+## get()
+use semeForURl and forward request to the returend scheme
+
+**Kind**: global function  
+
+* <a name="stat"></a>
+
+## stat()
+use semeForURl and forward request to the returend scheme
+
+**Kind**: global function  
+
+* <a name="put"></a>
+
+## put()
+use semeForURl and forward request to the returend scheme
+
+**Kind**: global function  
+
+* <a name="delete"></a>
+
+## delete()
+use semeForURl and forward request to the returend scheme
+
+**Kind**: global function  
+
+* <a name="list"></a>
+
+## list()
+use semeForURl and forward request to the returend scheme
+
+**Kind**: global function  
+
+* <a name="history"></a>
+
+## history()
+use semeForURl and forward request to the returend scheme
+
+**Kind**: global function  
+
+* <a name="list"></a>
+
+## list()
+Forward the request to the base schem after remapping the url
+
+**Kind**: global function  
+
+* <a name="get"></a>
+
+## get()
+Forward the request to the base schem after remapping the url
+
+**Kind**: global function  
+
+* <a name="put"></a>
+
+## put()
+Forward the request to the base schem after remapping the url
+
+**Kind**: global function  
+
+* <a name="delete"></a>
+
+## delete()
+Forward the request to the base schem after remapping the url
+
+**Kind**: global function  
+
+* <a name="stat"></a>
+
+## stat()
+Forward the request to the base schem after remapping the url
+
+**Kind**: global function  
+
+* <a name="history"></a>
+
+## history()
+Forward the request to the base schem after remapping the url
+
+**Kind**: global function  
 
 * <a name="remap"></a>
 
-## remap(url) ⇒ <code>String</code>
-Remapps url by separating sheme from suffix
+## remap(url) ⇒ <code>string</code>
+Remapps url by separating sheme (and direct following '/') from suffix
 and appending adding the suffix (in front)
 
 **Kind**: global function  
-**Returns**: <code>String</code> - remapped url  
+**Returns**: <code>string</code> - remapped url  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>String</code> | to be remapped |
+| url | <code>string</code> | to be remapped |
 
 
 * * *
