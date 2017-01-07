@@ -72,7 +72,7 @@ describe('http', () => {
     const scheme = new HTTPScheme({
       proxy: 'http://localhost:8888'
     });
-    it.only('can get', done => {
+    it('can get', done => {
       scheme.get('http://www.google.de/').then(s => {
         assert.isDefined(s);
 
