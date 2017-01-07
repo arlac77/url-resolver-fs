@@ -6,11 +6,37 @@ const chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
   should = chai.should(),
-  HTTPScheme = require('../dist/module').HTTPScheme;
+  url = require('url'),
+  http = require('http'),
+  {
+    HTTPScheme
+  } = require('../dist/module');
+
+http.createServer((request, response) => {
+
+  const [host, port] = request.headers.host.split(/:/);
+  const {
+    pathname
+  } = url.parse(request.url);
+
+  const r = {
+    host: host,
+    port: port,
+    path: pathname,
+    method: request.method,
+    headers: request.headers
+  };
+
+  const proxyRequest = http.request(r, proxyResponse => {
+    response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
+    proxyResponse.pipe(response);
+  });
+  request.pipe(proxyRequest);
+}).listen(8888);
 
 describe('http', () => {
   const scheme = new HTTPScheme();
-  
+
   it('has name', () => assert.equal(scheme.name, 'http'));
 
   it('is secure', () => assert.equal(scheme.isSecure, false));
@@ -44,19 +70,23 @@ describe('http', () => {
 
   describe('with proxy', () => {
     const scheme = new HTTPScheme({
-      proxy: 'http://173.212.49.74:8080'
-        // proxy: 'http://96.80.45.1:80'
-        // proxy: 'http://85.28.193.95:8080'
-        //proxy: 'http://localhost:8888'
+      proxy: 'http://localhost:8888'
     });
-    it('can get', done => {
-      scheme.get('http://www.mfelten.de/index.html').then(s => {
+    it.only('can get', done => {
+      scheme.get('http://www.google.de/').then(s => {
         assert.isDefined(s);
 
+        let isDone = false;
         s.on('data', chunk => {
-          console.log(chunk.toString());
-          if (chunk.includes('Welcome to nginx')) {
-            done();
+          //console.log(chunk.toString());
+          if (chunk.includes('google')) {
+
+            if (!isDone) {
+              done();
+              isDone = true;
+            }
+
+            return;
           }
         });
       });
