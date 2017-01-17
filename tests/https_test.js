@@ -42,7 +42,7 @@ describe('https', () => {
         //proxy: 'http://85.28.193.95:8080'
         //proxy: 'http://localhost:8888'
     });
-    it('can get', done => {
+    xit('can get', done => {
       scheme.get('https://www.google.com/').then(s => {
         assert.isDefined(s);
 
