@@ -44,20 +44,7 @@ export default class FileScheme extends URLScheme {
    * @reject {Error} - if url is not a file url or fs.stat() error
    */
   stat(url, options) {
-    const m = url.match(/^file:\/\/(.*)/);
-    if (m) {
-      return new Promise((fullfill, reject) => {
-        fs.stat(m[1], (err, stat) => {
-          if (err) {
-            reject(err);
-          } else {
-            fullfill(stat);
-          }
-        });
-      });
-    }
-
-    return invalidURLError(url);
+    return promisify(fs.stat, url);
   }
 
   /**
@@ -89,20 +76,7 @@ export default class FileScheme extends URLScheme {
    * @reject {Error} - as delivered by fs.unlink()
    */
   delete(url) {
-    const m = url.match(/^file:\/\/(.*)/);
-    if (m) {
-      return new Promise((fullfill, reject) => {
-        fs.unlink(m[1], err => {
-          if (err) {
-            reject(err);
-          } else {
-            fullfill();
-          }
-        });
-      });
-    }
-
-    return invalidURLError(url);
+    return promisify(fs.unlink, url);
   }
 
   /**
@@ -114,19 +88,22 @@ export default class FileScheme extends URLScheme {
    * @reject {Error} - as delivered by fs.readdir()
    */
   list(url, options) {
-    const m = url.match(/^file:\/\/(.*)/);
-    if (m) {
-      return new Promise((fullfill, reject) => {
-        fs.readdir(m[1], (err, files) => {
-          if (err) {
-            reject(err);
-          } else {
-            fullfill(files);
-          }
-        });
-      });
-    }
-
-    return invalidURLError(url);
+    return promisify(fs.readdir, url);
   }
+}
+
+function promisify(func, url) {
+  const m = url.match(/^file:\/\/(.*)/);
+  if (m) {
+    return new Promise((fullfill, reject) => {
+      func(m[1], (err, files) => {
+        if (err) {
+          reject(err);
+        } else {
+          fullfill(files);
+        }
+      });
+    });
+  }
+  return invalidURLError(url);
 }

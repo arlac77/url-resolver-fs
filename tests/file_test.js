@@ -7,6 +7,7 @@ const chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   path = require('path'),
+  fs = require('fs'),
   FileScheme = require('../dist/module').FileScheme;
 
 describe('file', () => {
@@ -21,6 +22,18 @@ describe('file', () => {
   it('can stat', () => {
     const aFile = path.join(__dirname, 'file_test.js');
     return scheme.stat('file://' + aFile).then(s => assert.isDefined(s));
+  });
+
+  it('can delete', (done) => {
+    const aFile = path.join(__dirname, 'file.tmp');
+    fs.writeFileSync(aFile, 'someData');
+    scheme.delete('file://' + aFile).then(s =>
+      fs.stat(aFile, (err, stat) => {
+        if (err) {
+          done();
+        }
+      })
+    );
   });
 
   it('can list', () => {
