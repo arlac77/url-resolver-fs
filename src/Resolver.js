@@ -2,14 +2,36 @@
 
 'use strict';
 
+
+function generate(name) {
+  return function (url, ...args) {
+    const scheme = this.schemeForURL(url);
+    return scheme ? scheme[name](url, ...args) : Promise.reject(new Error(`Unknwon scheme ${url}`));
+  };
+}
+
+const methods = ['get', 'stat', 'put', 'delete', 'list', 'history'];
+
 /**
  *
  */
 export default class Resolver {
-  constructor() {
+  constructor(config = {}) {
     Object.defineProperty(this, 'schemes', {
       value: new Map()
     });
+
+    /*
+        Object.keys(config.schemes).fotEach(name => {
+          const s = config.schemes[name];
+          this.registerScheme();
+        });
+    */
+
+    methods.forEach(name =>
+      Object.defineProperty(this, name, {
+        value: generate(name)
+      }));
   }
 
   /**
@@ -28,47 +50,5 @@ export default class Resolver {
   schemeForURL(url) {
     const m = url.match(/^([^:]+):/);
     return this.schemes.get(m[1]);
-  }
-
-  /**
-   * use semeForURl and forward request to the returend scheme
-   */
-  get(url, ...args) {
-    return this.schemeForURL(url).get(url, ...args);
-  }
-
-  /**
-   * use semeForURl and forward request to the returend scheme
-   */
-  stat(url, ...args) {
-    return this.schemeForURL(url).stat(url, ...args);
-  }
-
-  /**
-   * use semeForURl and forward request to the returend scheme
-   */
-  put(url, ...args) {
-    return this.schemeForURL(url).put(url, ...args);
-  }
-
-  /**
-   * use semeForURl and forward request to the returend scheme
-   */
-  delete(url, ...args) {
-    return this.schemeForURL(url).delete(url, ...args);
-  }
-
-  /**
-   * use semeForURl and forward request to the returend scheme
-   */
-  list(url, ...args) {
-    return this.schemeForURL(url).list(url, ...args);
-  }
-
-  /**
-   * use semeForURl and forward request to the returend scheme
-   */
-  history(url, ...args) {
-    return this.schemeForURL(url).history(url, ...args);
   }
 }

@@ -24,13 +24,59 @@ describe('resolver', () => {
     it('can find schemes', () => assert.equal(resolver.schemeForURL('heise:index.html'), heise));
   });
 
-  it('can get', done => {
-    resolver.get('heise:index.html').then(s => {
-      assert.isDefined(s);
-      s.on('data', chunk => {
-        if (chunk.includes('DOCTYPE')) {
-          done();
+  describe('construct with config', () => {
+    const resolver = new Resolver({
+      schemes: {
+        'tmp': {
+          base: 'file',
+          prefix: 'file:///tmp'
         }
+      }
+    });
+  });
+
+  describe('delegating', () => {
+    describe('unknown schemes reject', () => {
+
+      it('get', () =>
+        resolver.get('unknown:index.html').then(r => assert.isNotOk(r),
+          e => assert.isDefined(e))
+      );
+
+      it('stat', () =>
+        resolver.stat('unknown:index.html').then(r => assert.isNotOk(r),
+          e => assert.isDefined(e))
+      );
+
+      it('put', () =>
+        resolver.put('unknown:index.html').then(r => assert.isNotOk(r),
+          e => assert.isDefined(e))
+      );
+
+      it('delete', () =>
+        resolver.delete('unknown:index.html').then(r => assert.isNotOk(r),
+          e => assert.isDefined(e))
+      );
+
+      it('list', () =>
+        resolver.list('unknown:index.html').then(r => assert.isNotOk(r),
+          e => assert.isDefined(e))
+      );
+
+      it('history', () =>
+        resolver.history('unknown:index.html').then(r => assert.isNotOk(r),
+          e => assert.isDefined(e))
+      );
+    });
+
+    it('can get', done => {
+      resolver.get('heise:index.html').then(s => {
+        assert.isDefined(s);
+        s.on('data', chunk => {
+          if (chunk.includes('DOCTYPE')) {
+            done();
+          }
+        });
       });
     });
   });

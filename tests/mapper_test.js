@@ -11,10 +11,13 @@ const chai = require('chai'),
   } = require('../dist/module');
 
 describe('mapper', () => {
-  const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'https://myserver.com/repo/');
 
-  it('can simple map', () =>
-    assert.equal(mapper.remap('myscheme:some/path'), 'https://myserver.com/repo/some/path')
-  );
+  describe('prefix only', () => {
+    const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'https://myserver.com/repo/');
+
+    it('can simple map', () =>
+      assert.equal(mapper.remap('myscheme:some/path'), 'https://myserver.com/repo/some/path')
+    );
+  });
 
 });

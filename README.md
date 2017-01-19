@@ -173,48 +173,6 @@ get URLScheme for a given url
 | url | <code>string</code> | 
 
 
-* <a name="get"></a>
-
-## get()
-use semeForURl and forward request to the returend scheme
-
-**Kind**: global function  
-
-* <a name="stat"></a>
-
-## stat()
-use semeForURl and forward request to the returend scheme
-
-**Kind**: global function  
-
-* <a name="put"></a>
-
-## put()
-use semeForURl and forward request to the returend scheme
-
-**Kind**: global function  
-
-* <a name="delete"></a>
-
-## delete()
-use semeForURl and forward request to the returend scheme
-
-**Kind**: global function  
-
-* <a name="list"></a>
-
-## list()
-use semeForURl and forward request to the returend scheme
-
-**Kind**: global function  
-
-* <a name="history"></a>
-
-## history()
-use semeForURl and forward request to the returend scheme
-
-**Kind**: global function  
-
 * <a name="list"></a>
 
 ## list()

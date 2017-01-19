@@ -15,10 +15,13 @@ export default class URLScheme {
     return false;
   }
 
+  /**
+   * @return {mumber} undefined by default
+   */
   static get defaultPort() {
     return undefined;
   }
-  
+
   get type() {
     return this.constructor.name;
   }
@@ -33,7 +36,7 @@ export default class URLScheme {
   get defaultPort() {
     return this.constructor.defaultPort;
   }
-  
+
   /**
    * @return {boolean} default from static isSecure
    */
