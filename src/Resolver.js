@@ -3,6 +3,7 @@
 'use strict';
 
 import URLScheme from './URLScheme';
+import URLMapperScheme from './URLMapperScheme';
 
 function generate(name) {
   return function (url, ...args) {
@@ -23,12 +24,13 @@ export default class Resolver extends URLScheme {
       value: new Map()
     });
 
-    /*
-        Object.keys(config.schemes).fotEach(name => {
-          const s = config.schemes[name];
-          this.registerScheme();
-        });
-    */
+    if(config.schemes !== undefined) {
+      Object.keys(config.schemes).forEach(name => {
+        const s = config.schemes[name];
+
+        this.registerScheme(new URLMapperScheme(this.schemes.get(s.base), name, s.prefix));
+      });
+    }
 
     this.constructor.methods.forEach(name =>
       Object.defineProperty(this, name, {
