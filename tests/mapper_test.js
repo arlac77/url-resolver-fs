@@ -13,11 +13,25 @@ const chai = require('chai'),
 describe('mapper', () => {
 
   describe('prefix only', () => {
-    const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'https://myserver.com/repo/');
+    const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');
 
     it('can simple map', () =>
-      assert.equal(mapper.remap('myscheme:some/path'), 'https://myserver.com/repo/some/path')
+      assert.equal(mapper.remap('myscheme:some/path'), 'http://www.heise.de/some/path')
     );
+
+    it('can get', done => {
+      mapper.get('myscheme:index.html').then(s => {
+        assert.isDefined(s);
+
+        s.on('data', chunk => {
+          if (chunk.includes('DOCTYPE')) {
+            done();
+          }
+        });
+      });
+    });
+
+    it('can stat', () => mapper.stat('myscheme:index.html').then(s => assert.equal(s.status, 200)));
   });
 
 });
