@@ -2,6 +2,7 @@
 
 'use strict';
 
+import URLScheme from './URLScheme';
 
 function generate(name) {
   return function (url, ...args) {
@@ -10,13 +11,14 @@ function generate(name) {
   };
 }
 
-const methods = ['get', 'stat', 'put', 'delete', 'list', 'history'];
 
 /**
  *
  */
-export default class Resolver {
+export default class Resolver extends URLScheme {
   constructor(config = {}) {
+    super();
+
     Object.defineProperty(this, 'schemes', {
       value: new Map()
     });
@@ -28,7 +30,7 @@ export default class Resolver {
         });
     */
 
-    methods.forEach(name =>
+    this.constructor.methods.forEach(name =>
       Object.defineProperty(this, name, {
         value: generate(name)
       }));

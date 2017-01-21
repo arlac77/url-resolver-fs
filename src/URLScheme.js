@@ -9,6 +9,13 @@ function notImplementedError() {
 export default class URLScheme {
 
   /**
+   * supported methods
+   */
+  static get methods() {
+    return ['get', 'stat', 'put', 'delete', 'list', 'history'];
+  }
+
+  /**
    * @return {boolean} false
    */
   static get isSecure() {
