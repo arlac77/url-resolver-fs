@@ -7,7 +7,7 @@ const chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   {
-    Resolver, HTTPScheme, URLMapperScheme
+    Resolver, HTTPScheme, URLMapperScheme, FileScheme
   } = require('../dist/module');
 
 describe('resolver', () => {
@@ -26,6 +26,9 @@ describe('resolver', () => {
 
   describe('construct with config', () => {
     const resolver = new Resolver({
+      predefined: {
+        file: FileScheme
+      },
       schemes: {
         'tmp': {
           base: 'file',
@@ -33,6 +36,8 @@ describe('resolver', () => {
         }
       }
     });
+
+    it('has tmp scheme', () => assert.equal(resolver.schemes.get('tmp').name, 'tmp'));
   });
 
   describe('delegating', () => {

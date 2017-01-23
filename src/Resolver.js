@@ -24,9 +24,10 @@ export default class Resolver extends URLScheme {
       value: new Map()
     });
 
-    if(config.schemes !== undefined) {
+    if (config.schemes !== undefined) {
       Object.keys(config.schemes).forEach(name => {
         const s = config.schemes[name];
+        const base = this.schemes.get(s.base) ? this.schemes.get(s.base) : new config.predefined[s.base](s);
 
         this.registerScheme(new URLMapperScheme(this.schemes.get(s.base), name, s.prefix));
       });
