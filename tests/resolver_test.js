@@ -27,12 +27,12 @@ describe('resolver', () => {
   describe('construct with config', () => {
     const resolver = new Resolver({
       predefined: {
-        file: FileScheme
+        http: HTTPScheme
       },
       schemes: {
         'tmp': {
-          base: 'file',
-          prefix: 'file:///tmp'
+          base: 'http',
+          prefix: 'http:///tmp'
         }
       }
     });
