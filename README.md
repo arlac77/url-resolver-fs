@@ -113,6 +113,20 @@ and appending adding the suffix (in front)
 | url | <code>string</code> | to be remapped |
 
 
+* <a name="list"></a>
+
+## list(url, options) ⇒ <code>Promise</code>
+List content of a collection (directory)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolves to iterable entries  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+| options | <code>object</code> | 
+
+
 * * *
 
 # install

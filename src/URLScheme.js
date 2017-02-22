@@ -55,6 +55,12 @@ export default class URLScheme {
     return this.name;
   }
 
+  /**
+   * List content of a collection (directory)
+   * @param {string} url
+   * @param {object} options
+   * @return {Promise} resolves to iterable entries
+   */
   list(url, options) {
     return notImplementedError();
   }
