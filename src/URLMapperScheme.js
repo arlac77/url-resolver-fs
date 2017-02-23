@@ -23,7 +23,7 @@ export default class URLMapperScheme extends URLScheme {
   /**
    * @param {URLScheme} baseScheme
    * @param {string} name of the newly created scheme
-   * @param {string} prefix urls will be prefixed bz this value
+   * @param {string} prefix urls will be prefixed by this value
    */
   constructor(baseScheme, name, prefix) {
     super();

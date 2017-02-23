@@ -29,12 +29,18 @@ export default class URLScheme {
     return undefined;
   }
 
+/*
   get type() {
     return this.constructor.name;
   }
+*/
 
+  /**
+   * Should be overwritten to reflect the scheme name
+   * @return {string} scheme name (defaults to the class name)
+   */
   get name() {
-    return this.type;
+    return this.constructor.name;
   }
 
   /**

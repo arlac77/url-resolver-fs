@@ -14,7 +14,7 @@ function generate(name) {
 
 
 /**
- *
+ * Holds a map of url-schemes and dispatches requests
  */
 export default class Resolver extends URLScheme {
   constructor(config = {}) {
