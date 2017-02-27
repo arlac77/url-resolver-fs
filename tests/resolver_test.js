@@ -40,6 +40,8 @@ describe('resolver', () => {
     it('has tmp scheme', () => assert.equal(resolver.schemes.get('tmp').name, 'tmp'));
   });
 
+  it('can resolve', () => assert.equal(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html'));
+
   describe('delegating', () => {
     describe('unknown schemes reject', () => {
 

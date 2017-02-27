@@ -99,6 +99,19 @@ get URLScheme for a given url
 | url | <code>string</code> | 
 
 
+* <a name="resolve"></a>
+
+## resolve(url) ⇒ <code>string</code>
+Resolve for a given url
+
+**Kind**: global function  
+**Returns**: <code>string</code> - resolved url  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+
+
 * <a name="remap"></a>
 
 ## remap(url) ⇒ <code>string</code>

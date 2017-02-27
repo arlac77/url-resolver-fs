@@ -56,4 +56,14 @@ export default class Resolver extends URLScheme {
     const m = url.match(/^([^:]+):/);
     return this.schemes.get(m[1]);
   }
+
+  /**
+   * Resolve for a given url
+   * @param {string} url
+   * @return {string} resolved url
+   */
+  resolve(url) {
+    const scheme = this.schemeForURL(url);
+    return scheme ? scheme.remap(url) : undefined;
+  }
 }
