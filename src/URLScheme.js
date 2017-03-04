@@ -75,6 +75,14 @@ export default class URLScheme {
     return notImplementedError();
   }
 
+  /**
+   * Delivers meta info for a given url
+   * - size (in bytes)
+   * - modificationDate
+   * @param {string} url
+   * @param {object} options
+   * @return {Promise} resolves to iterable entries
+   */
   stat(url, options) {
     return notImplementedError();
   }

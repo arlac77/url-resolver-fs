@@ -144,10 +144,12 @@ List content of a collection (directory)
 * <a name="stat"></a>
 
 ## stat(url, options) ⇒ <code>Promise</code>
-Delivers meta information for a given url
+Delivers meta info for a given url
+- size (in bytes)
+- modificationDate
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to one entry  
+**Returns**: <code>Promise</code> - resolves to iterable entries  
 
 | Param | Type |
 | --- | --- |
