@@ -29,12 +29,6 @@ export default class URLScheme {
     return undefined;
   }
 
-/*
-  get type() {
-    return this.constructor.name;
-  }
-*/
-
   /**
    * Should be overwritten to reflect the scheme name
    * @return {string} scheme name (defaults to the class name)
@@ -76,12 +70,10 @@ export default class URLScheme {
   }
 
   /**
-   * Delivers meta info for a given url
-   * - size (in bytes)
-   * - modificationDate
+   * Delivers meta information for a given url
    * @param {string} url
    * @param {object} options
-   * @return {Promise} resolves to iterable entries
+   * @return {Promise} resolves to one entry
    */
   stat(url, options) {
     return notImplementedError();
