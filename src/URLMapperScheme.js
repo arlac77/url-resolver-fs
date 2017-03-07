@@ -47,8 +47,8 @@ export default class URLMapperScheme extends URLScheme {
   }
 
   /**
-   * Remapps url by separating sheme (and direct following '/') from suffix
-   * and appending adding the suffix (in front)
+   * Remapps url by separating scheme (and direct following '/') from suffix
+   * and appending the suffix (in front)
    * @param {string} url to be remapped
    * @return {string} remapped url
    */

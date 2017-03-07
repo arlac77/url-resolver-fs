@@ -103,7 +103,8 @@ get URLScheme for a given url
 * <a name="resolve"></a>
 
 ## resolve(url) ⇒ <code>string</code>
-Resolve for a given url
+Resolve for a given url.
+Passes url to the registered scheme for remapping
 
 **Kind**: global function  
 **Returns**: <code>string</code> - resolved url  
@@ -116,8 +117,8 @@ Resolve for a given url
 * <a name="remap"></a>
 
 ## remap(url) ⇒ <code>string</code>
-Remapps url by separating sheme (and direct following '/') from suffix
-and appending adding the suffix (in front)
+Remapps url by separating scheme (and direct following '/') from suffix
+and appending the suffix (in front)
 
 **Kind**: global function  
 **Returns**: <code>string</code> - remapped url  
@@ -144,12 +145,10 @@ List content of a collection (directory)
 * <a name="stat"></a>
 
 ## stat(url, options) ⇒ <code>Promise</code>
-Delivers meta info for a given url
-- size (in bytes)
-- modificationDate
+Delivers meta information for a given url
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to iterable entries  
+**Returns**: <code>Promise</code> - resolves to one entry  
 
 | Param | Type |
 | --- | --- |

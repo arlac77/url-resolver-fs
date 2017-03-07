@@ -58,7 +58,8 @@ export default class Resolver extends URLScheme {
   }
 
   /**
-   * Resolve for a given url
+   * Resolve for a given url.
+   * Passes url to the registered scheme for remapping
    * @param {string} url
    * @return {string} resolved url
    */
