@@ -34,7 +34,7 @@
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
     "mocha": "^3.2.0",
-    "rollup": "^0.41.4",
+    "rollup": "^0.41.5",
     "semantic-release": "^6.3.6",
     "nyc": "^10.1.2"
   },
@@ -45,7 +45,7 @@
     "node-fetch": "^2.0.0-alpha.3"
   },
   "engines": {
-    "node": ">=7.7.1"
+    "node": ">=7.7.2"
   },
   "contributors": [
     {
