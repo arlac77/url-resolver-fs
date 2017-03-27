@@ -17,6 +17,10 @@ function generate(name) {
  * Holds a map of url-schemes and dispatches requests
  */
 export default class Resolver extends URLScheme {
+
+  /**
+   * @param {object} config
+   */
   constructor(config = {}) {
     super();
 
@@ -50,7 +54,7 @@ export default class Resolver extends URLScheme {
   /**
    * get URLScheme for a given url
    * @param {string} url
-   * @return {URLScheme} for a given url
+   * @return {URLScheme} for a given url or undefined if nothing found
    */
   schemeForURL(url) {
     const m = url.match(/^([^:]+):/);
@@ -61,7 +65,7 @@ export default class Resolver extends URLScheme {
    * Resolve for a given url.
    * Passes url to the registered scheme for remapping
    * @param {string} url
-   * @return {string} resolved url
+   * @return {string} resolved url or undefined if nothing found
    */
   resolve(url) {
     const scheme = this.schemeForURL(url);

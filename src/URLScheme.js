@@ -79,6 +79,13 @@ export default class URLScheme {
     return notImplementedError();
   }
 
+  /**
+   * Put the content of a stream to a given url
+   * @param {string} url
+   * @param {Stream} stream
+   * @param {object} options
+   * @return {Promise} resolves if stream has ben put to the url
+   */
   put(url, stream, options) {
     return notImplementedError();
   }
