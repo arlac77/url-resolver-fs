@@ -8,7 +8,7 @@ import URLMapperScheme from './URLMapperScheme';
 function generate(name) {
   return function (url, ...args) {
     const scheme = this.schemeForURL(url);
-    return scheme ? scheme[name](url, ...args) : Promise.reject(new Error(`Unknwon scheme ${url}`));
+    return scheme !== undefined ? scheme[name](url, ...args) : Promise.reject(new Error(`Unknwon scheme ${url}`));
   };
 }
 
@@ -69,6 +69,6 @@ export default class Resolver extends URLScheme {
    */
   resolve(url) {
     const scheme = this.schemeForURL(url);
-    return scheme ? scheme.remap(url) : undefined;
+    return scheme !== undefined ? scheme.remap(url) : undefined;
   }
 }

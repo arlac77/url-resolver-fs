@@ -14,14 +14,14 @@ export default class HTTPScheme extends URLScheme {
   static get name() {
     return 'http';
   }
-  
+
   /**
    * @return {number} 80 the http default port
    */
   static get defaultPort() {
     return 80;
   }
-  
+
   /**
    * @param {object} [options={}]
    */
@@ -32,15 +32,15 @@ export default class HTTPScheme extends URLScheme {
       headers: {}
     };
 
-    if (options.proxy) {
+    if (options.proxy !== undefined) {
       this._options.agent = this.isSecure ? new HttpsProxyAgent(options.proxy) : new HttpProxyAgent(options.proxy);
     }
 
-    if (options.credentials) {
+    if (options.credentials !== undefined) {
       this._options.headers.authorization = 'Basic ' + btoa(options.credentials.user + ':' + options.credentials.password);
     }
   }
-  
+
   /**
    * @param {string} url
    * @param {object} [options={}]
@@ -64,7 +64,6 @@ export default class HTTPScheme extends URLScheme {
   get(url, options) {
     return this.fetch(url, options).then(r => r.body);
   }
-
 
   /**
    * Execute a PUT request
