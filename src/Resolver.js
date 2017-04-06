@@ -20,20 +20,21 @@ export default class Resolver extends URLScheme {
 
   /**
    * @param {object} config
+   * @param {URLScheme[]} predefined
    */
-  constructor(config = {}) {
+  constructor(config = {}, predefined = []) {
     super();
 
     Object.defineProperty(this, 'schemes', {
       value: new Map()
     });
 
+    predefined.forEach(scheme => this.registerScheme(scheme));
+
     if (config.schemes !== undefined) {
       Object.keys(config.schemes).forEach(name => {
-        const s = config.schemes[name];
-        const base = this.schemes.get(s.base) ? this.schemes.get(s.base) : new config.predefined[s.base](s);
-
-        this.registerScheme(new URLMapperScheme(this.schemes.get(s.base), name, s.prefix));
+        const scheme = config.schemes[name];
+        this.registerScheme(new URLMapperScheme(this.schemes.get(scheme.base), name, scheme.prefix));
       });
     }
 

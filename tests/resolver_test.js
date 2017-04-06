@@ -7,7 +7,7 @@ const chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   {
-    Resolver, HTTPScheme, URLMapperScheme, FileScheme
+    Resolver, HTTPScheme, URLMapperScheme
   } = require('../dist/module');
 
 describe('resolver', () => {
@@ -26,18 +26,16 @@ describe('resolver', () => {
 
   describe('construct with config', () => {
     const resolver = new Resolver({
-      predefined: {
-        http: HTTPScheme
-      },
       schemes: {
         'tmp': {
           base: 'http',
           prefix: 'http:///tmp'
         }
       }
-    });
+    }, [HTTPScheme]);
 
-    it('has tmp scheme', () => assert.equal(resolver.schemes.get('tmp').name, 'tmp'));
+    it('has user scheme', () => assert.equal(resolver.schemes.get('tmp').name, 'tmp'));
+    it('has predefined scheme', () => assert.equal(resolver.schemes.get('http').name, 'http'));
   });
 
   it('can resolve', () => assert.equal(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html'));
