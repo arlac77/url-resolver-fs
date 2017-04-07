@@ -93,7 +93,7 @@ register a scheme for later lookup
 get URLScheme for a given url
 
 **Kind**: global function  
-**Returns**: <code>URLScheme</code> - for a given url  
+**Returns**: <code>URLScheme</code> - for a given url or undefined if nothing found  
 
 | Param | Type |
 | --- | --- |
@@ -107,7 +107,7 @@ Resolve for a given url.
 Passes url to the registered scheme for remapping
 
 **Kind**: global function  
-**Returns**: <code>string</code> - resolved url  
+**Returns**: <code>string</code> - resolved url or undefined if nothing found  
 
 | Param | Type |
 | --- | --- |
@@ -131,7 +131,7 @@ and appending the suffix (in front)
 * <a name="list"></a>
 
 ## list(url, options) ⇒ <code>Promise</code>
-List content of a collection (directory)
+List collection (directory)
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - resolves to iterable entries  
@@ -139,7 +139,21 @@ List content of a collection (directory)
 | Param | Type |
 | --- | --- |
 | url | <code>string</code> | 
-| options | <code>object</code> | 
+| options | <code>Object</code> | 
+
+
+* <a name="get"></a>
+
+## get(url, options) ⇒ <code>Promise</code>
+Get content of a url
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolves to the content  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+| options | <code>Object</code> | 
 
 
 * <a name="stat"></a>
@@ -153,7 +167,49 @@ Delivers meta information for a given url
 | Param | Type |
 | --- | --- |
 | url | <code>string</code> | 
-| options | <code>object</code> | 
+| options | <code>Object</code> | 
+
+
+* <a name="put"></a>
+
+## put(url, stream, options) ⇒ <code>Promise</code>
+Put the content of a stream to a given url
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolves if stream has ben put to the url  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+| stream | <code>Stream</code> | 
+| options | <code>Object</code> | 
+
+
+* <a name="delete"></a>
+
+## delete(url) ⇒ <code>Promise</code>
+Deletes object at a given url
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolves to the history of the object at the given url  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+
+
+* <a name="history"></a>
+
+## history(url, options) ⇒ <code>Promise</code>
+Deliver history information for a given url
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - resolves to the history of the object at the given url  
+
+| Param | Type |
+| --- | --- |
+| url | <code>string</code> | 
+| options | <code>Object</code> | 
 
 
 * * *

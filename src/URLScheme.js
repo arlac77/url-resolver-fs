@@ -10,7 +10,7 @@ export default class URLScheme {
 
   /**
    * supported methods
-   * @return {string []} 'get', 'stat', 'put', 'delete', 'list', 'history'
+   * @return {string[]} 'get', 'stat', 'put', 'delete', 'list', 'history'
    */
   static get methods() {
     return ['get', 'stat', 'put', 'delete', 'list', 'history'];
@@ -57,15 +57,21 @@ export default class URLScheme {
   }
 
   /**
-   * List content of a collection (directory)
+   * List collection (directory)
    * @param {string} url
-   * @param {object} options
+   * @param {Object?} options
    * @return {Promise} resolves to iterable entries
    */
   list(url, options) {
     return notImplementedError();
   }
 
+  /**
+   * Get content of a url
+   * @param {string} url
+   * @param {Object?} options
+   * @return {Promise} resolves to the content
+   */
   get(url, options) {
     return notImplementedError();
   }
@@ -73,7 +79,7 @@ export default class URLScheme {
   /**
    * Delivers meta information for a given url
    * @param {string} url
-   * @param {object} options
+   * @param {Object?} options
    * @return {Promise} resolves to one entry
    */
   stat(url, options) {
@@ -84,17 +90,28 @@ export default class URLScheme {
    * Put the content of a stream to a given url
    * @param {string} url
    * @param {Stream} stream
-   * @param {object} options
+   * @param {Object?} options
    * @return {Promise} resolves if stream has ben put to the url
    */
   put(url, stream, options) {
     return notImplementedError();
   }
 
+  /**
+   * Deletes object at a given url
+   * @param {string} url
+   * @return {Promise} resolves to the history of the object at the given url
+   */
   delete(url) {
     return notImplementedError();
   }
 
+  /**
+   * Deliver history information for a given url
+   * @param {string} url
+   * @param {Object?} options
+   * @return {Promise} resolves to the history of the object at the given url
+   */
   history(url, options) {
     return notImplementedError();
   }
