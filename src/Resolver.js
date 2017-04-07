@@ -20,7 +20,7 @@ export default class Resolver extends URLScheme {
 
   /**
    * @param {object} config
-   * @param {URLScheme[]} predefined
+   * @param {URLScheme[]} predefined schemes to start with
    */
   constructor(config = {}, predefined = []) {
     super();
