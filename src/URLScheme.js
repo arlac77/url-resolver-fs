@@ -62,7 +62,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves to iterable entries
    */
-  list(url, options) {
+  async list(url, options) {
     return notImplementedError();
   }
 
@@ -72,7 +72,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves to the content
    */
-  get(url, options) {
+  async get(url, options) {
     return notImplementedError();
   }
 
@@ -82,7 +82,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves to one entry
    */
-  stat(url, options) {
+  async stat(url, options) {
     return notImplementedError();
   }
 
@@ -93,7 +93,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves if stream has ben put to the url
    */
-  put(url, stream, options) {
+  async put(url, stream, options) {
     return notImplementedError();
   }
 
@@ -102,7 +102,7 @@ export default class URLScheme {
    * @param {string} url
    * @return {Promise} resolves to the history of the object at the given url
    */
-  delete(url) {
+  async delete(url) {
     return notImplementedError();
   }
 
@@ -112,7 +112,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves to the history of the object at the given url
    */
-  history(url, options) {
+  async history(url, options) {
     return notImplementedError();
   }
 }

@@ -46,7 +46,7 @@ export default class HTTPScheme extends URLScheme {
    * @param {object} [options={}]
    * @return {object} fetch result
    */
-  fetch(url, options = {}) {
+  async fetch(url, options = {}) {
     return fetch(url, Object.assign({},
       options,
       this._options, {
@@ -61,8 +61,9 @@ export default class HTTPScheme extends URLScheme {
    * @param {object} [options]
    * @return {object} body of the response
    */
-  get(url, options) {
-    return this.fetch(url, options).then(r => r.body);
+  async get(url, options) {
+    const response = await this.fetch(url, options);
+    return response.body;
   }
 
   /**
@@ -71,7 +72,7 @@ export default class HTTPScheme extends URLScheme {
    * @param {Stream} stream content to be put to the url
    * @param {object} [options]
    */
-  put(url, stream, options) {
+  async put(url, stream, options) {
     return this.fetch(url, Object.assign({
       method: 'put',
       data: stream
@@ -84,7 +85,7 @@ export default class HTTPScheme extends URLScheme {
    * @param {object} [options]
    * @return {object} response object
    */
-  stat(url, options) {
+  async stat(url, options) {
     return this.fetch(url, Object.assign({
       method: 'head'
     }, options));
