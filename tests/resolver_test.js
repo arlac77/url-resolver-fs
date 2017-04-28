@@ -20,8 +20,9 @@ describe('resolver', () => {
   resolver.registerScheme(heise);
 
   describe('register schemes', () => {
-    it('can register schemes', () => assert.equal(resolver.schemeForURL('http://somewhere/'), http));
-    it('can find schemes', () => assert.equal(resolver.schemeForURL('heise:index.html'), heise));
+    it('can register', () => assert.equal(resolver.schemeForURL('http://somewhere/'), http));
+    it('can find', () => assert.equal(resolver.schemeForURL('heise:index.html'), heise));
+    it('handles unknown', () => assert.isUndefined(resolver.schemeForURL('undefined:index.html')));
   });
 
   describe('construct with config', () => {
@@ -38,7 +39,10 @@ describe('resolver', () => {
     it('has predefined scheme', () => assert.equal(resolver.schemes.get('http').name, 'http'));
   });
 
-  it('can resolve', () => assert.equal(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html'));
+  describe('resolving schemes', () => {
+    it('can resolve', () => assert.equal(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html'));
+    it('handles unknown', () => assert.isUndefined(resolver.resolve('unkn:index.html')));
+  });
 
   describe('delegating', () => {
     describe('unknown schemes reject', () => {
