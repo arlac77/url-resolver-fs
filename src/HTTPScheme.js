@@ -10,6 +10,9 @@ const btoa = require('btoa'),
 
 import URLScheme from './URLScheme';
 
+/**
+ * URLScheme for http requests
+ */
 export default class HTTPScheme extends URLScheme {
   static get name() {
     return 'http';
@@ -57,7 +60,7 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a GET request
-   * @param {string} url
+   * @param {string} url source
    * @param {object} [options]
    * @return {object} body of the response
    */
@@ -68,7 +71,7 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a PUT request
-   * @param {string} url
+   * @param {string} url destination
    * @param {Stream} stream content to be put to the url
    * @param {object} [options]
    */

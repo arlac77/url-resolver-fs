@@ -4,6 +4,9 @@
 
 import HTTPScheme from './HTTPScheme';
 
+/**
+ * URLScheme for http requests
+ */
 export default class HTTPSScheme extends HTTPScheme {
 
   static get name() {
