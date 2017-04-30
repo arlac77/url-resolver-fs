@@ -29,14 +29,16 @@
   },
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "devDependencies": {
+    "babel-plugin-transform-async-generator-functions": "^6.24.1",
     "chai": "^3.5.0",
     "cz-conventional-changelog": "^2.0.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
     "mocha": "^3.3.0",
+    "nyc": "^10.3.0",
     "rollup": "^0.41.6",
-    "semantic-release": "^6.3.6",
-    "nyc": "^10.3.0"
+    "rollup-plugin-babel": "^2.7.1",
+    "semantic-release": "^6.3.6"
   },
   "dependencies": {
     "btoa": "^1.1.2",
@@ -47,12 +49,10 @@
   "engines": {
     "node": ">=7.9.0"
   },
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

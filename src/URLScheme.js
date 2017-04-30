@@ -62,7 +62,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves to iterable entries
    */
-  async list(url, options) {
+  async * list(url, options) {
     return notImplementedError();
   }
 
@@ -112,7 +112,7 @@ export default class URLScheme {
    * @param {Object?} options
    * @return {Promise} resolves to the history of the object at the given url
    */
-  async history(url, options) {
+  async * history(url, options) {
     return notImplementedError();
   }
 }
