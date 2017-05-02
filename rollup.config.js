@@ -9,7 +9,7 @@ export default {
       babelrc: false,
       presets: [],
       plugins: [
-        "transform-async-generator-functions"
+        'transform-async-generator-functions'
       ],
       exclude: 'node_modules/**'
     })
