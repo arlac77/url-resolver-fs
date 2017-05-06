@@ -47,12 +47,14 @@
     "node-fetch": "^2.0.0-alpha.3"
   },
   "engines": {
-    "node": ">=7.9.0"
+    "node": ">=7.10.0"
   },
-  "contributors": [{
-    "name": "Markus Felten",
-    "email": "markus.felten@gmx.de"
-  }],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
