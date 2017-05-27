@@ -50,11 +50,17 @@ export default class HTTPScheme extends URLScheme {
    * @return {object} fetch result
    */
   async fetch(url, options = {}) {
-    return fetch(url, Object.assign({},
+    const response = await fetch(url, Object.assign({},
       options,
       this._options, {
         headers: Object.assign({}, this._options.headers, options.headers)
       }));
+
+    if (response.status !== 200) {
+      throw new Error(response);
+    }
+
+    return response;
   }
 
 

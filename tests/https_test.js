@@ -33,6 +33,20 @@ describe('https', () => {
     return scheme.stat('https://www.heise.de/index.html').then(s => assert.equal(s.status, 200));
   });
 
+  describe('required auth', () => {
+    const scheme = new HTTPSScheme({});
+
+    it.only('fails get', async() => {
+      try {
+        const response = await scheme.stat(
+          'https://subversion.assembla.com/svn/delivery_notes/data/config.json');
+        assert.equal(response.status, 200);
+      } catch (e) {
+        assert.ok(e);
+      }
+    });
+  });
+
   describe('with proxy', () => {
     // https://www.sslproxies.org
     const scheme = new HTTPSScheme({
