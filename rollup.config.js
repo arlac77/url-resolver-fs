@@ -7,7 +7,9 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: ['es2017', 'stage-3'],
+      presets: [
+        'stage-3'
+      ],
       plugins: [],
       exclude: 'node_modules/**'
     })
