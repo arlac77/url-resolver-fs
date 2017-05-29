@@ -56,7 +56,7 @@ export default class HTTPScheme extends URLScheme {
         headers: Object.assign({}, this._options.headers, options.headers)
       }));
 
-    if (response.status !== 200) {
+    if (response.status < 200 || response.status > 299) {
       throw new Error(response);
     }
 
