@@ -28,7 +28,7 @@ describe('resolver', () => {
   describe('construct with config', () => {
     const resolver = new Resolver({
       schemes: {
-        'tmp': {
+        tmp: {
           base: 'http',
           prefix: 'http:///tmp'
         }

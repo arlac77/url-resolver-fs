@@ -11,7 +11,6 @@ const chai = require('chai'),
   } = require('../dist/module');
 
 describe('mapper', () => {
-
   describe('prefix only', () => {
     const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');
 
@@ -33,5 +32,4 @@ describe('mapper', () => {
 
     it('can stat', () => mapper.stat('myscheme:index.html').then(s => assert.equal(s.status, 200)));
   });
-
 });

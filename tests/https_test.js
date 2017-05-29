@@ -36,7 +36,7 @@ describe('https', () => {
   describe('required auth', () => {
     const scheme = new HTTPSScheme({});
 
-    it.only('fails get', async() => {
+    it('fails get', async() => {
       try {
         const response = await scheme.stat(
           'https://subversion.assembla.com/svn/delivery_notes/data/config.json');
