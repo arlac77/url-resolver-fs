@@ -29,15 +29,15 @@
   },
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "devDependencies": {
-    "chai": "^4.0.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "chai": "^4.0.2",
     "cz-conventional-changelog": "^2.0.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
     "mocha": "^3.4.2",
-    "nyc": "^11.0.1",
+    "nyc": "^11.0.2",
     "rollup": "^0.42.0",
     "rollup-plugin-babel": "^2.7.1",
-    "babel-preset-stage-3": "^6.24.1",
     "semantic-release": "^6.3.6"
   },
   "dependencies": {
