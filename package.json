@@ -36,7 +36,7 @@
     "markdown-doctest": "^0.9.1",
     "mocha": "^3.4.2",
     "nyc": "^11.0.2",
-    "rollup": "^0.42.0",
+    "rollup": "^0.43.0",
     "rollup-plugin-babel": "^2.7.1",
     "semantic-release": "^6.3.6"
   },
@@ -47,7 +47,7 @@
     "node-fetch": "^2.0.0-alpha.5"
   },
   "engines": {
-    "node": ">=8.1.0"
+    "node": ">=8.1.2"
   },
   "contributors": [
     {
