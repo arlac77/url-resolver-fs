@@ -19,10 +19,46 @@ test('register schemes mapper', t => {
   t.is(resolver.schemeForURL('heise:index.html'), heise);
 });
 
-test('unknown reject get', t => {
+test('unknown reject get', async t => {
   const resolver = new Resolver();
+  const error = await t.throws(resolver.get('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
+});
 
-  t.throws(resolver.get('unknown:index.html'));
+test('unknown reject stat', async t => {
+  const resolver = new Resolver();
+  const error = await t.throws(resolver.stat('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
+});
+
+test('unknown reject put', async t => {
+  const resolver = new Resolver();
+  const error = await t.throws(resolver.put('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
+});
+
+test('unknown reject delete', async t => {
+  const resolver = new Resolver();
+  const error = await t.throws(resolver.delete('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
+});
+
+test('unknown reject get', async t => {
+  const resolver = new Resolver();
+  const error = await t.throws(resolver.get('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
+});
+
+test('unknown reject list', async t => {
+  const resolver = new Resolver();
+  const error = await t.throws(resolver.list('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
+});
+
+test('unknown reject history', async t => {
+  const resolver = new Resolver();
+  const error = await t.throws(resolver.history('something:index.html'));
+  t.is(error.message, 'Unknown scheme something:index.html');
 });
 
 /*
@@ -48,35 +84,6 @@ test('unknown reject get', t => {
   });
 
   describe('delegating', () => {
-    describe('unknown schemes reject', () => {
-
-
-      it('stat', () =>
-        resolver.stat('unknown:index.html').then(r => assert.isNotOk(r),
-          e => assert.isDefined(e))
-      );
-
-      it('put', () =>
-        resolver.put('unknown:index.html').then(r => assert.isNotOk(r),
-          e => assert.isDefined(e))
-      );
-
-      it('delete', () =>
-        resolver.delete('unknown:index.html').then(r => assert.isNotOk(r),
-          e => assert.isDefined(e))
-      );
-
-      it('list', () =>
-        resolver.list('unknown:index.html').then(r => assert.isNotOk(r),
-          e => assert.isDefined(e))
-      );
-
-      it('history', () =>
-        resolver.history('unknown:index.html').then(r => assert.isNotOk(r),
-          e => assert.isDefined(e))
-      );
-    });
-
     it('can get', done => {
       resolver.get('heise:index.html').then(s => {
         assert.isDefined(s);
