@@ -1,30 +1,21 @@
-/* global describe, it, xit, before, after */
-/* jslint node: true, esnext: true */
-'use strict';
+import test from 'ava';
+import HTTPScheme from '../src/HTTPScheme';
 
-const chai = require('chai'),
-  assert = chai.assert,
-  expect = chai.expect,
-  should = chai.should(),
-  url = require('url'),
-  http = require('http'),
-  {
-    HTTPScheme
-  } = require('../dist/module');
+const url = require('url');
+const http = require('http');
 
 http.createServer((request, response) => {
-
   const [host, port] = request.headers.host.split(/:/);
   const {
     pathname
   } = url.parse(request.url);
 
   const r = {
-    host: host,
-    port: port,
+    host,
+    port,
     path: pathname,
-    method: request.method,
-    headers: request.headers
+      method: request.method,
+      headers: request.headers
   };
 
   const proxyRequest = http.request(r, proxyResponse => {
@@ -34,15 +25,22 @@ http.createServer((request, response) => {
   request.pipe(proxyRequest);
 }).listen(8888);
 
-describe('http', () => {
+test('has name', t => {
   const scheme = new HTTPScheme();
+  t.is(scheme.name, 'http');
+});
 
-  it('has name', () => assert.equal(scheme.name, 'http'));
+test('is secure', t => {
+  const scheme = new HTTPScheme();
+  t.is(scheme.isSecure, false);
+});
 
-  it('is secure', () => assert.equal(scheme.isSecure, false));
+test('default port', t => {
+  const scheme = new HTTPScheme();
+  t.is(scheme.defaultPort, 80);
+});
 
-  it('default port', () => assert.equal(scheme.defaultPort, 80));
-
+/*
   it('can get', done => {
     scheme.get('http://www.heise.de/index.html').then(s => {
       assert.isDefined(s);
@@ -90,6 +88,4 @@ describe('http', () => {
           }
         });
       });
-    });
-  });
-});
+*/

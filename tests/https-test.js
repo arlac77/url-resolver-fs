@@ -1,21 +1,38 @@
-/* global describe, it, xit, before, after */
-/* jslint node: true, esnext: true */
-'use strict';
+import test from 'ava';
+import HTTPSScheme from '../src/HTTPSScheme';
 
-const chai = require('chai'),
-  assert = chai.assert,
-  expect = chai.expect,
-  should = chai.should(),
-  HTTPSScheme = require('../dist/module').HTTPSScheme;
+test('has name', t => {
+  const scheme = new HTTPSScheme();
+  t.is(scheme.name, 'https');
+});
 
-describe('https', () => {
+test('is secure', t => {
+  const scheme = new HTTPSScheme();
+  t.is(scheme.isSecure, true);
+});
+
+test('default port', t => {
+  const scheme = new HTTPSScheme();
+  t.is(scheme.defaultPort, 443);
+});
+
+test.cb('can get', async t => {
   const scheme = new HTTPSScheme();
 
-  it('has name', () => assert.equal(scheme.name, 'https'));
+  t.plan(1);
 
-  it('is secure', () => assert.equal(scheme.isSecure, true));
+  const stream = await scheme.get('https://www.heise.de/index.html');
 
-  it('default port', () => assert.equal(scheme.defaultPort, 443));
+  stream.on('data', chunk => {
+    if (chunk.includes('DOCTYPE')) {
+      t.pass();
+      t.end();
+    }
+  });
+});
+
+/*
+  const scheme = new HTTPSScheme();
 
   it('can get', done => {
     scheme.get('https://www.heise.de/index.html').then(s => {
@@ -73,4 +90,4 @@ describe('https', () => {
       });
     });
   });
-});
+*/

@@ -1,6 +1,5 @@
 import URLScheme from './URLScheme';
 
-
 function generate(name) {
   return function (url, ...args) {
     return this.baseScheme[name](this.remap(url), ...args);

@@ -50,21 +50,10 @@
   "engines": {
     "node": ">=8.1.2"
   },
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
-  "nyc": {
-    "include": [
-      "dist/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
-    "report-dir": "./coverage"
-  },
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
   "template": {
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template.git"
@@ -73,12 +62,19 @@
   "xo": {
     "space": true
   },
+  "nyc": {
+    "include": [
+      "build/test-bundle.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "report-dir": "./build/coverage"
+  },
   "ava": {
     "files": [
       "build/test-bundle.js"
-    ],
-    "presets": [
-      "stage-3"
     ],
     "require": [
       "babel-register"

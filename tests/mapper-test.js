@@ -1,35 +1,32 @@
-/* global describe, it, xit, before, after */
-/* jslint node: true, esnext: true */
-'use strict';
+import test from 'ava';
+import URLMapperScheme from '../src/URLMapperScheme';
+import HTTPScheme from '../src/HTTPScheme';
 
-const chai = require('chai'),
-  assert = chai.assert,
-  expect = chai.expect,
-  should = chai.should(),
-  {
-    HTTPScheme, URLMapperScheme
-  } = require('../dist/module');
+test('prefix only simple map', t => {
+  const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');
+  t.is(mapper.remap('myscheme:some/path'), 'http://www.heise.de/some/path');
+});
 
-describe('mapper', () => {
-  describe('prefix only', () => {
-    const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');
+test.cb('can get', async t => {
+  const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');
 
-    it('can simple map', () =>
-      assert.equal(mapper.remap('myscheme:some/path'), 'http://www.heise.de/some/path')
-    );
+  t.plan(1);
 
-    it('can get', done => {
-      mapper.get('myscheme:index.html').then(s => {
-        assert.isDefined(s);
+  const stream = await mapper.get('myscheme:index.html');
 
-        s.on('data', chunk => {
-          if (chunk.includes('DOCTYPE')) {
-            done();
-          }
-        });
-      });
-    });
-
-    it('can stat', () => mapper.stat('myscheme:index.html').then(s => assert.equal(s.status, 200)));
+  stream.on('data', chunk => {
+    if (chunk.includes('DOCTYPE')) {
+      t.pass();
+      t.end();
+    }
   });
+
+  //t.is(mapper.remap('myscheme:some/path'), 'http://www.heise.de/some/path');
+});
+
+test('can stat', async t => {
+  const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');
+
+  const response = await mapper.stat('myscheme:index.html');
+  t.is(response.status, 200);
 });

@@ -1,29 +1,27 @@
-/* global describe, it, xit, before, after */
-/* jslint node: true, esnext: true */
-'use strict';
+import test from 'ava';
+import Resolver from '../src/Resolver';
+import HTTPScheme from '../src/HTTPScheme';
+import URLMapperScheme from '../src/URLMapperScheme';
 
-const chai = require('chai'),
-  assert = chai.assert,
-  expect = chai.expect,
-  should = chai.should(),
-  {
-    Resolver, HTTPScheme, URLMapperScheme
-  } = require('../dist/module');
-
-describe('resolver', () => {
+test('register schemes plain', t => {
   const resolver = new Resolver();
-
   const http = new HTTPScheme();
   resolver.registerScheme(http);
 
+  t.is(resolver.schemeForURL('http://somewhere/'), http);
+});
+
+test('register schemes mapper', t => {
+  const resolver = new Resolver();
   const heise = new URLMapperScheme(new HTTPScheme(), 'heise', 'http://www.heise.de/');
   resolver.registerScheme(heise);
 
-  describe('register schemes', () => {
-    it('can register', () => assert.equal(resolver.schemeForURL('http://somewhere/'), http));
-    it('can find', () => assert.equal(resolver.schemeForURL('heise:index.html'), heise));
+  t.is(resolver.schemeForURL('heise:index.html'), heise);
+});
+
+
+/*
     it('handles unknown', () => assert.isUndefined(resolver.schemeForURL('undefined:index.html')));
-  });
 
   describe('construct with config', () => {
     const resolver = new Resolver({
@@ -88,5 +86,5 @@ describe('resolver', () => {
         });
       });
     });
-  });
-});
+
+*/
