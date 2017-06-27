@@ -1,14 +1,10 @@
-/* jslint node: true, esnext: true */
-
-'use strict';
+import URLScheme from './URLScheme';
 
 const btoa = require('btoa'),
   HttpProxyAgent = require('http-proxy-agent'),
   HttpsProxyAgent = require('https-proxy-agent'),
   fetch = require('node-fetch'),
   url = require('url');
-
-import URLScheme from './URLScheme';
 
 /**
  * URLScheme for http requests

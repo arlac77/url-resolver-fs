@@ -1,7 +1,3 @@
-/* jslint node: true, esnext: true */
-
-'use strict';
-
 import URLScheme from './URLScheme';
 import URLMapperScheme from './URLMapperScheme';
 
