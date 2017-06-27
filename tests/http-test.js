@@ -63,7 +63,6 @@ test('can stat', async t => {
 });
 
 /*
-
   describe('basic auth', () => {
     const scheme = new HTTPScheme({
       credentials: {

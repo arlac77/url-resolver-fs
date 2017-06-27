@@ -17,6 +17,27 @@ test('register schemes mapper', t => {
   resolver.registerScheme(heise);
 
   t.is(resolver.schemeForURL('heise:index.html'), heise);
+  t.is(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html');
+});
+
+test('register schemes from config', t => {
+  const resolver = new Resolver({
+    schemes: {
+      tmp: {
+        base: 'http',
+        prefix: 'http:///tmp'
+      }
+    }
+  }, [HTTPScheme]);
+
+  t.is(resolver.schemes.get('http').name, 'http');
+  t.is(resolver.schemes.get('tmp').name, 'tmp');
+});
+
+test('handles unknown', t => {
+  const resolver = new Resolver();
+  t.is(resolver.schemeForURL('undefined:index.html'), undefined);
+  t.is(resolver.resolve('undefined:index.html'), undefined);
 });
 
 test('unknown reject get', async t => {
@@ -61,38 +82,20 @@ test('unknown reject history', async t => {
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
-/*
-    it('handles unknown', () => assert.isUndefined(resolver.schemeForURL('undefined:index.html')));
+test.cb('delegating can get', t => {
+  const resolver = new Resolver();
+  const heise = new URLMapperScheme(new HTTPScheme(), 'heise', 'http://www.heise.de/');
+  resolver.registerScheme(heise);
 
-  describe('construct with config', () => {
-    const resolver = new Resolver({
-      schemes: {
-        tmp: {
-          base: 'http',
-          prefix: 'http:///tmp'
-        }
+  t.plan(1);
+
+  resolver.get('heise:index.html').then(
+    stream =>
+    stream.on('data', chunk => {
+      if (chunk.includes('DOCTYPE')) {
+        t.pass();
+        t.end();
       }
-    }, [HTTPScheme]);
-
-    it('has user scheme', () => assert.equal(resolver.schemes.get('tmp').name, 'tmp'));
-    it('has predefined scheme', () => assert.equal(resolver.schemes.get('http').name, 'http'));
-  });
-
-  describe('resolving schemes', () => {
-    it('can resolve', () => assert.equal(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html'));
-    it('handles unknown', () => assert.isUndefined(resolver.resolve('unkn:index.html')));
-  });
-
-  describe('delegating', () => {
-    it('can get', done => {
-      resolver.get('heise:index.html').then(s => {
-        assert.isDefined(s);
-        s.on('data', chunk => {
-          if (chunk.includes('DOCTYPE')) {
-            done();
-          }
-        });
-      });
-    });
-
-*/
+    })
+  );
+});
