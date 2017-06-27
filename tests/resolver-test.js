@@ -19,6 +19,11 @@ test('register schemes mapper', t => {
   t.is(resolver.schemeForURL('heise:index.html'), heise);
 });
 
+test('unknown reject get', t => {
+  const resolver = new Resolver();
+
+  t.throws(resolver.get('unknown:index.html'));
+});
 
 /*
     it('handles unknown', () => assert.isUndefined(resolver.schemeForURL('undefined:index.html')));
@@ -45,10 +50,6 @@ test('register schemes mapper', t => {
   describe('delegating', () => {
     describe('unknown schemes reject', () => {
 
-      it('get', () =>
-        resolver.get('unknown:index.html').then(r => assert.isNotOk(r),
-          e => assert.isDefined(e))
-      );
 
       it('stat', () =>
         resolver.stat('unknown:index.html').then(r => assert.isNotOk(r),

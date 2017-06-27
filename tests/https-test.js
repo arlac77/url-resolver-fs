@@ -16,40 +16,29 @@ test('default port', t => {
   t.is(scheme.defaultPort, 443);
 });
 
-test.cb('can get', async t => {
+test.cb('can get', t => {
   const scheme = new HTTPSScheme();
 
   t.plan(1);
 
-  const stream = await scheme.get('https://www.heise.de/index.html');
+  scheme.get('https://www.heise.de/index.html').then(
+    stream =>
+    stream.on('data', chunk => {
+      if (chunk.includes('DOCTYPE')) {
+        t.pass();
+        t.end();
+      }
+    })
+  );
+});
 
-  stream.on('data', chunk => {
-    if (chunk.includes('DOCTYPE')) {
-      t.pass();
-      t.end();
-    }
-  });
+test('can stat', async t => {
+  const scheme = new HTTPSScheme();
+  const response = await scheme.stat('https://www.heise.de/index.html');
+  t.is(response.status, 200);
 });
 
 /*
-  const scheme = new HTTPSScheme();
-
-  it('can get', done => {
-    scheme.get('https://www.heise.de/index.html').then(s => {
-      assert.isDefined(s);
-
-      s.on('data', chunk => {
-        if (chunk.includes('DOCTYPE')) {
-          done();
-        }
-      });
-    });
-  });
-
-  it('can stat', () => {
-    return scheme.stat('https://www.heise.de/index.html').then(s => assert.equal(s.status, 200));
-  });
-
   describe('required auth', () => {
     const scheme = new HTTPSScheme({});
 

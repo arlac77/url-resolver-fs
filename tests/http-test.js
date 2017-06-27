@@ -40,20 +40,29 @@ test('default port', t => {
   t.is(scheme.defaultPort, 80);
 });
 
+test.cb('can get', t => {
+  const scheme = new HTTPScheme();
+
+  t.plan(1);
+
+  scheme.get('http://www.heise.de/index.html').then(
+    stream =>
+    stream.on('data', chunk => {
+      if (chunk.includes('DOCTYPE')) {
+        t.pass();
+        t.end();
+      }
+    })
+  );
+});
+
+test('can stat', async t => {
+  const scheme = new HTTPScheme();
+  const response = await scheme.stat('http://www.heise.de/index.html');
+  t.is(response.status, 200);
+});
+
 /*
-  it('can get', done => {
-    scheme.get('http://www.heise.de/index.html').then(s => {
-      assert.isDefined(s);
-
-      s.on('data', chunk => {
-        if (chunk.includes('DOCTYPE')) {
-          done();
-        }
-      });
-    });
-  });
-
-  it('can stat', () => scheme.stat('http://www.heise.de/index.html').then(s => assert.equal(s.status, 200)));
 
   describe('basic auth', () => {
     const scheme = new HTTPScheme({
