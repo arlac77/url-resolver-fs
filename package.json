@@ -5,14 +5,14 @@
   "main": "dist/module.js",
   "module": "src/module.js",
   "scripts": {
-    "cover": "nyc npm test",
-    "test": "mocha tests/*_test.js",
-    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
+    "cover": "nyc ava",
+    "test": "ava",
+    "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "prepublish": "rollup --output=dist/module.js -c -- src/module.js",
-    "pretest": "npm run prepublish",
-    "posttest": "markdown-doctest",
-    "precover": "npm run prepublish"
+    "prepublish": "rollup -c -- src/module.js",
+    "pretest": "rollup -c tests/rollup.config.js",
+    "posttest": "npm run prepublish && markdown-doctest",
+    "precover": "rollup -c tests/rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -30,15 +30,16 @@
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "devDependencies": {
     "babel-preset-stage-3": "^6.24.1",
-    "chai": "^4.0.2",
-    "cz-conventional-changelog": "^2.0.0",
     "jsdoc-to-markdown": "^3.0.0",
     "markdown-doctest": "^0.9.1",
-    "mocha": "^3.4.2",
     "nyc": "^11.0.3",
     "rollup": "^0.43.0",
     "rollup-plugin-babel": "^2.7.1",
-    "semantic-release": "^6.3.6"
+    "semantic-release": "^6.3.6",
+    "jsdoc-babel": "^0.3.0",
+    "ava": "^0.19.1",
+    "rollup-plugin-multi-entry": "^2.0.1",
+    "xo": "^0.19.0"
   },
   "dependencies": {
     "btoa": "^1.1.2",
@@ -55,11 +56,6 @@
       "email": "markus.felten@gmx.de"
     }
   ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "nyc": {
     "include": [
       "dist/**/*.js"
@@ -71,7 +67,21 @@
   },
   "template": {
     "repository": {
-      "url": "https://github.com/Kronos-Tools/npm-package-template.git"
+      "url": "https://github.com/arlac77/npm-package-template.git"
     }
+  },
+  "xo": {
+    "space": true
+  },
+  "ava": {
+    "files": [
+      "build/test-bundle.js"
+    ],
+    "presets": [
+      "stage-3"
+    ],
+    "require": [
+      "babel-register"
+    ]
   }
 }
