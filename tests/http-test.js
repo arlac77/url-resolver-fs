@@ -62,18 +62,17 @@ test('can stat', async t => {
   t.is(response.status, 200);
 });
 
-/*
-  describe('basic auth', () => {
-    const scheme = new HTTPScheme({
-      credentials: {
-        password: 'xxx',
-        user: 'yyy'
-      }
-    });
-
-    it('has basicAuthorization', () => assert.equal(scheme._options.headers.authorization, 'Basic eXl5Onh4eA=='));
+test('basic auth', t => {
+  const scheme = new HTTPScheme({
+    credentials: {
+      password: 'xxx',
+      user: 'yyy'
+    }
   });
+  t.is(scheme._options.headers.authorization, 'Basic eXl5Onh4eA==');
+});
 
+/*
   describe('with proxy', () => {
     const scheme = new HTTPScheme({
       proxy: 'http://localhost:8888'
