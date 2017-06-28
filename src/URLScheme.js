@@ -1,7 +1,3 @@
-/* jslint node: true, esnext: true */
-
-'use strict';
-
 function notImplementedError() {
   return Promise.reject(new Error('Not implemented'));
 }

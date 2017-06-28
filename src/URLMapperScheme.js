@@ -1,9 +1,4 @@
-/* jslint node: true, esnext: true */
-
-'use strict';
-
 import URLScheme from './URLScheme';
-
 
 function generate(name) {
   return function (url, ...args) {

@@ -1,17 +1,12 @@
-/* jslint node: true, esnext: true */
-
-'use strict';
-
 import URLScheme from './URLScheme';
 import URLMapperScheme from './URLMapperScheme';
 
 function generate(name) {
   return function (url, ...args) {
     const scheme = this.schemeForURL(url);
-    return scheme !== undefined ? scheme[name](url, ...args) : Promise.reject(new Error(`Unknwon scheme ${url}`));
+    return scheme === undefined ? Promise.reject(new Error(`Unknown scheme ${url}`)) : scheme[name](url, ...args);
   };
 }
-
 
 /**
  * Holds a map of url-schemes and dispatches requests
