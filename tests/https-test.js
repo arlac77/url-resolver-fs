@@ -38,21 +38,15 @@ test('can stat', async t => {
   t.is(response.status, 200);
 });
 
+test('required auth failing stat', async t => {
+  const scheme = new HTTPSScheme();
+
+  const error = await t.throws(scheme.stat('https://subversion.assembla.com/svn/delivery_notes/data/config.json'));
+
+  t.is(error !== undefined, true);
+});
+
 /*
-  describe('required auth', () => {
-    const scheme = new HTTPSScheme({});
-
-    it('fails get', async() => {
-      try {
-        const response = await scheme.stat(
-          'https://subversion.assembla.com/svn/delivery_notes/data/config.json');
-        assert.equal(response.status, 200);
-      } catch (e) {
-        assert.ok(e);
-      }
-    });
-  });
-
   describe('with proxy', () => {
     // https://www.sslproxies.org
     const scheme = new HTTPSScheme({
@@ -78,5 +72,4 @@ test('can stat', async t => {
         });
       });
     });
-  });
 */

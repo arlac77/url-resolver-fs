@@ -64,12 +64,6 @@ test('unknown reject delete', async t => {
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
-test('unknown reject get', async t => {
-  const resolver = new Resolver();
-  const error = await t.throws(resolver.get('something:index.html'));
-  t.is(error.message, 'Unknown scheme something:index.html');
-});
-
 test('unknown reject list', async t => {
   const resolver = new Resolver();
   const error = await t.throws(resolver.list('something:index.html'));
