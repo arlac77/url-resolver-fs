@@ -1,10 +1,10 @@
 import URLScheme from './URLScheme';
 
+const url = require('url');
 const btoa = require('btoa'),
   HttpProxyAgent = require('http-proxy-agent'),
   HttpsProxyAgent = require('https-proxy-agent'),
-  fetch = require('node-fetch'),
-  url = require('url');
+  fetch = require('node-fetch');
 
 /**
  * URLScheme for http requests
@@ -58,7 +58,6 @@ export default class HTTPScheme extends URLScheme {
 
     return response;
   }
-
 
   /**
    * Execute a GET request

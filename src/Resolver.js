@@ -65,6 +65,6 @@ export default class Resolver extends URLScheme {
    */
   resolve(url) {
     const scheme = this.schemeForURL(url);
-    return scheme !== undefined ? scheme.remap(url) : undefined;
+    return scheme === undefined ? undefined : scheme.remap(url);
   }
 }
