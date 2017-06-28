@@ -4,26 +4,30 @@ import HTTPScheme from '../src/HTTPScheme';
 const url = require('url');
 const http = require('http');
 
-http.createServer((request, response) => {
-  const [host, port] = request.headers.host.split(/:/);
-  const {
-    pathname
-  } = url.parse(request.url);
+const PORT = 8888;
 
-  const r = {
-    host,
-    port,
-    path: pathname,
-      method: request.method,
-      headers: request.headers
-  };
+test.before(t => {
+  http.createServer((request, response) => {
+    const [host, port] = request.headers.host.split(/:/);
+    const {
+      pathname
+    } = url.parse(request.url);
 
-  const proxyRequest = http.request(r, proxyResponse => {
-    response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
-    proxyResponse.pipe(response);
-  });
-  request.pipe(proxyRequest);
-}).listen(8888);
+    const r = {
+      host,
+      port,
+      path: pathname,
+        method: request.method,
+        headers: request.headers
+    };
+
+    const proxyRequest = http.request(r, proxyResponse => {
+      response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
+      proxyResponse.pipe(response);
+    });
+    request.pipe(proxyRequest);
+  }).listen(PORT);
+});
 
 test('has name', t => {
   const scheme = new HTTPScheme();
@@ -56,6 +60,24 @@ test.cb('can get', t => {
   );
 });
 
+test.cb('can get with proxy', t => {
+  const scheme = new HTTPScheme({
+    proxy: `http://localhost:${PORT}`
+  });
+
+  t.plan(1);
+
+  scheme.get('http://www.google.de/').then(
+    stream =>
+    stream.on('data', chunk => {
+      if (chunk.includes('google')) {
+        t.pass();
+        t.end();
+      }
+    })
+  );
+});
+
 test('can stat', async t => {
   const scheme = new HTTPScheme();
   const response = await scheme.stat('http://www.heise.de/index.html');
@@ -71,28 +93,3 @@ test('basic auth', t => {
   });
   t.is(scheme._options.headers.authorization, 'Basic eXl5Onh4eA==');
 });
-
-/*
-  describe('with proxy', () => {
-    const scheme = new HTTPScheme({
-      proxy: 'http://localhost:8888'
-    });
-    it('can get', done => {
-      scheme.get('http://www.google.de/').then(s => {
-        assert.isDefined(s);
-
-        let isDone = false;
-        s.on('data', chunk => {
-          //console.log(chunk.toString());
-          if (chunk.includes('google')) {
-
-            if (!isDone) {
-              done();
-              isDone = true;
-            }
-
-            return;
-          }
-        });
-      });
-*/
