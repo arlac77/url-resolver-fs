@@ -40,7 +40,7 @@ export default class Resolver extends URLScheme {
   }
 
   /**
-   * register a scheme for later lookup
+   * Register a scheme for later lookup
    * @param {URLScheme} scheme
    */
   registerScheme(scheme) {
@@ -48,7 +48,7 @@ export default class Resolver extends URLScheme {
   }
 
   /**
-   * get URLScheme for a given url
+   * Get URLScheme for a given url
    * @param {string} url
    * @return {URLScheme} for a given url or undefined if nothing found
    */
