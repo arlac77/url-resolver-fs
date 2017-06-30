@@ -1,5 +1,5 @@
 import test from 'ava';
-import HTTPScheme from '../src/HTTPScheme';
+import HTTPScheme from '../src/https-scheme';
 
 const url = require('url');
 const http = require('http');

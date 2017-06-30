@@ -1,5 +1,5 @@
-import URLScheme from './URLScheme';
-import URLMapperScheme from './URLMapperScheme';
+import URLScheme from './url-scheme';
+import URLMapperScheme from './url-mapper-scheme';
 
 function generate(name) {
   return function (url, ...args) {

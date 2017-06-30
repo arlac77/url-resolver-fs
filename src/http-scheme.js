@@ -1,4 +1,4 @@
-import URLScheme from './URLScheme';
+import URLScheme from './url-scheme';
 
 const url = require('url');
 const btoa = require('btoa'),

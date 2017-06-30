@@ -1,5 +1,5 @@
 import test from 'ava';
-import HTTPSScheme from '../src/HTTPSScheme';
+import HTTPSScheme from '../src/https-scheme';
 
 test('has name', t => {
   const scheme = new HTTPSScheme();

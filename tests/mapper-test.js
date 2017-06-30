@@ -1,6 +1,6 @@
 import test from 'ava';
-import URLMapperScheme from '../src/URLMapperScheme';
-import HTTPScheme from '../src/HTTPScheme';
+import URLMapperScheme from '../src/url-mapper-scheme';
+import HTTPScheme from '../src/http-scheme';
 
 test('prefix only simple map', t => {
   const mapper = new URLMapperScheme(new HTTPScheme(), 'myscheme', 'http://www.heise.de/');

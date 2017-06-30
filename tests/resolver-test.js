@@ -1,7 +1,7 @@
 import test from 'ava';
-import Resolver from '../src/Resolver';
-import HTTPScheme from '../src/HTTPScheme';
-import URLMapperScheme from '../src/URLMapperScheme';
+import Resolver from '../src/resolver';
+import HTTPScheme from '../src/https-scheme';
+import URLMapperScheme from '../src/url-mapper-scheme';
 
 test('register schemes plain', t => {
   const resolver = new Resolver();

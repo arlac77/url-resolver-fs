@@ -1,4 +1,4 @@
-import HTTPScheme from './HTTPScheme';
+import HTTPScheme from './http-scheme';
 
 /**
  * URLScheme for http requests

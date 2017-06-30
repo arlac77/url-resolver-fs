@@ -1,4 +1,4 @@
-import URLScheme from './URLScheme';
+import URLScheme from './url-scheme';
 
 function generate(name) {
   return function (url, ...args) {

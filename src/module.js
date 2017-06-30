@@ -1,8 +1,8 @@
-import Resolver from './Resolver';
-import HTTPScheme from './HTTPScheme';
-import HTTPSScheme from './HTTPSScheme';
-import URLScheme from './URLScheme';
-import URLMapperScheme from './URLMapperScheme';
+import Resolver from './resolver';
+import HTTPScheme from './http-scheme';
+import HTTPSScheme from './https-scheme';
+import URLScheme from './url-scheme';
+import URLMapperScheme from './url-mapper-scheme';
 
 export {
   Resolver,
