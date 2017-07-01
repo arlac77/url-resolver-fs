@@ -1,6 +1,6 @@
 import test from 'ava';
 import Resolver from '../src/resolver';
-import HTTPScheme from '../src/https-scheme';
+import HTTPScheme from '../src/http-scheme';
 import URLMapperScheme from '../src/url-mapper-scheme';
 
 test('register schemes plain', t => {
