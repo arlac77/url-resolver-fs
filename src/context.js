@@ -7,6 +7,5 @@ export default class Context {
     Object.defineProperty(this, 'resolver', {
       value: resolver
     });
-
   }
 }
