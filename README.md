@@ -21,195 +21,50 @@ resolves urls and provides fs like access
 
 # API Reference
 
-* <a name="fetch"></a>
+* <a name="Context"></a>
 
-## fetch(url, [options]) ⇒ <code>object</code>
+## Context()
+Holds context information
+
 **Kind**: global function  
-**Returns**: <code>object</code> - fetch result  
-
-| Param | Type | Default |
-| --- | --- | --- |
-| url | <code>string</code> |  | 
-| [options] | <code>object</code> | <code>{}</code> | 
-
 
 * <a name="get"></a>
 
-## get(url, [options]) ⇒ <code>object</code>
-Execute a GET request
+## get() ⇒ <code>string</code>
+Should be overwritten to reflect the scheme name
 
 **Kind**: global function  
-**Returns**: <code>object</code> - body of the response  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| [options] | <code>object</code> | 
-
-
-* <a name="put"></a>
-
-## put(url, stream, [options])
-Execute a PUT request
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>string</code> |  |
-| stream | <code>Stream</code> | content to be put to the url |
-| [options] | <code>object</code> |  |
-
-
-* <a name="stat"></a>
-
-## stat(url, [options]) ⇒ <code>object</code>
-Execute a HEAD request
-
-**Kind**: global function  
-**Returns**: <code>object</code> - response object  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| [options] | <code>object</code> | 
-
-
-* <a name="registerScheme"></a>
-
-## registerScheme(scheme)
-register a scheme for later lookup
-
-**Kind**: global function  
-
-| Param | Type |
-| --- | --- |
-| scheme | <code>URLScheme</code> | 
-
-
-* <a name="schemeForURL"></a>
-
-## schemeForURL(url) ⇒ <code>URLScheme</code>
-get URLScheme for a given url
-
-**Kind**: global function  
-**Returns**: <code>URLScheme</code> - for a given url or undefined if nothing found  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-
-
-* <a name="resolve"></a>
-
-## resolve(url) ⇒ <code>string</code>
-Resolve for a given url.
-Passes url to the registered scheme for remapping
-
-**Kind**: global function  
-**Returns**: <code>string</code> - resolved url or undefined if nothing found  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-
-
-* <a name="remap"></a>
-
-## remap(url) ⇒ <code>string</code>
-Remapps url by separating scheme (and direct following '/') from suffix
-and appending the suffix (in front)
-
-**Kind**: global function  
-**Returns**: <code>string</code> - remapped url  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>string</code> | to be remapped |
-
-
-* <a name="list"></a>
-
-## list(url, options) ⇒ <code>Promise</code>
-List collection (directory)
-
-**Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to iterable entries  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| options | <code>Object</code> | 
-
+**Returns**: <code>string</code> - scheme name (defaults to the class name)  
 
 * <a name="get"></a>
 
-## get(url, options) ⇒ <code>Promise</code>
-Get content of a url
+## get() ⇒ <code>Array.&lt;string&gt;</code>
+supported methods
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to the content  
+**Returns**: <code>Array.&lt;string&gt;</code> - 'get', 'stat', 'put', 'delete', 'list', 'history'  
 
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| options | <code>Object</code> | 
+* <a name="<anonymous>..Resolver"></a>
 
+## &lt;anonymous&gt;~Resolver(config, predefined)
+**Kind**: inner method of <code>&lt;anonymous&gt;</code>  
 
-* <a name="stat"></a>
-
-## stat(url, options) ⇒ <code>Promise</code>
-Delivers meta information for a given url
-
-**Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to one entry  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| options | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| config | <code>object</code> |  |
+| predefined | <code>Array.&lt;URLScheme&gt;</code> | schemes to start with |
 
 
-* <a name="put"></a>
+* <a name="<anonymous>..URLMapperScheme"></a>
 
-## put(url, stream, options) ⇒ <code>Promise</code>
-Put the content of a stream to a given url
+## &lt;anonymous&gt;~URLMapperScheme(baseScheme, name, prefix)
+**Kind**: inner method of <code>&lt;anonymous&gt;</code>  
 
-**Kind**: global function  
-**Returns**: <code>Promise</code> - resolves if stream has ben put to the url  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| stream | <code>Stream</code> | 
-| options | <code>Object</code> | 
-
-
-* <a name="delete"></a>
-
-## delete(url) ⇒ <code>Promise</code>
-Deletes object at a given url
-
-**Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to the history of the object at the given url  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-
-
-* <a name="history"></a>
-
-## history(url, options) ⇒ <code>Promise</code>
-Deliver history information for a given url
-
-**Kind**: global function  
-**Returns**: <code>Promise</code> - resolves to the history of the object at the given url  
-
-| Param | Type |
-| --- | --- |
-| url | <code>string</code> | 
-| options | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| baseScheme | <code>URLScheme</code> |  |
+| name | <code>string</code> | of the newly created scheme |
+| prefix | <code>string</code> | urls will be prefixed by this value |
 
 
 * * *
