@@ -13,7 +13,11 @@ test('register schemes plain', t => {
 
 test('register schemes mapper', t => {
   const resolver = new Resolver();
-  const heise = new URLMapperScheme(new HTTPScheme(), 'heise', 'http://www.heise.de/');
+  const heise = new URLMapperScheme(
+    new HTTPScheme(),
+    'heise',
+    'http://www.heise.de/'
+  );
   resolver.registerScheme(heise);
 
   t.is(resolver.schemeForURL('heise:index.html'), heise);
@@ -21,14 +25,17 @@ test('register schemes mapper', t => {
 });
 
 test('register schemes from config', t => {
-  const resolver = new Resolver({
-    schemes: {
-      tmp: {
-        base: 'http',
-        prefix: 'http:///tmp'
+  const resolver = new Resolver(
+    {
+      schemes: {
+        tmp: {
+          base: 'http',
+          prefix: 'http:///tmp'
+        }
       }
-    }
-  }, [HTTPScheme]);
+    },
+    [HTTPScheme]
+  );
 
   t.is(resolver.schemes.get('http').name, 'http');
   t.is(resolver.schemes.get('tmp').name, 'tmp');
@@ -78,13 +85,16 @@ test('unknown reject history', async t => {
 
 test.cb('delegating can get', t => {
   const resolver = new Resolver();
-  const heise = new URLMapperScheme(new HTTPScheme(), 'heise', 'http://www.heise.de/');
+  const heise = new URLMapperScheme(
+    new HTTPScheme(),
+    'heise',
+    'http://www.heise.de/'
+  );
   resolver.registerScheme(heise);
 
   t.plan(1);
 
-  resolver.get('heise:index.html').then(
-    stream =>
+  resolver.get('heise:index.html').then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();

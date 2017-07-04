@@ -21,8 +21,7 @@ test.cb('can get', t => {
 
   t.plan(1);
 
-  scheme.get('https://www.heise.de/index.html').then(
-    stream =>
+  scheme.get('https://www.heise.de/index.html').then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();
@@ -41,7 +40,11 @@ test('can stat', async t => {
 test('required auth failing stat', async t => {
   const scheme = new HTTPSScheme();
 
-  const error = await t.throws(scheme.stat('https://subversion.assembla.com/svn/delivery_notes/data/config.json'));
+  const error = await t.throws(
+    scheme.stat(
+      'https://subversion.assembla.com/svn/delivery_notes/data/config.json'
+    )
+  );
 
   t.is(error !== undefined, true);
 });

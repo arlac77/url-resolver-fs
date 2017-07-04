@@ -32,11 +32,15 @@ export default class HTTPScheme extends URLScheme {
     };
 
     if (options.proxy !== undefined) {
-      this._options.agent = this.isSecure ? new HttpsProxyAgent(options.proxy) : new HttpProxyAgent(options.proxy);
+      this._options.agent = this.isSecure
+        ? new HttpsProxyAgent(options.proxy)
+        : new HttpProxyAgent(options.proxy);
     }
 
     if (options.credentials !== undefined) {
-      this._options.headers.authorization = 'Basic ' + btoa(options.credentials.user + ':' + options.credentials.password);
+      this._options.headers.authorization =
+        'Basic ' +
+        btoa(options.credentials.user + ':' + options.credentials.password);
     }
   }
 
@@ -46,11 +50,12 @@ export default class HTTPScheme extends URLScheme {
    * @return {object} fetch result
    */
   async fetch(url, options = {}) {
-    const response = await fetch(url, Object.assign({},
-      options,
-      this._options, {
+    const response = await fetch(
+      url,
+      Object.assign({}, options, this._options, {
         headers: Object.assign({}, this._options.headers, options.headers)
-      }));
+      })
+    );
 
     if (response.status < 200 || response.status >= 300) {
       throw new Error(response);
@@ -77,10 +82,16 @@ export default class HTTPScheme extends URLScheme {
    * @param {object} [options]
    */
   async put(url, stream, options) {
-    return this.fetch(url, Object.assign({
-      method: 'put',
-      data: stream
-    }, options));
+    return this.fetch(
+      url,
+      Object.assign(
+        {
+          method: 'put',
+          data: stream
+        },
+        options
+      )
+    );
   }
 
   /**
@@ -90,8 +101,14 @@ export default class HTTPScheme extends URLScheme {
    * @return {object} response object
    */
   async stat(url, options) {
-    return this.fetch(url, Object.assign({
-      method: 'head'
-    }, options));
+    return this.fetch(
+      url,
+      Object.assign(
+        {
+          method: 'head'
+        },
+        options
+      )
+    );
   }
 }

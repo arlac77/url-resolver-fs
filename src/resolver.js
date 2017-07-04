@@ -2,9 +2,11 @@ import URLScheme from './url-scheme';
 import URLMapperScheme from './url-mapper-scheme';
 
 function generate(name) {
-  return function (url, ...args) {
+  return function(url, ...args) {
     const scheme = this.schemeForURL(url);
-    return scheme === undefined ? Promise.reject(new Error(`Unknown scheme ${url}`)) : scheme[name](url, ...args);
+    return scheme === undefined
+      ? Promise.reject(new Error(`Unknown scheme ${url}`))
+      : scheme[name](url, ...args);
   };
 }
 
@@ -12,7 +14,6 @@ function generate(name) {
  * Holds a map of url-schemes and dispatches requests
  */
 export default class Resolver extends URLScheme {
-
   /**
    * @param {object} config
    * @param {URLScheme[]} predefined schemes to start with
@@ -29,14 +30,21 @@ export default class Resolver extends URLScheme {
     if (config.schemes !== undefined) {
       Object.keys(config.schemes).forEach(name => {
         const scheme = config.schemes[name];
-        this.registerScheme(new URLMapperScheme(this.schemes.get(scheme.base), name, scheme.prefix));
+        this.registerScheme(
+          new URLMapperScheme(
+            this.schemes.get(scheme.base),
+            name,
+            scheme.prefix
+          )
+        );
       });
     }
 
     this.constructor.methods.forEach(name =>
       Object.defineProperty(this, name, {
         value: generate(name)
-      }));
+      })
+    );
   }
 
   /**

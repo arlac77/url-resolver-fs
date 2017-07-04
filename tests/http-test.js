@@ -7,26 +7,26 @@ const http = require('http');
 const PORT = 8888;
 
 test.before(t => {
-  http.createServer((request, response) => {
-    const [host, port] = request.headers.host.split(/:/);
-    const {
-      pathname
-    } = url.parse(request.url);
+  http
+    .createServer((request, response) => {
+      const [host, port] = request.headers.host.split(/:/);
+      const { pathname } = url.parse(request.url);
 
-    const r = {
-      host,
-      port,
-      path: pathname,
+      const r = {
+        host,
+        port,
+        path: pathname,
         method: request.method,
         headers: request.headers
-    };
+      };
 
-    const proxyRequest = http.request(r, proxyResponse => {
-      response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
-      proxyResponse.pipe(response);
-    });
-    request.pipe(proxyRequest);
-  }).listen(PORT);
+      const proxyRequest = http.request(r, proxyResponse => {
+        response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
+        proxyResponse.pipe(response);
+      });
+      request.pipe(proxyRequest);
+    })
+    .listen(PORT);
 });
 
 test('has name', t => {
@@ -49,8 +49,7 @@ test.cb('can get', t => {
 
   t.plan(1);
 
-  scheme.get('http://www.heise.de/index.html').then(
-    stream =>
+  scheme.get('http://www.heise.de/index.html').then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();
@@ -67,8 +66,7 @@ test.cb('can get with proxy', t => {
 
   t.plan(1);
 
-  scheme.get('http://www.google.de/').then(
-    stream =>
+  scheme.get('http://www.google.de/').then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('google')) {
         t.pass();

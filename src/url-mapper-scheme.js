@@ -1,7 +1,7 @@
 import URLScheme from './url-scheme';
 
 function generate(name) {
-  return function (url, ...args) {
+  return function(url, ...args) {
     return this.baseScheme[name](this.remap(url), ...args);
   };
 }
@@ -14,7 +14,6 @@ function generate(name) {
  * prefix: https://myserver.com/repo/
  */
 export default class URLMapperScheme extends URLScheme {
-
   /**
    * @param {URLScheme} baseScheme
    * @param {string} name of the newly created scheme
@@ -38,7 +37,8 @@ export default class URLMapperScheme extends URLScheme {
     this.constructor.methods.forEach(name =>
       Object.defineProperty(this, name, {
         value: generate(name)
-      }));
+      })
+    );
   }
 
   /**
