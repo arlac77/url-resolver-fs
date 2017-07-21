@@ -48,7 +48,7 @@
     "node-fetch": "^2.0.0-alpha.5"
   },
   "engines": {
-    "node": ">=8.2.0"
+    "node": ">=8.2.1"
   },
   "contributors": [
     {
