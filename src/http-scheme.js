@@ -1,10 +1,10 @@
 import URLScheme from './url-scheme';
+import fetch from 'node-fetch';
 
 const url = require('url');
 const btoa = require('btoa'),
   HttpProxyAgent = require('http-proxy-agent'),
-  HttpsProxyAgent = require('https-proxy-agent'),
-  fetch = require('node-fetch');
+  HttpsProxyAgent = require('https-proxy-agent');
 
 /**
  * URLScheme for http requests
