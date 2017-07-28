@@ -1,7 +1,7 @@
 import test from 'ava';
 import HTTPScheme from '../src/http-scheme';
 
-const url = require('url');
+const { URL, parse } = require('url');
 const http = require('http');
 
 const PORT = 8888;
@@ -10,7 +10,7 @@ test.before(t => {
   http
     .createServer((request, response) => {
       const [host, port] = request.headers.host.split(/:/);
-      const { pathname } = url.parse(request.url);
+      const { pathname } = parse(request.url);
 
       const r = {
         host,
@@ -49,7 +49,7 @@ test.cb('can get', t => {
 
   t.plan(1);
 
-  scheme.get('http://www.heise.de/index.html').then(stream =>
+  scheme.get(new URL('http://www.heise.de/index.html')).then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();
@@ -66,7 +66,7 @@ test.cb('can get with proxy', t => {
 
   t.plan(1);
 
-  scheme.get('http://www.google.de/').then(stream =>
+  scheme.get(new URL('http://www.google.de/')).then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('google')) {
         t.pass();
@@ -78,7 +78,7 @@ test.cb('can get with proxy', t => {
 
 test('can stat', async t => {
   const scheme = new HTTPScheme();
-  const response = await scheme.stat('http://www.heise.de/index.html');
+  const response = await scheme.stat(new URL('http://www.heise.de/index.html'));
   t.is(response.status, 200);
 });
 
