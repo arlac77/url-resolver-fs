@@ -22,7 +22,7 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param {object} [options={}]
+   * @param [options={}] {object}
    */
   constructor(options = {}) {
     super(url, options);
@@ -45,9 +45,9 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param {string} url
-   * @param {object} [options={}]
-   * @return {object} fetch result
+   * @param url {string}
+   * @param [options={}] {object}
+   * @return {Promise} fetch result
    */
   async fetch(url, options = {}) {
     const response = await fetch(
@@ -66,9 +66,9 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a GET request
-   * @param {string} url source
-   * @param {object} [options]
-   * @return {object} body of the response
+   * @param url {string} source
+   * @param [options] {object}
+   * @return {Promise} body of the response
    */
   async get(url, options) {
     const response = await this.fetch(url, options);
@@ -77,9 +77,9 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a PUT request
-   * @param {string} url destination
-   * @param {Stream} stream content to be put to the url
-   * @param {object} [options]
+   * @param url {string} destination
+   * @param stream {Stream} content to be put to the url
+   * @param [options] {object}
    */
   async put(url, stream, options) {
     return this.fetch(

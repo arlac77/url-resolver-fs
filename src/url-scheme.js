@@ -53,8 +53,8 @@ export default class URLScheme {
 
   /**
    * List collection (directory)
-   * @param {string} url
-   * @param {Object?} options
+   * @param url {string}
+   * @param options {object?}
    * @return {Promise} resolves to iterable entries
    */
   async *list(url, options) {
@@ -63,8 +63,8 @@ export default class URLScheme {
 
   /**
    * Get content of a url
-   * @param {string} url
-   * @param {Object?} options
+   * @param url {string}
+   * @param options {object?}
    * @return {Promise} resolves to the content
    */
   async get(url, options) {
@@ -73,8 +73,8 @@ export default class URLScheme {
 
   /**
    * Delivers meta information for a given url
-   * @param {string} url
-   * @param {Object?} options
+   * @param url {string}
+   * @param options {object?}
    * @return {Promise} resolves to one entry
    */
   async stat(url, options) {
@@ -83,9 +83,9 @@ export default class URLScheme {
 
   /**
    * Put the content of a stream to a given url
-   * @param {string} url
-   * @param {Stream} stream
-   * @param {Object?} options
+   * @param url {string}
+   * @param stream {Stream}
+   * @param options {object?}
    * @return {Promise} resolves if stream has ben put to the url
    */
   async put(url, stream, options) {
@@ -94,7 +94,7 @@ export default class URLScheme {
 
   /**
    * Deletes object at a given url
-   * @param {string} url
+   * @param url {string}
    * @return {Promise} resolves to the history of the object at the given url
    */
   async delete(url) {
@@ -103,8 +103,8 @@ export default class URLScheme {
 
   /**
    * Deliver history information for a given url
-   * @param {string} url
-   * @param {Object?} options
+   * @param url {string}
+   * @param options {object?} 
    * @return {Promise} resolves to the history of the object at the given url
    */
   async *history(url, options) {

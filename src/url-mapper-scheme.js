@@ -15,9 +15,9 @@ function generate(name) {
  */
 export default class URLMapperScheme extends URLScheme {
   /**
-   * @param {URLScheme} baseScheme
-   * @param {string} name of the newly created scheme
-   * @param {string} prefix urls will be prefixed by this value
+   * @param baseScheme {URLScheme}
+   * @param name {string} of the newly created scheme
+   * @param prefix{string} urls will be prefixed by this value
    */
   constructor(baseScheme, name, prefix) {
     super();
@@ -44,7 +44,7 @@ export default class URLMapperScheme extends URLScheme {
   /**
    * Remapps url by separating scheme (and direct following '/') from suffix
    * and appending the suffix (in front)
-   * @param {string} url to be remapped
+   * @param url {string}  to be remapped
    * @return {string} remapped url
    */
   remap(url) {
