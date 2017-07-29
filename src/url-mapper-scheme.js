@@ -2,8 +2,8 @@ import URLScheme from './url-scheme';
 const { URL } = require('url');
 
 function generate(name) {
-  return function(url, ...args) {
-    return this.baseScheme[name](this.remap(url), ...args);
+  return function(context, url, ...args) {
+    return this.baseScheme[name](context, this.remap(url), ...args);
   };
 }
 

@@ -1,5 +1,6 @@
 import test from 'ava';
 import HTTPScheme from '../src/http-scheme';
+import Context from '../src/context';
 
 const { URL, parse } = require('url');
 const http = require('http');
@@ -45,11 +46,12 @@ test('default port', t => {
 });
 
 test.cb('can get', t => {
+  const context = new Context();
   const scheme = new HTTPScheme();
 
   t.plan(1);
 
-  scheme.get(new URL('http://www.heise.de/index.html')).then(stream =>
+  scheme.get(context, new URL('http://www.heise.de/index.html')).then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();
@@ -60,13 +62,14 @@ test.cb('can get', t => {
 });
 
 test.cb('can get with proxy', t => {
+  const context = new Context();
   const scheme = new HTTPScheme({
     proxy: `http://localhost:${PORT}`
   });
 
   t.plan(1);
 
-  scheme.get(new URL('http://www.google.de/')).then(stream =>
+  scheme.get(context, new URL('http://www.google.de/')).then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('google')) {
         t.pass();
@@ -77,8 +80,12 @@ test.cb('can get with proxy', t => {
 });
 
 test('can stat', async t => {
+  const context = new Context();
   const scheme = new HTTPScheme();
-  const response = await scheme.stat(new URL('http://www.heise.de/index.html'));
+  const response = await scheme.stat(
+    context,
+    new URL('http://www.heise.de/index.html')
+  );
   t.is(response.status, 200);
 });
 

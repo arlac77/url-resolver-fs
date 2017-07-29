@@ -3,11 +3,11 @@ import URLMapperScheme from './url-mapper-scheme';
 const { URL } = require('url');
 
 function generate(name) {
-  return function(url, ...args) {
+  return function(context, url, ...args) {
     const scheme = this.schemeForURL(url);
     return scheme === undefined
       ? Promise.reject(new Error(`Unknown scheme ${url}`))
-      : scheme[name](url, ...args);
+      : scheme[name](context, url, ...args);
   };
 }
 
