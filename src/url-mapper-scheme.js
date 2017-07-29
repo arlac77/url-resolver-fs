@@ -1,4 +1,5 @@
 import URLScheme from './url-scheme';
+const { URL } = require('url');
 
 function generate(name) {
   return function(url, ...args) {
@@ -44,11 +45,11 @@ export default class URLMapperScheme extends URLScheme {
   /**
    * Remapps url by separating scheme (and direct following '/') from suffix
    * and appending the suffix (in front)
-   * @param url {string}  to be remapped
-   * @return {string} remapped url
+   * @param url {URL} to be remapped
+   * @return {URL} remapped url
    */
   remap(url) {
-    const m = url.match(/^[^:]+:(\/\/)?(.*)/);
-    return m ? this.prefix + m[2] : url;
+    const m = url.href.match(/^[^:]+:(\/\/)?(.*)/);
+    return m ? new URL(this.prefix + m[2]) : url;
   }
 }

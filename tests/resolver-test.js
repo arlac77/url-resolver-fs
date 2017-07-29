@@ -2,13 +2,14 @@ import test from 'ava';
 import Resolver from '../src/resolver';
 import HTTPScheme from '../src/http-scheme';
 import URLMapperScheme from '../src/url-mapper-scheme';
+const { URL } = require('url');
 
 test('register schemes plain', t => {
   const resolver = new Resolver();
   const http = new HTTPScheme();
   resolver.registerScheme(http);
 
-  t.is(resolver.schemeForURL('http://somewhere/'), http);
+  t.is(resolver.schemeForURL(new URL('http://somewhere/')), http);
 });
 
 test('register schemes mapper', t => {
@@ -16,12 +17,15 @@ test('register schemes mapper', t => {
   const heise = new URLMapperScheme(
     new HTTPScheme(),
     'heise',
-    'http://www.heise.de/'
+    new URL('http://www.heise.de/')
   );
   resolver.registerScheme(heise);
 
-  t.is(resolver.schemeForURL('heise:index.html'), heise);
-  t.is(resolver.resolve('heise:index.html'), 'http://www.heise.de/index.html');
+  t.is(resolver.schemeForURL(new URL('heise:index.html')), heise);
+  t.is(
+    resolver.resolve(new URL('heise:index.html')).href,
+    new URL('http://www.heise.de/index.html').href
+  );
 });
 
 test('register schemes from config', t => {
@@ -43,43 +47,47 @@ test('register schemes from config', t => {
 
 test('handles unknown', t => {
   const resolver = new Resolver();
-  t.is(resolver.schemeForURL('undefined:index.html'), undefined);
-  t.is(resolver.resolve('undefined:index.html'), undefined);
+  t.is(resolver.schemeForURL(new URL('undefined:index.html')), undefined);
+  t.is(resolver.resolve(new URL('undefined:index.html')), undefined);
 });
 
 test('unknown reject get', async t => {
   const resolver = new Resolver();
-  const error = await t.throws(resolver.get('something:index.html'));
+  const error = await t.throws(resolver.get(new URL('something:index.html')));
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
 test('unknown reject stat', async t => {
   const resolver = new Resolver();
-  const error = await t.throws(resolver.stat('something:index.html'));
+  const error = await t.throws(resolver.stat(new URL('something:index.html')));
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
 test('unknown reject put', async t => {
   const resolver = new Resolver();
-  const error = await t.throws(resolver.put('something:index.html'));
+  const error = await t.throws(resolver.put(new URL('something:index.html')));
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
 test('unknown reject delete', async t => {
   const resolver = new Resolver();
-  const error = await t.throws(resolver.delete('something:index.html'));
+  const error = await t.throws(
+    resolver.delete(new URL('something:index.html'))
+  );
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
 test('unknown reject list', async t => {
   const resolver = new Resolver();
-  const error = await t.throws(resolver.list('something:index.html'));
+  const error = await t.throws(resolver.list(new URL('something:index.html')));
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
 test('unknown reject history', async t => {
   const resolver = new Resolver();
-  const error = await t.throws(resolver.history('something:index.html'));
+  const error = await t.throws(
+    resolver.history(new URL('something:index.html'))
+  );
   t.is(error.message, 'Unknown scheme something:index.html');
 });
 
@@ -88,13 +96,13 @@ test.cb('delegating can get', t => {
   const heise = new URLMapperScheme(
     new HTTPScheme(),
     'heise',
-    'http://www.heise.de/'
+    new URL('http://www.heise.de/')
   );
   resolver.registerScheme(heise);
 
   t.plan(1);
 
-  resolver.get('heise:index.html').then(stream =>
+  resolver.get(new URL('heise:index.html')).then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();

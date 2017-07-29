@@ -45,7 +45,7 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param url {string}
+   * @param url {URL}
    * @param [options={}] {object}
    * @return {Promise} fetch result
    */
@@ -66,7 +66,7 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a GET request
-   * @param url {string} source
+   * @param url {URL} source
    * @param [options] {object}
    * @return {Promise} body of the response
    */
@@ -77,7 +77,7 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a PUT request
-   * @param url {string} destination
+   * @param url {URL} destination
    * @param stream {Stream} content to be put to the url
    * @param [options] {object}
    */
@@ -96,8 +96,8 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a HEAD request
-   * @param {string} url
-   * @param {object} [options]
+   * @param url {URL}
+   * @param [options] {object} 
    * @return {object} response object
    */
   async stat(url, options) {
