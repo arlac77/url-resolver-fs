@@ -1,12 +1,13 @@
 import URLScheme from './url-scheme';
 import URLMapperScheme from './url-mapper-scheme';
+const { URL } = require('url');
 
 function generate(name) {
-  return function(url, ...args) {
+  return function(context, url, ...args) {
     const scheme = this.schemeForURL(url);
     return scheme === undefined
       ? Promise.reject(new Error(`Unknown scheme ${url}`))
-      : scheme[name](url, ...args);
+      : scheme[name](context, url, ...args);
   };
 }
 
@@ -53,23 +54,23 @@ export default class Resolver extends URLScheme {
    */
   registerScheme(scheme) {
     this.schemes.set(scheme.name, scheme);
+    this.schemes.set(scheme.name + ':', scheme);
   }
 
   /**
    * Get URLScheme for a given url
-   * @param url {string}
+   * @param url {URL}
    * @return {URLScheme} for a given url or undefined if nothing found
    */
   schemeForURL(url) {
-    const m = url.match(/^([^:]+):/);
-    return this.schemes.get(m[1]);
+    return this.schemes.get(url.protocol);
   }
 
   /**
    * Resolve for a given url.
    * Passes url to the registered scheme for remapping
-   * @param url {string}
-   * @return {string} resolved url or undefined if nothing found
+   * @param url {URL}
+   * @return {URL} resolved url or undefined if nothing found
    */
   resolve(url) {
     const scheme = this.schemeForURL(url);

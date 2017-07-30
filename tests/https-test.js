@@ -1,5 +1,7 @@
 import test from 'ava';
 import HTTPSScheme from '../src/https-scheme';
+import Context from '../src/context';
+
 const { URL } = require('url');
 
 test('has name', t => {
@@ -18,11 +20,12 @@ test('default port', t => {
 });
 
 test.cb('can get', t => {
+  const context = new Context();
   const scheme = new HTTPSScheme();
 
   t.plan(1);
 
-  scheme.get(new URL('https://www.heise.de/index.html')).then(stream =>
+  scheme.get(context, new URL('https://www.heise.de/index.html')).then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();
@@ -33,18 +36,22 @@ test.cb('can get', t => {
 });
 
 test('can stat', async t => {
+  const context = new Context();
   const scheme = new HTTPSScheme();
   const response = await scheme.stat(
+    context,
     new URL('https://www.heise.de/index.html')
   );
   t.is(response.status, 200);
 });
 
 test('required auth failing stat', async t => {
+  const context = new Context();
   const scheme = new HTTPSScheme();
 
   const error = await t.throws(
     scheme.stat(
+      context,
       new URL(
         'https://subversion.assembla.com/svn/delivery_notes/data/config.json'
       )

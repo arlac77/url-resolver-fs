@@ -22,7 +22,10 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param [options={}] {object}
+  * @param [options] {object}
+  * @param [options.proxy] {string}
+  * @param [options.credentials.user] {string}
+  * @param [options.credentials.password] {string}
    */
   constructor(options = {}) {
     super(url, options);
@@ -45,11 +48,12 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param url {string}
-   * @param [options={}] {object}
+   * @param context {Context} execution context
+   * @param url {URL}
+   * @param [options] {object}
    * @return {Promise} fetch result
    */
-  async fetch(url, options = {}) {
+  async fetch(context, url, options = {}) {
     const response = await fetch(
       url,
       Object.assign({}, options, this._options, {
@@ -66,23 +70,26 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a GET request
-   * @param url {string} source
+   * @param context {Context} execution context
+   * @param url {URL} source
    * @param [options] {object}
    * @return {Promise} body of the response
    */
-  async get(url, options) {
-    const response = await this.fetch(url, options);
+  async get(context, url, options) {
+    const response = await this.fetch(context, url, options);
     return response.body;
   }
 
   /**
    * Execute a PUT request
-   * @param url {string} destination
+   * @param context {Context} execution context
+   * @param url {URL} destination
    * @param stream {Stream} content to be put to the url
    * @param [options] {object}
    */
-  async put(url, stream, options) {
+  async put(context, url, stream, options) {
     return this.fetch(
+      context,
       url,
       Object.assign(
         {
@@ -96,12 +103,14 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a HEAD request
-   * @param {string} url
-   * @param {object} [options]
+   * @param context {Context} execution context
+   * @param url {URL}
+   * @param [options] {object}
    * @return {object} response object
    */
-  async stat(url, options) {
+  async stat(context, url, options) {
     return this.fetch(
+      context,
       url,
       Object.assign(
         {
