@@ -1,4 +1,5 @@
 import URLScheme from './url-scheme';
+import Context from './context';
 import URLMapperScheme from './url-mapper-scheme';
 const { URL } = require('url');
 
@@ -69,11 +70,20 @@ export default class Resolver extends URLScheme {
   /**
    * Resolve for a given url.
    * Passes url to the registered scheme for remapping
-   * @param url {URL}
-   * @return {URL} resolved url or undefined if nothing found
+   * @param url {URL} to be resolved
+   * @return {URL} resolved url or original URL if no remapping found
    */
   resolve(url) {
     const scheme = this.schemeForURL(url);
-    return scheme === undefined ? undefined : scheme.remap(url);
+    return scheme === undefined ? url : scheme.remap(url);
+  }
+
+  /**
+   * Create a new context
+   * @param base {URL} base url
+   * @return {Context} newly created context
+   */
+  createContext(base) {
+    return new Context(this, base);
   }
 }

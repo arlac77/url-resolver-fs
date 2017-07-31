@@ -50,7 +50,10 @@ test('register schemes from config', t => {
 test('handles unknown', t => {
   const resolver = new Resolver();
   t.is(resolver.schemeForURL(new URL('undefined:index.html')), undefined);
-  t.is(resolver.resolve(new URL('undefined:index.html')), undefined);
+  t.is(
+    resolver.resolve(new URL('undefined:index.html').href),
+    new URL('undefined:index.html').href
+  );
 });
 
 test('unknown reject get', async t => {
