@@ -53,61 +53,67 @@ export default class URLScheme {
 
   /**
    * List collection (directory)
+   * @param context {Context} execution context
    * @param url {URL}
    * @param options {object?}
    * @return {Promise} resolves to iterable entries
    */
-  async *list(url, options) {
+  async *list(context, url, options) {
     return notImplementedError();
   }
 
   /**
    * Get content of a url
+   * @param context {Context} execution context
    * @param url {URL}
    * @param options {object?}
    * @return {Promise} resolves to the content
    */
-  async get(url, options) {
+  async get(context, url, options) {
     return notImplementedError();
   }
 
   /**
    * Delivers meta information for a given url
+   * @param context {Context} execution context
    * @param url {URL}
    * @param options {object?}
    * @return {Promise} resolves to one entry
    */
-  async stat(url, options) {
+  async stat(context, url, options) {
     return notImplementedError();
   }
 
   /**
    * Put the content of a stream to a given url
+   * @param context {Context} execution context
    * @param url {URL}
    * @param stream {Stream}
    * @param options {object?}
    * @return {Promise} resolves if stream has ben put to the url
    */
-  async put(url, stream, options) {
+  async put(context, url, stream, options) {
     return notImplementedError();
   }
 
   /**
    * Deletes object at a given url
+   * @param context {Context} execution context
    * @param url {URL}
    * @return {Promise} resolves to the history of the object at the given url
    */
-  async delete(url) {
+  async delete(context, url) {
     return notImplementedError();
   }
 
   /**
    * Deliver history information for a given url
+   * @param context {Context} execution context
    * @param url {URL}
    * @param options {object?}
    * @return {Promise} resolves to the history of the object at the given url
    */
-  async *history(url, options) {
+  async *history(context, url, options) {
     return notImplementedError();
   }
 }
