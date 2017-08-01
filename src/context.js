@@ -22,11 +22,11 @@ export default class Context {
     this._base = url;
   }
 
-  async *list(url, options) {
+  async list(url, options) {
     return this.resolver.list(this, new URL(url, this.base), options);
   }
 
-  async *history(url, options) {
+  async history(url, options) {
     return this.resolver.history(this, new URL(url, this.base), options);
   }
 
