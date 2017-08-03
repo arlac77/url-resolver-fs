@@ -31,7 +31,7 @@ export default class Context {
   }
 
   async put(url, stream, options) {
-    return this.resolver.get(this, new URL(url, this.base), stream, options);
+    return this.resolver.put(this, new URL(url, this.base), stream, options);
   }
 
   async get(url, options) {
@@ -43,7 +43,7 @@ export default class Context {
   }
 
   async delete(url) {
-    return this.resolver.stat(this, new URL(url, this.base));
+    return this.resolver.delete(this, new URL(url, this.base));
   }
 
   resolve(url) {

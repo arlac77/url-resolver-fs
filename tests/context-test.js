@@ -16,7 +16,7 @@ test('context from resolver', t => {
   );
 });
 
-test.cb('context can get', t => {
+test.cb('context can get relative', t => {
   const resolver = new Resolver();
   const http = new HTTPScheme();
   resolver.registerScheme(http);
@@ -25,7 +25,7 @@ test.cb('context can get', t => {
 
   t.plan(1);
 
-  context.get(new URL('http://www.heise.de/index.html')).then(stream =>
+  context.get('index.html').then(stream =>
     stream.on('data', chunk => {
       if (chunk.includes('DOCTYPE')) {
         t.pass();
@@ -33,4 +33,15 @@ test.cb('context can get', t => {
       }
     })
   );
+});
+
+test('context can stat relative', async t => {
+  const resolver = new Resolver();
+  const http = new HTTPScheme();
+  resolver.registerScheme(http);
+
+  const context = resolver.createContext(new URL('http://www.heise.de'));
+  const response = await context.stat('index.html');
+
+  t.is(response.status, 200);
 });
