@@ -1,3 +1,5 @@
+import URLScheme from './url-scheme';
+
 const { URL } = require('url');
 
 /**
@@ -22,31 +24,15 @@ export default class Context {
     this._base = url;
   }
 
-  async list(url, options) {
-    return this.resolver.list(this, new URL(url, this.base), options);
-  }
-
-  async history(url, options) {
-    return this.resolver.history(this, new URL(url, this.base), options);
-  }
-
-  async put(url, stream, options) {
-    return this.resolver.put(this, new URL(url, this.base), stream, options);
-  }
-
-  async get(url, options) {
-    return this.resolver.get(this, new URL(url, this.base), options);
-  }
-
-  async stat(url, options) {
-    return this.resolver.stat(this, new URL(url, this.base), options);
-  }
-
-  async delete(url) {
-    return this.resolver.delete(this, new URL(url, this.base));
-  }
-
   resolve(url) {
     return this.resolver.resolve(new URL(url, this.base));
   }
 }
+
+URLScheme.methods.forEach(name =>
+  Object.defineProperty(Context.prototype, name, {
+    value: function(url, ...args) {
+      return this.resolver[name](this, new URL(url, this.base), ...args);
+    }
+  })
+);

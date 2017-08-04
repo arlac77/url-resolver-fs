@@ -41,12 +41,6 @@ export default class Resolver extends URLScheme {
         );
       });
     }
-
-    this.constructor.methods.forEach(name =>
-      Object.defineProperty(this, name, {
-        value: generate(name)
-      })
-    );
   }
 
   /**
@@ -87,3 +81,9 @@ export default class Resolver extends URLScheme {
     return new Context(this, base);
   }
 }
+
+Resolver.methods.forEach(name =>
+  Object.defineProperty(Resolver.prototype, name, {
+    value: generate(name)
+  })
+);
