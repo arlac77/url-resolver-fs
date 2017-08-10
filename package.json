@@ -44,7 +44,7 @@
   "dependencies": {
     "btoa": "^1.1.2",
     "http-proxy-agent": "^2.0.0",
-    "https-proxy-agent": "^2.0.0",
+    "https-proxy-agent": "^2.1.0",
     "node-fetch": "^2.0.0-alpha.8"
   },
   "engines": {
