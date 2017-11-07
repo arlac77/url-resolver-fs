@@ -8,11 +8,11 @@
     "cover": "nyc ava",
     "test": "ava",
     "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
     "precover": "rollup -c tests/rollup.config.js",
-    "prepare": "rollup -c -- src/module.js"
+    "prepare": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -29,26 +29,25 @@
   },
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "devDependencies": {
-    "ava": "^0.22.0",
-    "babel-preset-stage-3": "^6.24.1",
+    "ava": "0.23.0",
     "jsdoc-babel": "^0.3.0",
-    "jsdoc-to-markdown": "^3.0.0",
+    "jsdoc-to-markdown": "^3.0.1",
     "markdown-doctest": "^0.9.1",
-    "nyc": "^11.1.0",
+    "nyc": "^11.3.0",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-multi-entry": "^2.0.1",
-    "semantic-release": "^8.0.0",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "semantic-release": "^9.1.0",
     "xo": "^0.19.0"
   },
   "dependencies": {
     "btoa": "^1.1.2",
     "http-proxy-agent": "^2.0.0",
     "https-proxy-agent": "^2.1.0",
-    "node-fetch": "^2.0.0-alpha.8"
+    "node-fetch": "^2.0.0-alpha.9"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.9.0"
   },
   "contributors": [
     {
@@ -66,7 +65,7 @@
   },
   "nyc": {
     "include": [
-      "build/test-bundle.js",
+      "build/*-test.js",
       "src/**/*.js"
     ],
     "reporter": [
@@ -76,7 +75,7 @@
   },
   "ava": {
     "files": [
-      "build/test-bundle.js"
+      "build/*-test.js"
     ],
     "require": [
       "babel-register"
