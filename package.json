@@ -7,8 +7,7 @@
   "scripts": {
     "cover": "nyc ava",
     "test": "ava",
-    "docs":
-      "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
+    "docs": "jsdoc2md --configure doc/jsdoc.json -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release",
     "pretest": "rollup -c tests/rollup.config.js",
     "posttest": "npm run prepare && markdown-doctest",
@@ -19,14 +18,18 @@
     "type": "git",
     "url": "git+https://github.com/arlac77/url-resolver-fs.git"
   },
-  "keywords": ["url", "resolver", "url-resolver-fs"],
+  "keywords": [
+    "url",
+    "resolver",
+    "url-resolver-fs"
+  ],
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/arlac77/url-resolver-fs/issues"
   },
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "devDependencies": {
-    "ava": "^0.23.0",
+    "ava": "0.23.0",
     "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^3.0.1",
     "markdown-doctest": "^0.9.1",
@@ -41,7 +44,7 @@
     "btoa": "^1.1.2",
     "http-proxy-agent": "^2.0.0",
     "https-proxy-agent": "^2.1.0",
-    "node-fetch": "^2.0.0-alpha.8"
+    "node-fetch": "^2.0.0-alpha.9"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -61,12 +64,21 @@
     "space": true
   },
   "nyc": {
-    "include": ["build/*-test.js", "src/**/*.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "build/*-test.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./build/coverage"
   },
   "ava": {
-    "files": ["build/*-test.js"],
-    "require": ["babel-register"]
+    "files": [
+      "build/*-test.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
   }
 }
