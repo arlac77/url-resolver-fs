@@ -19,55 +19,7 @@ url-resolver-fs
 -------------------
 resolves urls and provides fs like access
 
-# API Reference
-
-* <a name="Context"></a>
-
-## Context()
-Holds context information
-
-**Kind**: global function  
-
-* <a name="get"></a>
-
-## get() ⇒ <code>string</code>
-Should be overwritten to reflect the scheme name
-
-**Kind**: global function  
-**Returns**: <code>string</code> - scheme name (defaults to the class name)  
-
-* <a name="get"></a>
-
-## get() ⇒ <code>Array.&lt;string&gt;</code>
-supported methods
-
-**Kind**: global function  
-**Returns**: <code>Array.&lt;string&gt;</code> - 'get', 'stat', 'put', 'delete', 'list', 'history'  
-
-* <a name="<anonymous>..Resolver"></a>
-
-## &lt;anonymous&gt;~Resolver(config, predefined)
-**Kind**: inner method of <code>&lt;anonymous&gt;</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| config | <code>object</code> |  |
-| predefined | <code>Array.&lt;URLScheme&gt;</code> | schemes to start with |
-
-
-* <a name="<anonymous>..URLMapperScheme"></a>
-
-## &lt;anonymous&gt;~URLMapperScheme(baseScheme, name, prefix)
-**Kind**: inner method of <code>&lt;anonymous&gt;</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| baseScheme | <code>URLScheme</code> |  |
-| name | <code>string</code> | of the newly created scheme |
-| prefix | <code>string</code> | urls will be prefixed by this value |
-
-
-* * *
+# API
 
 # install
 
