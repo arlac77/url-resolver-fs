@@ -2,6 +2,9 @@ function notImplementedError() {
   return Promise.reject(new Error('Not implemented'));
 }
 
+/**
+ * Base class
+ */
 export default class URLScheme {
   /**
    * supported methods

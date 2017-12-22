@@ -8,6 +8,11 @@ const btoa = require('btoa'),
 
 /**
  * URLScheme for http requests
+ * @param {Object} options
+ * @param {string} options.proxy
+ * @param {Object} options.credentials
+ * @param {string} options.credentials.user
+ * @param {string} options.credentials.password
  */
 export default class HTTPScheme extends URLScheme {
   static get name() {
@@ -21,12 +26,6 @@ export default class HTTPScheme extends URLScheme {
     return 80;
   }
 
-  /**
-  * @param [options] {object}
-  * @param [options.proxy] {string}
-  * @param [options.credentials.user] {string}
-  * @param [options.credentials.password] {string}
-   */
   constructor(options = {}) {
     super(url, options);
 
@@ -48,9 +47,9 @@ export default class HTTPScheme extends URLScheme {
   }
 
   /**
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param [options] {object}
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Object} options
    * @return {Promise} fetch result
    */
   async fetch(context, url, options = {}) {
@@ -70,9 +69,9 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a GET request
-   * @param context {Context} execution context
-   * @param url {URL} source
-   * @param [options] {object}
+   * @param {Context} context execution context
+   * @param {URL} url source
+   * @param {Object} options
    * @return {Promise} body of the response
    */
   async get(context, url, options) {
@@ -82,10 +81,10 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a PUT request
-   * @param context {Context} execution context
-   * @param url {URL} destination
-   * @param stream {Stream} content to be put to the url
-   * @param [options] {object}
+   * @param {Context} context  execution context
+   * @param {URL} url  destination
+   * @param {Stream} stream  content to be put to the url
+   * @param {Object} options
    */
   async put(context, url, stream, options) {
     return this.fetch(
@@ -103,10 +102,11 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a HEAD request
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param [options] {object}
-   * @return {object} response object
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Object} options
+   * @param {string} options.method
+   * @return {Object} response object
    */
   async stat(context, url, options) {
     return this.fetch(
