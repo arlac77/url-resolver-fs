@@ -4,6 +4,9 @@ import HTTPScheme from './http-scheme';
  * URLScheme for http requests
  */
 export default class HTTPSScheme extends HTTPScheme {
+  /**
+   * @return {string} 'https'
+   */
   static get name() {
     return 'https';
   }

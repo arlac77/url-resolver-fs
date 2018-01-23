@@ -15,6 +15,9 @@ const btoa = require('btoa'),
  * @param {string} options.credentials.password
  */
 export default class HTTPScheme extends URLScheme {
+  /**
+   * @return {string} 'http'
+   */
   static get name() {
     return 'http';
   }
@@ -81,9 +84,9 @@ export default class HTTPScheme extends URLScheme {
 
   /**
    * Execute a PUT request
-   * @param {Context} context  execution context
-   * @param {URL} url  destination
-   * @param {Stream} stream  content to be put to the url
+   * @param {Context} context execution context
+   * @param {URL} url destination
+   * @param {Stream} stream content to be put to the url
    * @param {Object} options
    */
   async put(context, url, stream, options) {

@@ -37,12 +37,14 @@ resolves urls and provides fs like access
     -   [get](#get)
     -   [put](#put)
     -   [stat](#stat)
+    -   [name](#name)
     -   [defaultPort](#defaultport)
 -   [HTTPSScheme](#httpsscheme)
+    -   [name](#name-1)
     -   [defaultPort](#defaultport-1)
     -   [isSecure](#issecure)
 -   [URLScheme](#urlscheme)
-    -   [name](#name)
+    -   [name](#name-2)
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
@@ -65,8 +67,12 @@ Holds a map of url-schemes and dispatches requests
 
 **Parameters**
 
--   `config`   (optional, default `{}`)
--   `predefined`   (optional, default `[]`)
+-   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+-   `predefined` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
+
+**Properties**
+
+-   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
 
 ### registerScheme
 
@@ -74,7 +80,7 @@ Register a scheme for later lookup
 
 **Parameters**
 
--   `scheme`  {URLScheme}
+-   `scheme` **[URLScheme](#urlscheme)** 
 
 ### schemeForURL
 
@@ -82,7 +88,7 @@ Get URLScheme for a given url
 
 **Parameters**
 
--   `url`  {URL}
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 Returns **[URLScheme](#urlscheme)** for a given url or undefined if nothing found
 
@@ -93,7 +99,7 @@ Passes url to the registered scheme for remapping
 
 **Parameters**
 
--   `url`  {URL} to be resolved
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be resolved
 
 Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** resolved url or original URL if no remapping found
 
@@ -103,19 +109,22 @@ Create a new context
 
 **Parameters**
 
--   `base`  {URL} base url
+-   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** url
 
 Returns **[Context](#context)** newly created context
 
 ## Context
 
 Holds context information
-base - the current base URL
 
 **Parameters**
 
--   `resolver`  
--   `base`  
+-   `resolver` **[Resolver](#resolver)** 
+-   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+
+**Properties**
+
+-   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** the current base URL
 
 ## HTTPScheme
 
@@ -177,6 +186,10 @@ Execute a HEAD request
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** response object
 
+### name
+
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 'http'
+
 ### defaultPort
 
 Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 80 the http default port
@@ -186,6 +199,10 @@ Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 **Extends HTTPScheme**
 
 URLScheme for http requests
+
+### name
+
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 'https'
 
 ### defaultPort
 
@@ -311,9 +328,15 @@ prefix: <https://myserver.com/repo/>
 
 **Parameters**
 
--   `baseScheme`  
--   `name`  
--   `prefix`  
+-   `baseScheme` **[URLScheme](#urlscheme)** 
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
+-   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
+
+**Properties**
+
+-   `baseScheme` **[URLScheme](#urlscheme)** 
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
+-   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
 
 ### remap
 
@@ -322,7 +345,7 @@ and appending the suffix (in front)
 
 **Parameters**
 
--   `url`  {URL} to be remapped
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be remapped
 
 Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** remapped url
 

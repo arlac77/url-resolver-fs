@@ -4,8 +4,10 @@ const { URL } = require('url');
 
 /**
  * Holds context information
- * base - the current base URL
+ * @param {Resolver} resolver
+ * @param {URL} base
  *
+ * @property {URL} base the current base URL
  */
 export default class Context {
   constructor(resolver, base) {

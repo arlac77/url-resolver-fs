@@ -14,12 +14,12 @@ function generate(name) {
 
 /**
  * Holds a map of url-schemes and dispatches requests
+ * @param {Object} config
+ * @param {URLScheme[]} predefined schemes to start with
+ *
+ * @property {Map<string,URLScheme>} schemes
  */
 export default class Resolver extends URLScheme {
-  /**
-   * @param config {object}
-   * @param predefined {URLScheme[]} schemes to start with
-   */
   constructor(config = {}, predefined = []) {
     super();
 
@@ -45,7 +45,7 @@ export default class Resolver extends URLScheme {
 
   /**
    * Register a scheme for later lookup
-   * @param scheme {URLScheme}
+   * @param {URLScheme} scheme
    */
   registerScheme(scheme) {
     this.schemes.set(scheme.name, scheme);
@@ -54,7 +54,7 @@ export default class Resolver extends URLScheme {
 
   /**
    * Get URLScheme for a given url
-   * @param url {URL}
+   * @param {URL} url
    * @return {URLScheme} for a given url or undefined if nothing found
    */
   schemeForURL(url) {
@@ -64,7 +64,7 @@ export default class Resolver extends URLScheme {
   /**
    * Resolve for a given url.
    * Passes url to the registered scheme for remapping
-   * @param url {URL} to be resolved
+   * @param {URL} url to be resolved
    * @return {URL} resolved url or original URL if no remapping found
    */
   resolve(url) {
@@ -74,7 +74,7 @@ export default class Resolver extends URLScheme {
 
   /**
    * Create a new context
-   * @param base {URL} base url
+   * @param {URL} base  url
    * @return {Context} newly created context
    */
   createContext(base) {

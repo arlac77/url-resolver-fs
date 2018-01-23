@@ -13,13 +13,15 @@ function generate(name) {
  * name: brs
  * baseScheme: https
  * prefix: https://myserver.com/repo/
+ * @param {URLScheme} baseScheme
+ * @param {string} name of the newly created scheme
+ * @param {string} prefix urls will be prefixed by this value
+ *
+ * @property {URLScheme} baseScheme
+ * @property {string} name of the newly created scheme
+ * @property {string} prefix urls will be prefixed by this value
  */
 export default class URLMapperScheme extends URLScheme {
-  /**
-   * @param baseScheme {URLScheme}
-   * @param name {string} of the newly created scheme
-   * @param prefix {string} urls will be prefixed by this value
-   */
   constructor(baseScheme, name, prefix) {
     super();
 
@@ -45,7 +47,7 @@ export default class URLMapperScheme extends URLScheme {
   /**
    * Remapps url by separating scheme (and direct following '/') from suffix
    * and appending the suffix (in front)
-   * @param url {URL} to be remapped
+   * @param {URL} url to be remapped
    * @return {URL} remapped url
    */
   remap(url) {
