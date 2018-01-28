@@ -1,8 +1,8 @@
 import test from 'ava';
 import HTTPScheme from '../src/http-scheme';
 import Context from '../src/context';
+import { URL, parse } from 'url';
 
-const { URL, parse } = require('url');
 const http = require('http');
 
 const PORT = 8888;
@@ -96,5 +96,5 @@ test('basic auth', t => {
       user: 'yyy'
     }
   });
-  t.is(scheme._options.headers.authorization, 'Basic eXl5Onh4eA==');
+  t.is(scheme.options.headers.authorization, 'Basic eXl5Onh4eA==');
 });

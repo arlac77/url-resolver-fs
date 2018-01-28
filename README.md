@@ -140,6 +140,10 @@ URLScheme for http requests
         -   `options.credentials.user` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
         -   `options.credentials.password` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
+**Properties**
+
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
 ### fetch
 
 **Parameters**
@@ -236,9 +240,9 @@ List collection (directory)
 
 **Parameters**
 
--   `context`  {Context} execution context
--   `url`  {URL}
--   `options`  {object?}
+-   `context` **[Context](#context)** execution context
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to iterable entries
 
@@ -248,9 +252,9 @@ Get content of a url
 
 **Parameters**
 
--   `context`  {Context} execution context
--   `url`  {URL}
--   `options`  {object?}
+-   `context` **[Context](#context)** execution context
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the content
 
@@ -260,9 +264,9 @@ Delivers meta information for a given url
 
 **Parameters**
 
--   `context`  {Context} execution context
--   `url`  {URL}
--   `options`  {object?}
+-   `context` **[Context](#context)** execution context
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to one entry
 
@@ -272,10 +276,10 @@ Put the content of a stream to a given url
 
 **Parameters**
 
--   `context`  {Context} execution context
--   `url`  {URL}
--   `stream`  {Stream}
--   `options`  {object?}
+-   `context` **[Context](#context)** execution context
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+-   `stream` **[Stream](https://nodejs.org/api/stream.html)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves if stream has ben put to the url
 
@@ -285,8 +289,8 @@ Deletes object at a given url
 
 **Parameters**
 
--   `context`  {Context} execution context
--   `url`  {URL}
+-   `context` **[Context](#context)** execution context
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the history of the object at the given url
 
@@ -296,9 +300,9 @@ Deliver history information for a given url
 
 **Parameters**
 
--   `context`  {Context} execution context
--   `url`  {URL}
--   `options`  {object?}
+-   `context` **[Context](#context)** execution context
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the history of the object at the given url
 

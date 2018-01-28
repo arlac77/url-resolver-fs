@@ -1,7 +1,7 @@
 import URLScheme from './url-scheme';
 import Context from './context';
 import URLMapperScheme from './url-mapper-scheme';
-const { URL } = require('url');
+import { URL } from 'url';
 
 function generate(name) {
   return function(context, url, ...args) {

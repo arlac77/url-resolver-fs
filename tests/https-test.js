@@ -1,8 +1,7 @@
 import test from 'ava';
 import HTTPSScheme from '../src/https-scheme';
 import Context from '../src/context';
-
-const { URL } = require('url');
+import { URL } from 'url';
 
 test('has name', t => {
   const scheme = new HTTPSScheme();

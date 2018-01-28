@@ -1,10 +1,14 @@
 import URLScheme from './url-scheme';
 import fetch from 'node-fetch';
+import btoa from 'btoa';
 
-const url = require('url');
-const btoa = require('btoa'),
-  HttpProxyAgent = require('http-proxy-agent'),
-  HttpsProxyAgent = require('https-proxy-agent');
+import HttpProxyAgent from 'http-proxy-agent';
+import HttpsProxyAgent from 'https-proxy-agent';
+
+/*
+const HttpProxyAgent = require('http-proxy-agent');
+const HttpsProxyAgent = require('https-proxy-agent');
+*/
 
 /**
  * URLScheme for http requests
@@ -13,6 +17,8 @@ const btoa = require('btoa'),
  * @param {Object} options.credentials
  * @param {string} options.credentials.user
  * @param {string} options.credentials.password
+ *
+ * @property {Object} options
  */
 export default class HTTPScheme extends URLScheme {
   /**
@@ -30,20 +36,20 @@ export default class HTTPScheme extends URLScheme {
   }
 
   constructor(options = {}) {
-    super(url, options);
+    super();
 
-    this._options = {
+    this.options = {
       headers: {}
     };
 
     if (options.proxy !== undefined) {
-      this._options.agent = this.isSecure
+      this.options.agent = this.isSecure
         ? new HttpsProxyAgent(options.proxy)
         : new HttpProxyAgent(options.proxy);
     }
 
     if (options.credentials !== undefined) {
-      this._options.headers.authorization =
+      this.options.headers.authorization =
         'Basic ' +
         btoa(options.credentials.user + ':' + options.credentials.password);
     }
@@ -58,8 +64,8 @@ export default class HTTPScheme extends URLScheme {
   async fetch(context, url, options = {}) {
     const response = await fetch(
       url,
-      Object.assign({}, options, this._options, {
-        headers: Object.assign({}, this._options.headers, options.headers)
+      Object.assign({}, options, this.options, {
+        headers: Object.assign({}, this.options.headers, options.headers)
       })
     );
 

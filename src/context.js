@@ -1,6 +1,5 @@
 import URLScheme from './url-scheme';
-
-const { URL } = require('url');
+import { URL } from 'url';
 
 /**
  * Holds context information

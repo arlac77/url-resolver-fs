@@ -3,7 +3,14 @@ import multiEntry from 'rollup-plugin-multi-entry';
 
 export default {
   input: 'tests/**/*-test.js',
-  external: ['ava', 'node-fetch'],
+  external: [
+    'ava',
+    'btoa',
+    'url',
+    'node-fetch',
+    'http-proxy-agent',
+    'https-proxy-agent'
+  ],
 
   plugins: [
     babel({

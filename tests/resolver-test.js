@@ -4,7 +4,7 @@ import HTTPScheme from '../src/http-scheme';
 import URLMapperScheme from '../src/url-mapper-scheme';
 import Context from '../src/context';
 
-const { URL } = require('url');
+import { URL } from 'url';
 
 test('register schemes plain', t => {
   const resolver = new Resolver();

@@ -56,9 +56,9 @@ export default class URLScheme {
 
   /**
    * List collection (directory)
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param options {object?}
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Object} options
    * @return {Promise} resolves to iterable entries
    */
   async *list(context, url, options) {
@@ -67,9 +67,9 @@ export default class URLScheme {
 
   /**
    * Get content of a url
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param options {object?}
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Object} options
    * @return {Promise} resolves to the content
    */
   async get(context, url, options) {
@@ -78,9 +78,9 @@ export default class URLScheme {
 
   /**
    * Delivers meta information for a given url
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param options {object?}
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Object} options
    * @return {Promise} resolves to one entry
    */
   async stat(context, url, options) {
@@ -89,10 +89,10 @@ export default class URLScheme {
 
   /**
    * Put the content of a stream to a given url
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param stream {Stream}
-   * @param options {object?}
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Stream} stream
+   * @param {Object} options
    * @return {Promise} resolves if stream has ben put to the url
    */
   async put(context, url, stream, options) {
@@ -101,8 +101,8 @@ export default class URLScheme {
 
   /**
    * Deletes object at a given url
-   * @param context {Context} execution context
-   * @param url {URL}
+   * @param {Context} context execution context
+   * @param {URL} url
    * @return {Promise} resolves to the history of the object at the given url
    */
   async delete(context, url) {
@@ -111,9 +111,9 @@ export default class URLScheme {
 
   /**
    * Deliver history information for a given url
-   * @param context {Context} execution context
-   * @param url {URL}
-   * @param options {object?}
+   * @param {Context} context execution context
+   * @param {URL} url
+   * @param {Object} options
    * @return {Promise} resolves to the history of the object at the given url
    */
   async *history(context, url, options) {

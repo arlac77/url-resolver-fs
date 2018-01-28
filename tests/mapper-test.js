@@ -1,7 +1,7 @@
 import test from 'ava';
 import URLMapperScheme from '../src/url-mapper-scheme';
 import HTTPScheme from '../src/http-scheme';
-const { URL } = require('url');
+import { URL } from 'url';
 import Context from '../src/context';
 
 test('prefix only simple map', t => {
