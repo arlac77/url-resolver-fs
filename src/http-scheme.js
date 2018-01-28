@@ -5,11 +5,6 @@ import btoa from 'btoa';
 import HttpProxyAgent from 'http-proxy-agent';
 import HttpsProxyAgent from 'https-proxy-agent';
 
-/*
-const HttpProxyAgent = require('http-proxy-agent');
-const HttpsProxyAgent = require('https-proxy-agent');
-*/
-
 /**
  * URLScheme for http requests
  * @param {Object} options
@@ -38,18 +33,16 @@ export default class HTTPScheme extends URLScheme {
   constructor(options = {}) {
     super();
 
-    this.options = {
-      headers: {}
-    };
+    Object.defineProperty(this, 'httpOptions', { value: { headers: {} } });
 
     if (options.proxy !== undefined) {
-      this.options.agent = this.isSecure
+      this.httpOptions.agent = this.isSecure
         ? new HttpsProxyAgent(options.proxy)
         : new HttpProxyAgent(options.proxy);
     }
 
     if (options.credentials !== undefined) {
-      this.options.headers.authorization =
+      this.httpOptions.headers.authorization =
         'Basic ' +
         btoa(options.credentials.user + ':' + options.credentials.password);
     }
@@ -64,8 +57,8 @@ export default class HTTPScheme extends URLScheme {
   async fetch(context, url, options = {}) {
     const response = await fetch(
       url,
-      Object.assign({}, options, this.options, {
-        headers: Object.assign({}, this.options.headers, options.headers)
+      Object.assign({}, options, this.httpOptions, {
+        headers: Object.assign({}, this.httpOptions.headers, options.headers)
       })
     );
 

@@ -96,5 +96,5 @@ test('basic auth', t => {
       user: 'yyy'
     }
   });
-  t.is(scheme.options.headers.authorization, 'Basic eXl5Onh4eA==');
+  t.is(scheme.httpOptions.headers.authorization, 'Basic eXl5Onh4eA==');
 });
