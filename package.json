@@ -32,7 +32,7 @@
     "btoa": "^1.1.2",
     "http-proxy-agent": "^2.0.0",
     "https-proxy-agent": "^2.1.1",
-    "node-fetch": "^2.0.0-alpha.9"
+    "node-fetch": "^2.0.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
