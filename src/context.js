@@ -17,6 +17,9 @@ export default class Context {
     this._base = base;
   }
 
+  /**
+   * @type {URL}
+   */
   get base() {
     return this._base;
   }
@@ -25,6 +28,10 @@ export default class Context {
     this._base = url;
   }
 
+  /**
+   * @param {URL} url
+   * @return {URL}
+   */
   resolve(url) {
     return this.resolver.resolve(new URL(url, this.base));
   }

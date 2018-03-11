@@ -32,6 +32,8 @@ resolves urls and provides fs like access
     -   [resolve](#resolve)
     -   [createContext](#createcontext)
 -   [Context](#context)
+    -   [base](#base)
+    -   [resolve](#resolve-1)
 -   [HTTPScheme](#httpscheme)
     -   [fetch](#fetch)
     -   [get](#get)
@@ -125,6 +127,16 @@ Holds context information
 **Properties**
 
 -   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** the current base URL
+
+### base
+
+### resolve
+
+**Parameters**
+
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+
+Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 ## HTTPScheme
 
