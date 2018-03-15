@@ -130,6 +130,8 @@ Holds context information
 
 ### base
 
+Type: [URL](https://developer.mozilla.org/docs/Web/API/URL/URL)
+
 ### resolve
 
 **Parameters**
