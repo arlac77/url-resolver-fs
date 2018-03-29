@@ -29,9 +29,9 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
-    "btoa": "^1.1.2",
+    "btoa": "^1.2.1",
     "http-proxy-agent": "^2.0.0",
-    "https-proxy-agent": "^2.1.1",
+    "https-proxy-agent": "^2.2.1",
     "node-fetch": "^2.1.2"
   },
   "devDependencies": {
