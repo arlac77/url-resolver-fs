@@ -4,7 +4,11 @@
   "main": "dist/module.js",
   "module": "src/module.js",
   "description": "resolves urls and provides fs like access",
-  "keywords": ["url", "resolver", "url-resolver-fs"],
+  "keywords": [
+    "url",
+    "resolver",
+    "url-resolver-fs"
+  ],
   "contributors": [
     {
       "name": "Markus Felten",
@@ -55,12 +59,21 @@
   },
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "ava": {
-    "files": ["build/*-test.js"],
-    "require": ["babel-register"]
+    "files": [
+      "build/*-test.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
   },
   "nyc": {
-    "include": ["build/*-test.js", "src/**/*.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "build/*-test.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./build/coverage"
   },
   "xo": {
