@@ -1,6 +1,6 @@
-import URLScheme from './url-scheme';
-import Context from './context';
-import URLMapperScheme from './url-mapper-scheme';
+import { URLScheme } from './url-scheme';
+import { Context } from './context';
+import { URLMapperScheme } from './url-mapper-scheme';
 import { URL } from 'url';
 
 function generate(name) {
@@ -19,7 +19,7 @@ function generate(name) {
  *
  * @property {Map<string,URLScheme>} schemes
  */
-export default class Resolver extends URLScheme {
+export class Resolver extends URLScheme {
   constructor(config = {}, predefined = []) {
     super();
 

@@ -1,4 +1,4 @@
-import URLScheme from './url-scheme';
+import { URLScheme } from './url-scheme';
 import fetch from 'node-fetch';
 import btoa from 'btoa';
 
@@ -15,7 +15,7 @@ import HttpsProxyAgent from 'https-proxy-agent';
  *
  * @property {Object} options
  */
-export default class HTTPScheme extends URLScheme {
+export class HTTPScheme extends URLScheme {
   /**
    * @return {string} 'http'
    */

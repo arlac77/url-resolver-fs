@@ -1,8 +1,8 @@
 import test from 'ava';
-import Resolver from '../src/resolver';
-import HTTPScheme from '../src/http-scheme';
-import URLMapperScheme from '../src/url-mapper-scheme';
-import Context from '../src/context';
+import { Resolver } from '../src/resolver';
+import { HTTPScheme } from '../src/http-scheme';
+import { URLMapperScheme } from '../src/url-mapper-scheme';
+import { Context } from '../src/context';
 
 import { URL } from 'url';
 

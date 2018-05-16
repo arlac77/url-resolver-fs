@@ -1,8 +1,8 @@
 import test from 'ava';
-import URLMapperScheme from '../src/url-mapper-scheme';
-import HTTPScheme from '../src/http-scheme';
+import { URLMapperScheme } from '../src/url-mapper-scheme';
+import { HTTPScheme } from '../src/http-scheme';
+import { Context } from '../src/context';
 import { URL } from 'url';
-import Context from '../src/context';
 
 test('prefix only simple map', t => {
   const mapper = new URLMapperScheme(

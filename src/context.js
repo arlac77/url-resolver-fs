@@ -1,4 +1,4 @@
-import URLScheme from './url-scheme';
+import { URLScheme } from './url-scheme';
 import { URL } from 'url';
 
 /**
@@ -8,7 +8,7 @@ import { URL } from 'url';
  *
  * @property {URL} base the current base URL
  */
-export default class Context {
+export class Context {
   constructor(resolver, base) {
     Object.defineProperty(this, 'resolver', {
       value: resolver

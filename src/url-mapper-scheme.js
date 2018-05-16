@@ -1,4 +1,4 @@
-import URLScheme from './url-scheme';
+import { URLScheme } from './url-scheme';
 import { URL } from 'url';
 
 function generate(name) {
@@ -21,7 +21,7 @@ function generate(name) {
  * @property {string} name of the newly created scheme
  * @property {string} prefix urls will be prefixed by this value
  */
-export default class URLMapperScheme extends URLScheme {
+export class URLMapperScheme extends URLScheme {
   constructor(baseScheme, name, prefix) {
     super();
 

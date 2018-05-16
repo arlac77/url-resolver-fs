@@ -5,7 +5,7 @@ function notImplementedError() {
 /**
  * Base class
  */
-export default class URLScheme {
+export class URLScheme {
   /**
    * supported methods
    * @return {string[]} 'get', 'stat', 'put', 'delete', 'list', 'history'

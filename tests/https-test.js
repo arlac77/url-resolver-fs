@@ -1,6 +1,6 @@
 import test from 'ava';
-import HTTPSScheme from '../src/https-scheme';
-import Context from '../src/context';
+import { HTTPSScheme } from '../src/https-scheme';
+import { Context } from '../src/context';
 import { URL } from 'url';
 
 test('has name', t => {

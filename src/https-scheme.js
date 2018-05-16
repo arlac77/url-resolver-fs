@@ -1,9 +1,9 @@
-import HTTPScheme from './http-scheme';
+import { HTTPScheme } from './http-scheme';
 
 /**
  * URLScheme for http requests
  */
-export default class HTTPSScheme extends HTTPScheme {
+export class HTTPSScheme extends HTTPScheme {
   /**
    * @return {string} 'https'
    */

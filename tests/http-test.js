@@ -1,6 +1,6 @@
 import test from 'ava';
-import HTTPScheme from '../src/http-scheme';
-import Context from '../src/context';
+import { HTTPScheme } from '../src/http-scheme';
+import { Context } from '../src/context';
 import { URL, parse } from 'url';
 
 const http = require('http');
