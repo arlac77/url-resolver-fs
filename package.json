@@ -1,6 +1,9 @@
 {
   "name": "url-resolver-fs",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/module.js",
   "module": "src/module.js",
   "description": "resolves urls and provides fs like access",
