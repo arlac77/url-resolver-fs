@@ -26,18 +26,33 @@ resolves urls and provides fs like access
 ### Table of Contents
 
 -   [Resolver](#resolver)
+    -   [Parameters](#parameters)
+    -   [Properties](#properties)
     -   [registerScheme](#registerscheme)
+        -   [Parameters](#parameters-1)
     -   [schemeForURL](#schemeforurl)
+        -   [Parameters](#parameters-2)
     -   [resolve](#resolve)
+        -   [Parameters](#parameters-3)
     -   [createContext](#createcontext)
+        -   [Parameters](#parameters-4)
 -   [Context](#context)
+    -   [Parameters](#parameters-5)
+    -   [Properties](#properties-1)
     -   [base](#base)
     -   [resolve](#resolve-1)
+        -   [Parameters](#parameters-6)
 -   [HTTPScheme](#httpscheme)
+    -   [Parameters](#parameters-7)
+    -   [Properties](#properties-2)
     -   [fetch](#fetch)
+        -   [Parameters](#parameters-8)
     -   [get](#get)
+        -   [Parameters](#parameters-9)
     -   [put](#put)
+        -   [Parameters](#parameters-10)
     -   [stat](#stat)
+        -   [Parameters](#parameters-11)
     -   [name](#name)
     -   [defaultPort](#defaultport)
 -   [HTTPSScheme](#httpsscheme)
@@ -49,16 +64,25 @@ resolves urls and provides fs like access
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
+        -   [Parameters](#parameters-12)
     -   [get](#get-1)
+        -   [Parameters](#parameters-13)
     -   [stat](#stat-1)
+        -   [Parameters](#parameters-14)
     -   [put](#put-1)
+        -   [Parameters](#parameters-15)
     -   [delete](#delete)
+        -   [Parameters](#parameters-16)
     -   [history](#history)
+        -   [Parameters](#parameters-17)
     -   [methods](#methods)
     -   [isSecure](#issecure-2)
     -   [defaultPort](#defaultport-3)
 -   [URLMapperScheme](#urlmapperscheme)
+    -   [Parameters](#parameters-18)
+    -   [Properties](#properties-3)
     -   [remap](#remap)
+        -   [Parameters](#parameters-19)
 
 ## Resolver
 
@@ -66,12 +90,12 @@ resolves urls and provides fs like access
 
 Holds a map of url-schemes and dispatches requests
 
-**Parameters**
+### Parameters
 
 -   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 -   `predefined` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
 
-**Properties**
+### Properties
 
 -   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
 
@@ -79,7 +103,7 @@ Holds a map of url-schemes and dispatches requests
 
 Register a scheme for later lookup
 
-**Parameters**
+#### Parameters
 
 -   `scheme` **[URLScheme](#urlscheme)** 
 
@@ -87,7 +111,7 @@ Register a scheme for later lookup
 
 Get URLScheme for a given url
 
-**Parameters**
+#### Parameters
 
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
@@ -98,7 +122,7 @@ Returns **[URLScheme](#urlscheme)** for a given url or undefined if nothing foun
 Resolve for a given url.
 Passes url to the registered scheme for remapping
 
-**Parameters**
+#### Parameters
 
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be resolved
 
@@ -108,7 +132,7 @@ Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** resolved u
 
 Create a new context
 
-**Parameters**
+#### Parameters
 
 -   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** url
 
@@ -118,12 +142,12 @@ Returns **[Context](#context)** newly created context
 
 Holds context information
 
-**Parameters**
+### Parameters
 
 -   `resolver` **[Resolver](#resolver)** 
 -   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
-**Properties**
+### Properties
 
 -   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** the current base URL
 
@@ -133,7 +157,7 @@ Type: [URL](https://developer.mozilla.org/docs/Web/API/URL/URL)
 
 ### resolve
 
-**Parameters**
+#### Parameters
 
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
@@ -145,7 +169,7 @@ Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)**
 
 URLScheme for http requests
 
-**Parameters**
+### Parameters
 
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
     -   `options.proxy` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
@@ -153,13 +177,13 @@ URLScheme for http requests
         -   `options.credentials.user` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
         -   `options.credentials.password` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-**Properties**
+### Properties
 
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ### fetch
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -171,7 +195,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Execute a GET request
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** source
@@ -183,7 +207,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Execute a PUT request
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** destination
@@ -194,7 +218,7 @@ Execute a PUT request
 
 Execute a HEAD request
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -251,7 +275,7 @@ Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 List collection (directory)
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -263,7 +287,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Get content of a url
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -275,7 +299,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Delivers meta information for a given url
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -287,7 +311,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Put the content of a stream to a given url
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -300,7 +324,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Deletes object at a given url
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -311,7 +335,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Deliver history information for a given url
 
-**Parameters**
+#### Parameters
 
 -   `context` **[Context](#context)** execution context
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
@@ -343,13 +367,13 @@ name: brs
 baseScheme: https
 prefix: <https://myserver.com/repo/>
 
-**Parameters**
+### Parameters
 
 -   `baseScheme` **[URLScheme](#urlscheme)** 
 -   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
 -   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
 
-**Properties**
+### Properties
 
 -   `baseScheme` **[URLScheme](#urlscheme)** 
 -   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
@@ -360,7 +384,7 @@ prefix: <https://myserver.com/repo/>
 Remapps url by separating scheme (and direct following '/') from suffix
 and appending the suffix (in front)
 
-**Parameters**
+#### Parameters
 
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be remapped
 
