@@ -3,22 +3,22 @@ import { HTTPSScheme } from '../src/https-scheme';
 import { Context } from '../src/context';
 import { URL } from 'url';
 
-test('has name', t => {
+test('https has name', t => {
   const scheme = new HTTPSScheme();
   t.is(scheme.name, 'https');
 });
 
-test('is secure', t => {
+test('https is secure', t => {
   const scheme = new HTTPSScheme();
   t.is(scheme.isSecure, true);
 });
 
-test('default port', t => {
+test('https default port', t => {
   const scheme = new HTTPSScheme();
   t.is(scheme.defaultPort, 443);
 });
 
-test.cb('can get', t => {
+test.cb('https can get', t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
 
@@ -34,7 +34,7 @@ test.cb('can get', t => {
   );
 });
 
-test('can stat', async t => {
+test('https can stat', async t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
   const response = await scheme.stat(
@@ -44,7 +44,7 @@ test('can stat', async t => {
   t.is(response.status, 200);
 });
 
-test('required auth failing stat', async t => {
+test('https required auth failing stat', async t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
 

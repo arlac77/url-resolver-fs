@@ -30,22 +30,22 @@ test.before(t => {
     .listen(PORT);
 });
 
-test('has name', t => {
+test('http has name', t => {
   const scheme = new HTTPScheme();
   t.is(scheme.name, 'http');
 });
 
-test('is secure', t => {
+test('http is secure', t => {
   const scheme = new HTTPScheme();
   t.is(scheme.isSecure, false);
 });
 
-test('default port', t => {
+test('http default port', t => {
   const scheme = new HTTPScheme();
   t.is(scheme.defaultPort, 80);
 });
 
-test.cb('can get', t => {
+test.cb('http can get', t => {
   const context = new Context();
   const scheme = new HTTPScheme();
 
@@ -61,7 +61,7 @@ test.cb('can get', t => {
   );
 });
 
-test.cb('can get with proxy', t => {
+test.cb('http can get with proxy', t => {
   const context = new Context();
   const scheme = new HTTPScheme({
     proxy: `http://localhost:${PORT}`
@@ -79,7 +79,7 @@ test.cb('can get with proxy', t => {
   );
 });
 
-test('can stat', async t => {
+test('http can stat', async t => {
   const context = new Context();
   const scheme = new HTTPScheme();
   const response = await scheme.stat(
@@ -89,7 +89,7 @@ test('can stat', async t => {
   t.is(response.status, 200);
 });
 
-test('basic auth', t => {
+test('http basic auth', t => {
   const scheme = new HTTPScheme({
     credentials: {
       password: 'xxx',
