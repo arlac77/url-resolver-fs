@@ -9,8 +9,8 @@ function generate(name) {
 
 /**
  * Remap url
- * brs:some/path  -> https://myserver.com/repo/some/path
- * name: brs
+ * special:some/path  -> https://myserver.com/repo/some/path
+ * name: special
  * baseScheme: https
  * prefix: https://myserver.com/repo/
  * @param {URLScheme} baseScheme
