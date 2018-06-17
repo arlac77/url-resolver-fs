@@ -1,7 +1,7 @@
 import { HTTPScheme } from './http-scheme';
 
 /**
- * URLScheme for http requests
+ * URLScheme for https requests
  */
 export class HTTPSScheme extends HTTPScheme {
   /**
