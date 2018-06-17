@@ -239,7 +239,7 @@ Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 **Extends HTTPScheme**
 
-URLScheme for http requests
+URLScheme for https requests
 
 ### name
 
@@ -362,8 +362,8 @@ Returns **mumber** undefined by default
 **Extends URLScheme**
 
 Remap url
-brs:some/path  -> <https://myserver.com/repo/some/path>
-name: brs
+special:some/path  -> <https://myserver.com/repo/some/path>
+name: special
 baseScheme: https
 prefix: <https://myserver.com/repo/>
 
