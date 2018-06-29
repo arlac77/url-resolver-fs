@@ -31,7 +31,7 @@ export class URLMapperScheme extends URLScheme {
       value: name
     }, 'prefix': {
       value: prefix
-    });
+    }});
 
     this.constructor.methods.forEach(name =>
       Object.defineProperty(this, name, {
