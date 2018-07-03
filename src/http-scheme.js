@@ -30,6 +30,25 @@ export class HTTPScheme extends URLScheme {
     return 80;
   }
 
+  /**
+   * Extract options suitable for the constructor
+   * form the given set of environment variables
+   * @param {Object} env
+   * @return {Object} undefined if no suitable environment variables have been found
+   */
+  static optionsFromEnvironment(env) {
+    if(env !== undefined) {
+      if(env.HTTP_PROXY !== undefined) {
+         return { proxy: env.HTTP_POXY };
+      }
+      if(env.HTTPS_PROXY !== undefined) {
+         return { proxy: env.HTTPS_POXY };
+      }
+    }
+    
+    return undefined;
+  }
+
   constructor(options = {}) {
     super();
 

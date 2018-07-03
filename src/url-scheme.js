@@ -29,6 +29,33 @@ export class URLScheme {
   }
 
   /**
+   * Default configuration options
+   * @return {Object}
+   */
+  static get defaultOptions() {
+    return {};
+  }
+
+  /**
+   * Extract options suitable for the constructor
+   * form the given set of environment variables
+   * @param {Object} env
+   * @return {Object} undefined if no suitable environment variables have been found
+   */
+  static optionsFromEnvironment(env) {
+    return undefined;
+  }
+
+  /**
+   * Pepare configuration by mixing together defaultOptions with actual options
+   * @param {Object} options raw config
+   * @return {Object} combined options
+   */
+  static options(options) {
+    return Object.assign( this.defaultOptions, options);
+  }
+  
+  /**
    * Should be overwritten to reflect the scheme name
    * @return {string} scheme name (defaults to the class name)
    */
