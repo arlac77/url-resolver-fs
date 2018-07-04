@@ -55,6 +55,8 @@ resolves urls and provides fs like access
         -   [Parameters](#parameters-11)
     -   [name](#name)
     -   [defaultPort](#defaultport)
+    -   [optionsFromEnvironment](#optionsfromenvironment)
+        -   [Parameters](#parameters-12)
 -   [HTTPSScheme](#httpsscheme)
     -   [name](#name-1)
     -   [defaultPort](#defaultport-1)
@@ -64,25 +66,30 @@ resolves urls and provides fs like access
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
-        -   [Parameters](#parameters-12)
-    -   [get](#get-1)
         -   [Parameters](#parameters-13)
-    -   [stat](#stat-1)
+    -   [get](#get-1)
         -   [Parameters](#parameters-14)
-    -   [put](#put-1)
+    -   [stat](#stat-1)
         -   [Parameters](#parameters-15)
-    -   [delete](#delete)
+    -   [put](#put-1)
         -   [Parameters](#parameters-16)
-    -   [history](#history)
+    -   [delete](#delete)
         -   [Parameters](#parameters-17)
+    -   [history](#history)
+        -   [Parameters](#parameters-18)
     -   [methods](#methods)
     -   [isSecure](#issecure-2)
     -   [defaultPort](#defaultport-3)
+    -   [defaultOptions](#defaultoptions)
+    -   [optionsFromEnvironment](#optionsfromenvironment-1)
+        -   [Parameters](#parameters-19)
+    -   [options](#options)
+        -   [Parameters](#parameters-20)
 -   [URLMapperScheme](#urlmapperscheme)
-    -   [Parameters](#parameters-18)
+    -   [Parameters](#parameters-21)
     -   [Properties](#properties-3)
     -   [remap](#remap)
-        -   [Parameters](#parameters-19)
+        -   [Parameters](#parameters-22)
 
 ## Resolver
 
@@ -93,7 +100,8 @@ Holds a map of url-schemes and dispatches requests
 ### Parameters
 
 -   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
--   `predefined` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
+-   `predefinedConstructors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
+-   `env`   (optional, default `{}`)
 
 ### Properties
 
@@ -235,6 +243,17 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 80 the http default port
 
+### optionsFromEnvironment
+
+Extract options suitable for the constructor
+form the given set of environment variables
+
+#### Parameters
+
+-   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** undefined if no suitable environment variables have been found
+
 ## HTTPSScheme
 
 **Extends HTTPScheme**
@@ -356,6 +375,33 @@ Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 ### defaultPort
 
 Returns **mumber** undefined by default
+
+### defaultOptions
+
+Default configuration options
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+### optionsFromEnvironment
+
+Extract options suitable for the constructor
+form the given set of environment variables
+
+#### Parameters
+
+-   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** undefined if no suitable environment variables have been found
+
+### options
+
+Pepare configuration by mixing together defaultOptions with actual options
+
+#### Parameters
+
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** combined options
 
 ## URLMapperScheme
 
