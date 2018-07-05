@@ -25,13 +25,17 @@ export class URLMapperScheme extends URLScheme {
   constructor(baseScheme, name, prefix) {
     super();
 
-    Object.defineProperties(this, {'baseScheme': {
-      value: baseScheme
-    },'name': {
-      value: name
-    }, 'prefix': {
-      value: prefix
-    }});
+    Object.defineProperties(this, {
+      baseScheme: {
+        value: baseScheme
+      },
+      name: {
+        value: name
+      },
+      prefix: {
+        value: prefix
+      }
+    });
 
     this.constructor.methods.forEach(name =>
       Object.defineProperty(this, name, {

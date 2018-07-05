@@ -62,34 +62,36 @@ resolves urls and provides fs like access
     -   [defaultPort](#defaultport-1)
     -   [isSecure](#issecure)
 -   [URLScheme](#urlscheme)
+    -   [Parameters](#parameters-13)
+    -   [Properties](#properties-3)
     -   [name](#name-2)
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
-        -   [Parameters](#parameters-13)
-    -   [get](#get-1)
         -   [Parameters](#parameters-14)
-    -   [stat](#stat-1)
+    -   [get](#get-1)
         -   [Parameters](#parameters-15)
-    -   [put](#put-1)
+    -   [stat](#stat-1)
         -   [Parameters](#parameters-16)
-    -   [delete](#delete)
+    -   [put](#put-1)
         -   [Parameters](#parameters-17)
-    -   [history](#history)
+    -   [delete](#delete)
         -   [Parameters](#parameters-18)
+    -   [history](#history)
+        -   [Parameters](#parameters-19)
     -   [methods](#methods)
     -   [isSecure](#issecure-2)
     -   [defaultPort](#defaultport-3)
     -   [defaultOptions](#defaultoptions)
     -   [optionsFromEnvironment](#optionsfromenvironment-1)
-        -   [Parameters](#parameters-19)
-    -   [options](#options)
         -   [Parameters](#parameters-20)
+    -   [options](#options)
+        -   [Parameters](#parameters-21)
 -   [URLMapperScheme](#urlmapperscheme)
-    -   [Parameters](#parameters-21)
-    -   [Properties](#properties-3)
+    -   [Parameters](#parameters-22)
+    -   [Properties](#properties-4)
     -   [remap](#remap)
-        -   [Parameters](#parameters-22)
+        -   [Parameters](#parameters-23)
 
 ## Resolver
 
@@ -274,7 +276,13 @@ Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ## URLScheme
 
-Base class
+### Parameters
+
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
+
+### Properties
+
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
 
 ### name
 

@@ -3,7 +3,9 @@ function notImplementedError() {
 }
 
 /**
- * Base class
+ * @param {Object} options raw config
+ *
+ * @property {Object} options raw config
  */
 export class URLScheme {
   /**
@@ -52,9 +54,13 @@ export class URLScheme {
    * @return {Object} combined options
    */
   static options(options) {
-    return Object.assign( this.defaultOptions, options);
+    return Object.assign(this.defaultOptions, options);
   }
-  
+
+  constructor(options) {
+    Object.defineProperty(this, 'options', { value: options });
+  }
+
   /**
    * Should be overwritten to reflect the scheme name
    * @return {string} scheme name (defaults to the class name)

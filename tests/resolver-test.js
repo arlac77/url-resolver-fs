@@ -1,6 +1,7 @@
 import test from 'ava';
 import { Resolver } from '../src/resolver';
 import { HTTPScheme } from '../src/http-scheme';
+import { HTTPSScheme } from '../src/https-scheme';
 import { URLMapperScheme } from '../src/url-mapper-scheme';
 import { Context } from '../src/context';
 import { URL } from 'url';
@@ -39,11 +40,19 @@ test('register schemes from config', t => {
         }
       }
     },
-    [HTTPScheme]
+    [HTTPScheme, HTTPSScheme],
+    { HTTP_PROXY: 'http://myproxy.com:3128/' }
   );
 
-  t.is(resolver.schemes.get('http').name, 'http');
   t.is(resolver.schemes.get('tmp').name, 'tmp');
+
+  const http = resolver.schemes.get('http');
+  t.is(http.name, 'http');
+  t.is(http.options.proxy, 'http://myproxy.com:3128/');
+
+  const https = resolver.schemes.get('https');
+  t.is(https.name, 'https');
+  t.is(https.options.proxy, 'http://myproxy.com:3128/');
 });
 
 test('handles unknown', t => {

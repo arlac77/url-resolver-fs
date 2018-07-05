@@ -37,20 +37,20 @@ export class HTTPScheme extends URLScheme {
    * @return {Object} undefined if no suitable environment variables have been found
    */
   static optionsFromEnvironment(env) {
-    if(env !== undefined) {
-      if(env.HTTP_PROXY !== undefined) {
-         return { proxy: env.HTTP_POXY };
+    if (env !== undefined) {
+      if (env.HTTP_PROXY !== undefined) {
+        return { proxy: env.HTTP_PROXY };
       }
-      if(env.HTTPS_PROXY !== undefined) {
-         return { proxy: env.HTTPS_POXY };
+      if (env.HTTPS_PROXY !== undefined) {
+        return { proxy: env.HTTPS_PROXY };
       }
     }
-    
+
     return undefined;
   }
 
   constructor(options = {}) {
-    super();
+    super(options);
 
     Object.defineProperty(this, 'httpOptions', { value: { headers: {} } });
 

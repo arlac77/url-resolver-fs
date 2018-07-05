@@ -21,15 +21,18 @@ function generate(name) {
  */
 export class Resolver extends URLScheme {
   constructor(config = {}, predefinedConstructors = [], env = {}) {
-    super();
+    super(config);
 
     Object.defineProperty(this, 'schemes', {
       value: new Map()
     });
 
     predefinedConstructors.forEach(schemeConstructor => {
-      const scheme = new schemeConstructor(schemeConstructor.options(schemeConstructor.optionsFromEnvironment(env)));
-      this.registerScheme(scheme); });
+      const scheme = new schemeConstructor(
+        schemeConstructor.options(schemeConstructor.optionsFromEnvironment(env))
+      );
+      this.registerScheme(scheme);
+    });
 
     if (config.schemes !== undefined) {
       Object.keys(config.schemes).forEach(name => {
