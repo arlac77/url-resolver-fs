@@ -49,9 +49,7 @@ export class HTTPScheme extends URLScheme {
     return undefined;
   }
 
-  constructor(options = {}) {
-    super(options);
-
+  setOptions(options = {}) {
     Object.defineProperty(this, 'httpOptions', { value: { headers: {} } });
 
     if (options.proxy !== undefined) {
@@ -65,13 +63,8 @@ export class HTTPScheme extends URLScheme {
         'Basic ' +
         btoa(options.credentials.user + ':' + options.credentials.password);
     }
-  }
 
-  toJSON() {
-    return {
-      name: this.name,
-      options: this.options
-    };
+    super.setOptions(options);
   }
 
   /**

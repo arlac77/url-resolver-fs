@@ -58,6 +58,10 @@ export class URLScheme {
   }
 
   constructor(options) {
+    this.setOptions(options);
+  }
+
+  setOptions(options) {
     Object.defineProperty(this, 'options', { value: options });
   }
 
@@ -85,6 +89,14 @@ export class URLScheme {
 
   toString() {
     return this.name;
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      secure: tihs.isSecure,
+      options: this.options
+    };
   }
 
   /**

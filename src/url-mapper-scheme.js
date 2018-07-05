@@ -44,6 +44,14 @@ export class URLMapperScheme extends URLScheme {
     );
   }
 
+  toJSON() {
+    return {
+      name: this.name,
+      prefix: this.prefix.toString(),
+      baseScheme: this.baseScheme.name
+    };
+  }
+
   /**
    * Remapps url by separating scheme (and direct following '/') from suffix
    * and appending the suffix (in front)

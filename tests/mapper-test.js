@@ -16,6 +16,19 @@ test('prefix only simple map', t => {
   );
 });
 
+test('prefix only simple map JSON', t => {
+  const mapper = new URLMapperScheme(
+    new HTTPScheme(),
+    'myscheme',
+    new URL('http://www.heise.de/')
+  );
+  t.deepEqual(mapper.toJSON(), {
+    name: 'myscheme',
+    baseScheme: 'http',
+    prefix: 'http://www.heise.de/'
+  });
+});
+
 test.cb('can get', t => {
   const context = new Context();
   const mapper = new URLMapperScheme(

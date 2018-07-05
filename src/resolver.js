@@ -54,7 +54,6 @@ export class Resolver extends URLScheme {
    */
   registerScheme(scheme) {
     this.schemes.set(scheme.name, scheme);
-    this.schemes.set(scheme.name + ':', scheme);
   }
 
   /**
@@ -63,7 +62,13 @@ export class Resolver extends URLScheme {
    * @return {URLScheme} for a given url or undefined if nothing found
    */
   schemeForURL(url) {
-    return this.schemes.get(url.protocol);
+    const protocol = url.protocol;
+
+    if (protocol === undefined) {
+      return undefined;
+    }
+
+    return this.schemes.get(protocol.replace(/:/, ''));
   }
 
   /**
