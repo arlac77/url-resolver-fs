@@ -67,6 +67,13 @@ export class HTTPScheme extends URLScheme {
     }
   }
 
+  toJSON() {
+    return {
+      name: this.name,
+      options: this.options
+    };
+  }
+
   /**
    * @param {Context} context execution context
    * @param {URL} url
