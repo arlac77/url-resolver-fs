@@ -45,6 +45,11 @@ test('http default port', t => {
   t.is(scheme.defaultPort, 80);
 });
 
+test('http toJSON', t => {
+  const scheme = new HTTPScheme();
+  t.deepEqual(scheme.toJSON(), { name: 'http', secure: false, options: {} });
+});
+
 test.cb('http can get', t => {
   const context = new Context();
   const scheme = new HTTPScheme();

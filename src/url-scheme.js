@@ -94,7 +94,7 @@ export class URLScheme {
   toJSON() {
     return {
       name: this.name,
-      secure: tihs.isSecure,
+      secure: this.isSecure,
       options: this.options
     };
   }
