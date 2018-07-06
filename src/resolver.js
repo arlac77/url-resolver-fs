@@ -16,6 +16,7 @@ function generate(name) {
  * Holds a map of url-schemes and dispatches requests
  * @param {Object} config
  * @param {URLScheme[]} predefinedConstructors schemes to start with
+ * @param {Object} env environment variables as present in process.env
  *
  * @property {Map<string,URLScheme>} schemes
  */
@@ -41,7 +42,8 @@ export class Resolver extends URLScheme {
           new URLMapperScheme(
             this.schemes.get(scheme.base),
             name,
-            scheme.prefix
+            scheme.prefix,
+            scheme.options
           )
         );
       });

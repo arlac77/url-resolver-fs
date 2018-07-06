@@ -36,6 +36,7 @@ test('register schemes from config', t => {
       schemes: {
         tmp: {
           base: 'http',
+          options: { proxy: 'http://localhost:3128' },
           prefix: 'http:///tmp'
         }
       }
@@ -44,7 +45,10 @@ test('register schemes from config', t => {
     { HTTP_PROXY: 'http://myproxy.com:3128/' }
   );
 
-  t.is(resolver.schemes.get('tmp').name, 'tmp');
+  const ts = resolver.schemes.get('tmp');
+
+  t.is(ts.name, 'tmp');
+  t.is(ts.options.proxy, 'http://localhost:3128');
 
   const http = resolver.schemes.get('http');
   t.is(http.name, 'http');

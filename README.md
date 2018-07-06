@@ -103,7 +103,7 @@ Holds a map of url-schemes and dispatches requests
 
 -   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 -   `predefinedConstructors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
--   `env`   (optional, default `{}`)
+-   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** environment variables as present in process.env (optional, default `{}`)
 
 ### Properties
 
@@ -426,6 +426,7 @@ prefix: <https://myserver.com/repo/>
 -   `baseScheme` **[URLScheme](#urlscheme)** 
 -   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
 -   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
+-   `options`  
 
 ### Properties
 

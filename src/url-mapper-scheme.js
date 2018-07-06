@@ -22,8 +22,8 @@ function generate(name) {
  * @property {string} prefix urls will be prefixed by this value
  */
 export class URLMapperScheme extends URLScheme {
-  constructor(baseScheme, name, prefix) {
-    super();
+  constructor(baseScheme, name, prefix, options) {
+    super(options);
 
     Object.defineProperties(this, {
       baseScheme: {
