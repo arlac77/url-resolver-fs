@@ -6,6 +6,7 @@ import { URL } from 'url';
  * @param {Resolver} resolver
  * @param {URL} base
  *
+ * @property {Resolver} resolver
  * @property {URL} base the current base URL
  */
 export class Context {
@@ -34,6 +35,12 @@ export class Context {
    */
   resolve(url) {
     return this.resolver.resolve(new URL(url, this.base));
+  }
+
+  async handleAuthorization(response, scheme, url, options) {
+    console.log(`handle authorization ${url}`);
+
+    return options;
   }
 }
 

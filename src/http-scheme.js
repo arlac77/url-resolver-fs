@@ -74,21 +74,29 @@ export class HTTPScheme extends URLScheme {
    * @return {Promise} fetch result
    */
   async fetch(context, url, options = {}) {
-    const response = await fetch(
-      url,
-      Object.assign({}, options, this.httpOptions, {
-        headers: Object.assign({}, this.httpOptions.headers, options.headers)
-      })
-    );
+    for (let n = 0; n < 2; n++) {
+      const response = await fetch(
+        url,
+        Object.assign({}, options, this.httpOptions, {
+          headers: Object.assign({}, this.httpOptions.headers, options.headers)
+        })
+      );
 
-    if (response.status < 200 || response.status >= 300) {
-      switch (response.status) {
-        case 401:
-        /*console.log('Auth required');
-          break;
-          */
-        default:
-          throw new Error(response);
+      if (response.status < 200 || response.status >= 300) {
+        switch (response.status) {
+          case 401:
+            options = await context.handleAuthorization(
+              response,
+              this,
+              url,
+              options
+            );
+            break;
+          default:
+            throw new Error(response);
+        }
+      } else {
+        return response;
       }
     }
 
