@@ -2,32 +2,29 @@ import test from 'ava';
 import { HTTPScheme } from '../src/http-scheme';
 import { Context } from '../src/context';
 import { URL, parse } from 'url';
-
-const http = require('http');
+import { createServer, request } from 'http';
 
 const PORT = 8888;
 
 test.before(t => {
-  http
-    .createServer((request, response) => {
-      const [host, port] = request.headers.host.split(/:/);
-      const { pathname } = parse(request.url);
+  createServer((req, response) => {
+    const [host, port] = req.headers.host.split(/:/);
+    const { pathname } = parse(req.url);
 
-      const r = {
-        host,
-        port,
-        path: pathname,
-        method: request.method,
-        headers: request.headers
-      };
+    const r = {
+      host,
+      port,
+      path: pathname,
+      method: req.method,
+      headers: req.headers
+    };
 
-      const proxyRequest = http.request(r, proxyResponse => {
-        response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
-        proxyResponse.pipe(response);
-      });
-      request.pipe(proxyRequest);
-    })
-    .listen(PORT);
+    const proxyRequest = request(r, proxyResponse => {
+      response.writeHead(proxyResponse.statusCode, proxyResponse.headers);
+      proxyResponse.pipe(response);
+    });
+    req.pipe(proxyRequest);
+  }).listen(PORT);
 });
 
 test('http has name', t => {

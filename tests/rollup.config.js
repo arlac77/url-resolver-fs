@@ -7,6 +7,7 @@ export default {
     'ava',
     'btoa',
     'url',
+    'http',
     'node-fetch',
     'http-proxy-agent',
     'https-proxy-agent'
