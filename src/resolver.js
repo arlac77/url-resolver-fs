@@ -86,7 +86,7 @@ export class Resolver extends URLScheme {
 
   /**
    * Create a new context
-   * @param {URL} base  url
+   * @param {URL} base url
    * @return {Context} newly created context
    */
   createContext(base) {

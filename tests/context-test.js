@@ -2,8 +2,7 @@ import test from 'ava';
 import { Resolver } from '../src/resolver';
 import { Context } from '../src/context';
 import { HTTPScheme } from '../src/http-scheme';
-
-const { URL } = require('url');
+import { URL } from 'url';
 
 test('context from resolver', t => {
   const resolver = new Resolver();
