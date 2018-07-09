@@ -37,14 +37,24 @@ export class Resolver extends URLScheme {
 
     if (config.schemes !== undefined) {
       Object.keys(config.schemes).forEach(name => {
-        const scheme = config.schemes[name];
+        const schemeConfig = config.schemes[name];
+
+        const scheme =
+          schemeConfig.options === undefined
+            ? this.schemes.get(schemeConfig.base)
+            : new (predefinedConstructors.find(
+                pc => pc.name === schemeConfig.base
+              ))(schemeConfig.options);
+
         this.registerScheme(
-          new URLMapperScheme(
-            this.schemes.get(scheme.base),
-            name,
-            scheme.prefix,
-            scheme.options
-          )
+          schemeConfig.prefix === undefined
+            ? scheme
+            : new URLMapperScheme(
+                scheme,
+                name,
+                schemeConfig.prefix,
+                schemeConfig.options
+              )
         );
       });
     }
