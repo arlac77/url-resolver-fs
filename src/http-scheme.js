@@ -82,7 +82,14 @@ export class HTTPScheme extends URLScheme {
     );
 
     if (response.status < 200 || response.status >= 300) {
-      throw new Error(response);
+      switch (response.status) {
+        case 401:
+        /*console.log('Auth required');
+          break;
+          */
+        default:
+          throw new Error(response);
+      }
     }
 
     return response;
