@@ -62,4 +62,8 @@ export class URLMapperScheme extends URLScheme {
     const m = url.href.match(/^[^:]+:(\/\/)?(.*)/);
     return m ? new URL(this.prefix + m[2]) : url;
   }
+
+  async provideCredentials(...args) {
+    return this.baseScheme.provideCredentials(...args);
+  }
 }

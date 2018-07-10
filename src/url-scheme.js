@@ -164,4 +164,14 @@ export class URLScheme {
   async *history(context, url, options) {
     return notImplementedError();
   }
+
+  /**
+   * Called when authorization is required for a given realm
+   * @param {Context} context execution context
+   * @param {string} realm requested realm
+   * @return {Promise<Object>} holding the credentials
+   */
+  async provideCredentials(context, realm) {
+    return context.provideCredentials(realm);
+  }
 }

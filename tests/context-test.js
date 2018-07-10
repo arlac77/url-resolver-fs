@@ -7,7 +7,9 @@ import { URL } from 'url';
 test('context from resolver', t => {
   const resolver = new Resolver();
 
-  const context = resolver.createContext(new URL('http://www.heise.de'));
+  const context = resolver.createContext({
+    base: new URL('http://www.heise.de')
+  });
 
   t.is(
     context.resolve('index.html').href,
@@ -20,7 +22,9 @@ test.cb('context can get relative', t => {
   const http = new HTTPScheme();
   resolver.registerScheme(http);
 
-  const context = resolver.createContext(new URL('http://www.heise.de'));
+  const context = resolver.createContext({
+    base: new URL('http://www.heise.de')
+  });
 
   t.plan(1);
 
@@ -39,7 +43,9 @@ test('context can stat relative', async t => {
   const http = new HTTPScheme();
   resolver.registerScheme(http);
 
-  const context = resolver.createContext(new URL('http://www.heise.de'));
+  const context = resolver.createContext({
+    base: new URL('http://www.heise.de')
+  });
   const response = await context.stat('index.html');
 
   t.is(response.status, 200);

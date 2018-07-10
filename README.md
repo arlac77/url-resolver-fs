@@ -36,62 +36,70 @@ resolves urls and provides fs like access
         -   [Parameters](#parameters-3)
     -   [createContext](#createcontext)
         -   [Parameters](#parameters-4)
+    -   [provideCredentials](#providecredentials)
+        -   [Parameters](#parameters-5)
 -   [Context](#context)
-    -   [Parameters](#parameters-5)
+    -   [Parameters](#parameters-6)
     -   [Properties](#properties-1)
     -   [base](#base)
     -   [resolve](#resolve-1)
-        -   [Parameters](#parameters-6)
+        -   [Parameters](#parameters-7)
+    -   [provideCredentials](#providecredentials-1)
+        -   [Parameters](#parameters-8)
 -   [HTTPScheme](#httpscheme)
-    -   [Parameters](#parameters-7)
+    -   [Parameters](#parameters-9)
     -   [Properties](#properties-2)
     -   [fetch](#fetch)
-        -   [Parameters](#parameters-8)
-    -   [get](#get)
-        -   [Parameters](#parameters-9)
-    -   [put](#put)
         -   [Parameters](#parameters-10)
-    -   [stat](#stat)
+    -   [get](#get)
         -   [Parameters](#parameters-11)
+    -   [put](#put)
+        -   [Parameters](#parameters-12)
+    -   [stat](#stat)
+        -   [Parameters](#parameters-13)
+    -   [authorizationHeader](#authorizationheader)
+        -   [Parameters](#parameters-14)
     -   [name](#name)
     -   [defaultPort](#defaultport)
     -   [optionsFromEnvironment](#optionsfromenvironment)
-        -   [Parameters](#parameters-12)
+        -   [Parameters](#parameters-15)
 -   [HTTPSScheme](#httpsscheme)
     -   [name](#name-1)
     -   [defaultPort](#defaultport-1)
     -   [isSecure](#issecure)
 -   [URLScheme](#urlscheme)
-    -   [Parameters](#parameters-13)
+    -   [Parameters](#parameters-16)
     -   [Properties](#properties-3)
     -   [name](#name-2)
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
-        -   [Parameters](#parameters-14)
-    -   [get](#get-1)
-        -   [Parameters](#parameters-15)
-    -   [stat](#stat-1)
-        -   [Parameters](#parameters-16)
-    -   [put](#put-1)
         -   [Parameters](#parameters-17)
-    -   [delete](#delete)
+    -   [get](#get-1)
         -   [Parameters](#parameters-18)
-    -   [history](#history)
+    -   [stat](#stat-1)
         -   [Parameters](#parameters-19)
+    -   [put](#put-1)
+        -   [Parameters](#parameters-20)
+    -   [delete](#delete)
+        -   [Parameters](#parameters-21)
+    -   [history](#history)
+        -   [Parameters](#parameters-22)
+    -   [provideCredentials](#providecredentials-2)
+        -   [Parameters](#parameters-23)
     -   [methods](#methods)
     -   [isSecure](#issecure-2)
     -   [defaultPort](#defaultport-3)
     -   [defaultOptions](#defaultoptions)
     -   [optionsFromEnvironment](#optionsfromenvironment-1)
-        -   [Parameters](#parameters-20)
+        -   [Parameters](#parameters-24)
     -   [options](#options)
-        -   [Parameters](#parameters-21)
+        -   [Parameters](#parameters-25)
 -   [URLMapperScheme](#urlmapperscheme)
-    -   [Parameters](#parameters-22)
+    -   [Parameters](#parameters-26)
     -   [Properties](#properties-4)
     -   [remap](#remap)
-        -   [Parameters](#parameters-23)
+        -   [Parameters](#parameters-27)
 
 ## Resolver
 
@@ -144,9 +152,19 @@ Create a new context
 
 #### Parameters
 
--   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** url
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** context
 
 Returns **[Context](#context)** newly created context
+
+### provideCredentials
+
+Called when authorization is required
+
+#### Parameters
+
+-   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** holding the credentials
 
 ## Context
 
@@ -155,10 +173,12 @@ Holds context information
 ### Parameters
 
 -   `resolver` **[Resolver](#resolver)** 
--   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 
 ### Properties
 
+-   `resolver` **[Resolver](#resolver)** 
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 -   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** the current base URL
 
 ### base
@@ -172,6 +192,17 @@ Type: [URL](https://developer.mozilla.org/docs/Web/API/URL/URL)
 -   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+
+### provideCredentials
+
+Called when authorization is required for a given realm
+asks options.provideCredentials() and resolver.provideCredentials()
+
+#### Parameters
+
+-   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** credentials for the given realm
 
 ## HTTPScheme
 
@@ -236,6 +267,17 @@ Execute a HEAD request
     -   `options.method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** response object
+
+### authorizationHeader
+
+inserts the authorization data into the reguest header
+
+#### Parameters
+
+-   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** http
+-   `credentials` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if auth info has been written into headers
 
 ### name
 
@@ -369,6 +411,17 @@ Deliver history information for a given url
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the history of the object at the given url
+
+### provideCredentials
+
+Called when authorization is required for a given realm
+
+#### Parameters
+
+-   `context` **[Context](#context)** execution context
+-   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** holding the credentials
 
 ### methods
 

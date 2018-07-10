@@ -96,11 +96,20 @@ export class Resolver extends URLScheme {
 
   /**
    * Create a new context
-   * @param {URL} base url
+   * @param {Object} options context
    * @return {Context} newly created context
    */
-  createContext(base) {
-    return new Context(this, base);
+  createContext(options) {
+    return new Context(this, options);
+  }
+
+  /**
+   * Called when authorization is required
+   * @param {string} realm requested realm
+   * @return {Object} holding the credentials
+   */
+  async provideCredentials(realm) {
+    return undefined;
   }
 }
 

@@ -74,22 +74,22 @@ export class HTTPScheme extends URLScheme {
    * @return {Promise} fetch result
    */
   async fetch(context, url, options = {}) {
-    for (let n = 0; n < 2; n++) {
-      const response = await fetch(
-        url,
-        Object.assign({}, options, this.httpOptions, {
-          headers: Object.assign({}, this.httpOptions.headers, options.headers)
-        })
-      );
+    options = Object.assign({}, options, this.httpOptions, {
+      headers: Object.assign({}, this.httpOptions.headers, options.headers)
+    });
+
+    for (let n = 1; n <= 2; n++) {
+      const response = await fetch(url, options);
 
       if (response.status < 200 || response.status >= 300) {
         switch (response.status) {
           case 401:
-            options = await context.handleAuthorization(
-              response,
-              this,
-              url,
-              options
+            this.authorizationHeader(
+              options.headers,
+              await this.provideCredentials(
+                context,
+                response.headers.get('WWW-Authenticate')
+              )
             );
             break;
           default:
@@ -155,5 +155,27 @@ export class HTTPScheme extends URLScheme {
         options
       )
     );
+  }
+
+  /**
+   * inserts the authorization data into the reguest header
+   * @param {Object} headers http
+   * @param {Object} credentials
+   *
+   * @return {boolean} true if auth info has been written into headers
+   */
+  authorizationHeader(headers, credentials) {
+    if (credentials !== undefined) {
+      if (
+        credentials.user !== undefined &&
+        credentials.password !== undefined
+      ) {
+        headers.authorization =
+          'Basic ' + btoa(credentials.user + ':' + credentials.password);
+        return true;
+      }
+    }
+
+    return false;
   }
 }
