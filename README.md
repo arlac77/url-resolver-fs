@@ -63,43 +63,45 @@ resolves urls and provides fs like access
     -   [defaultPort](#defaultport)
     -   [optionsFromEnvironment](#optionsfromenvironment)
         -   [Parameters](#parameters-15)
+-   [parseAuthenticate](#parseauthenticate)
+    -   [Parameters](#parameters-16)
 -   [HTTPSScheme](#httpsscheme)
     -   [name](#name-1)
     -   [defaultPort](#defaultport-1)
     -   [isSecure](#issecure)
 -   [URLScheme](#urlscheme)
-    -   [Parameters](#parameters-16)
+    -   [Parameters](#parameters-17)
     -   [Properties](#properties-3)
     -   [name](#name-2)
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
-        -   [Parameters](#parameters-17)
-    -   [get](#get-1)
         -   [Parameters](#parameters-18)
-    -   [stat](#stat-1)
+    -   [get](#get-1)
         -   [Parameters](#parameters-19)
-    -   [put](#put-1)
+    -   [stat](#stat-1)
         -   [Parameters](#parameters-20)
-    -   [delete](#delete)
+    -   [put](#put-1)
         -   [Parameters](#parameters-21)
-    -   [history](#history)
+    -   [delete](#delete)
         -   [Parameters](#parameters-22)
-    -   [provideCredentials](#providecredentials-2)
+    -   [history](#history)
         -   [Parameters](#parameters-23)
+    -   [provideCredentials](#providecredentials-2)
+        -   [Parameters](#parameters-24)
     -   [methods](#methods)
     -   [isSecure](#issecure-2)
     -   [defaultPort](#defaultport-3)
     -   [defaultOptions](#defaultoptions)
     -   [optionsFromEnvironment](#optionsfromenvironment-1)
-        -   [Parameters](#parameters-24)
-    -   [options](#options)
         -   [Parameters](#parameters-25)
+    -   [options](#options)
+        -   [Parameters](#parameters-26)
 -   [URLMapperScheme](#urlmapperscheme)
-    -   [Parameters](#parameters-26)
+    -   [Parameters](#parameters-27)
     -   [Properties](#properties-4)
     -   [remap](#remap)
-        -   [Parameters](#parameters-27)
+        -   [Parameters](#parameters-28)
 
 ## Resolver
 
@@ -297,6 +299,18 @@ form the given set of environment variables
 -   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** undefined if no suitable environment variables have been found
+
+## parseAuthenticate
+
+-   **See: rfc7235**
+
+Parse WWW-Authenticate header and provide parts as object
+
+### Parameters
+
+-   `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** http header 'WWW-Authenticate'
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ## HTTPSScheme
 
