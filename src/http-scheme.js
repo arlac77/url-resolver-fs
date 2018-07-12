@@ -1,4 +1,6 @@
 import { URLScheme } from './url-scheme';
+import { parseAuthenticate } from './util';
+
 import fetch from 'node-fetch';
 import btoa from 'btoa';
 
@@ -88,7 +90,7 @@ export class HTTPScheme extends URLScheme {
               options.headers,
               await this.provideCredentials(
                 context,
-                response.headers.get('WWW-Authenticate')
+                parseAuthenticate(response.headers.get('WWW-Authenticate'))
               )
             );
             break;
