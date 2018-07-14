@@ -1,7 +1,7 @@
 import test from 'ava';
 import { parseAuthenticate } from '../src/util';
 
-test.only('parseAuthenticate basic', t => {
+test('parseAuthenticate Basic', t => {
   const auth = parseAuthenticate(`Basic realm="Secure Area"`);
 
   t.deepEqual(auth, {
@@ -11,7 +11,7 @@ test.only('parseAuthenticate basic', t => {
   });
 });
 
-test.only('parseAuthenticate digest', t => {
+test('parseAuthenticate Digest', t => {
   const auth = parseAuthenticate(
     `Digest realm="testrealm@host.com" qop="auth,auth-int" nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093" opaque="5ccc069c403ebaf9f0171e9517f40e41"`
   );
@@ -26,9 +26,9 @@ test.only('parseAuthenticate digest', t => {
   });
 });
 
-test.skip('parseAuthenticate Newauth', t => {
+test.skip('parseAuthenticate several algorithms', t => {
   const auth = parseAuthenticate(
-    `Newauth realm="apps", type=1, title="Login to \"apps\"", Basic realm="simple"`
+    `Newauth realm="apps", type=1, title="Login to apps", Basic realm="simple"`
   );
 
   t.deepEqual(auth, {
@@ -37,13 +37,23 @@ test.skip('parseAuthenticate Newauth', t => {
       type: '1'
     },
     Basic: {
-      title: 'Login to "apps"',
+      title: 'Login to apps',
       realm: 'simple'
     }
   });
 });
 
-test.skip('parseAuthenticate Digest', t => {
+test.skip('parseAuthenticate quoted value with escapes', t => {
+  const auth = parseAuthenticate(`Basic realm="simple \"apps\""`);
+
+  t.deepEqual(auth, {
+    Basic: {
+      realm: 'simple "apps"'
+    }
+  });
+});
+
+test.skip('parseAuthenticate Digest none relam attribute first', t => {
   const auth = parseAuthenticate(`Digest username="Mufasa"
         realm="testrealm@host.com"
         nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093"

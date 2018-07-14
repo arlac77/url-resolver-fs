@@ -92,7 +92,7 @@ test('http can stat', async t => {
 });
 
 test('http addAuthorizationHeader', t => {
-  const scheme = new HTTPScheme({});
+  const scheme = new HTTPScheme();
   const headers = {};
 
   t.is(
