@@ -1,21 +1,27 @@
 /**
  * Parse WWW-Authenticate header and provide parts as object
  * @see rfc7235
- * @param {string} value http header 'WWW-Authenticate'
+ * @param {string} source http header 'WWW-Authenticate'
  * @return {Object}
  */
-export function parseAuthenticate(value) {
+export function parseAuthenticate(source) {
   const result = {};
+  let params = {};
+  let m;
 
-  let m = value.match(/([^=]+)=(("([^"]+)")|\d+)/);
-  if (m) {
-    const key = m[1];
+  while ((m = source.match(/((\w+)\s+)?(\w+)=(("([^"]+)")|\d+)\s*,?\s*(.*)/))) {
+    const algorithm = m[2];
+    const key = m[3];
+    const value = m[5] ? m[6] : m[4];
 
-    if (m[4] !== undefined) {
-      result[key] = m[4];
-    } else {
-      result[key] = parseInt(m[2], 10);
+    if (algorithm !== undefined) {
+      params = {};
+      result[algorithm] = params;
     }
+
+    params[key] = value;
+
+    source = m[7];
   }
 
   return result;

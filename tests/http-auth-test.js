@@ -8,12 +8,12 @@ const PORT = 5643;
 const USER = 'hugo';
 const PASSWORD = 'secret';
 const CREDENTIALS = { user: USER, password: PASSWORD };
-const BASIC_REALM_NAME = 'Secure Area';
+const REALM = 'Secure Area';
 
 test('http can stat with auth', async t => {
   const context = new Context(undefined, {
     provideCredentials: async realm => {
-      if (realm['Basic realm'] === BASIC_REALM_NAME) {
+      if (realm.Basic.realm === REALM) {
         return CREDENTIALS;
       }
       return undefined;
@@ -42,7 +42,7 @@ test.before(t => {
         res.end('<html><body>Congratulations</body></html>');
       } else {
         res.statusCode = 401; // Force them to retry authentication
-        res.setHeader('WWW-Authenticate', `Basic realm="${BASIC_REALM_NAME}"`);
+        res.setHeader('WWW-Authenticate', `Basic realm="${REALM}"`);
         res.end('<html><body>You shall not pass</body></html>');
       }
     } else {
