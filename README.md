@@ -431,7 +431,8 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 ### provideCredentials
 
 Called when authorization is required for a given realm
-Calls provideCredentials() on the context
+Tries provideCredentials() on the options object first and
+then calls provideCredentials() on the context.
 
 #### Parameters
 

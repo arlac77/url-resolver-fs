@@ -61,7 +61,7 @@ export class URLScheme {
     this.setOptions(options);
   }
 
-  setOptions(options) {
+  setOptions(options = {}) {
     Object.defineProperty(this, 'options', { value: options });
   }
 
@@ -167,12 +167,20 @@ export class URLScheme {
 
   /**
    * Called when authorization is required for a given realm
-   * Calls provideCredentials() on the context
+   * Tries provideCredentials() on the options object first and
+   * then calls provideCredentials() on the context.
    * @param {Context} context execution context
    * @param {Object} realm requested (decoded) realm
    * @return {Promise<Object>} holding the credentials
    */
   async provideCredentials(context, realm) {
+    if (this.options.provideCredentials !== undefined) {
+      const credentials = await this.options.provideCredentials(realm);
+      if (credentials !== undefined) {
+        return credentials;
+      }
+    }
+
     return context === undefined
       ? undefined
       : context.provideCredentials(realm);
