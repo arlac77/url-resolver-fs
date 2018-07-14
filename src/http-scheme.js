@@ -74,20 +74,22 @@ export class HTTPScheme extends URLScheme {
       headers: Object.assign({}, this.httpOptions.headers, options.headers)
     });
 
+    let response;
+
     for (let n = 1; n <= 2; n++) {
-      const response = await fetch(url, options);
+      response = await fetch(url, options);
 
       if (response.status < 200 || response.status >= 300) {
         switch (response.status) {
           case 401:
-            this.addAuthorizationHeader(
-              options.headers,
-              await this.provideCredentials(
-                context,
-                parseAuthenticate(response.headers.get('WWW-Authenticate'))
-              )
+            const credentials = await this.provideCredentials(
+              context,
+              parseAuthenticate(response.headers.get('WWW-Authenticate'))
             );
-            break;
+            if (credentials !== undefined) {
+              this.addAuthorizationHeader(options.headers, credentials);
+              break;
+            }
           default:
             throw new Error(response);
         }
@@ -95,7 +97,6 @@ export class HTTPScheme extends URLScheme {
         return response;
       }
     }
-
     return response;
   }
 
