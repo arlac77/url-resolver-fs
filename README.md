@@ -304,11 +304,13 @@ Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 -   **See: rfc7235**
 
-Parse WWW-Authenticate header and provide parts as object
+Parse WWW-Authenticate header and provide parts as object.
+provides a two level structure 1st. the algorithm and then
+the algorithm attributes
 
 ### Parameters
 
--   `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** http header 'WWW-Authenticate'
+-   `source` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** http header 'WWW-Authenticate'
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 

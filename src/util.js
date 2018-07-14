@@ -1,5 +1,7 @@
 /**
- * Parse WWW-Authenticate header and provide parts as object
+ * Parse WWW-Authenticate header and provide parts as object.
+ * provides a two level structure 1st. the algorithm and then
+ * the algorithm attributes
  * @see rfc7235
  * @param {string} source http header 'WWW-Authenticate'
  * @return {Object}
