@@ -42,7 +42,7 @@ export class Context {
   /**
    * Called when authorization is required for a given realm
    * asks options.provideCredentials() and resolver.provideCredentials()
-   * @param {string} realm requested realm
+   * @param {Object} realm requested (decoded) realm
    * @return {Promise<Object>} credentials for the given realm
    */
   async provideCredentials(realm) {

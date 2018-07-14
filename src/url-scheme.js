@@ -168,7 +168,7 @@ export class URLScheme {
   /**
    * Called when authorization is required for a given realm
    * @param {Context} context execution context
-   * @param {string} realm requested realm
+   * @param {Object} realm requested (decoded) realm
    * @return {Promise<Object>} holding the credentials
    */
   async provideCredentials(context, realm) {
