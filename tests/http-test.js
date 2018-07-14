@@ -91,12 +91,16 @@ test('http can stat', async t => {
   t.is(response.status, 200);
 });
 
-test('http basic auth', t => {
-  const scheme = new HTTPScheme({
-    credentials: {
+test('http addAuthorizationHeader', t => {
+  const scheme = new HTTPScheme({});
+  const headers = {};
+
+  t.is(
+    scheme.addAuthorizationHeader(headers, {
       password: 'xxx',
       user: 'yyy'
-    }
-  });
-  t.is(scheme.httpOptions.headers.authorization, 'Basic eXl5Onh4eA==');
+    }),
+    true
+  );
+  t.is(headers.authorization, 'Basic eXl5Onh4eA==');
 });

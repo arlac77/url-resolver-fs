@@ -8,10 +8,16 @@ const PORT = 5643;
 const USER = 'hugo';
 const PASSWORD = 'secret';
 const CREDENTIALS = { user: USER, password: PASSWORD };
+const BASIC_REALM_NAME = 'Secure Area';
 
 test('http can stat with auth', async t => {
   const context = new Context(undefined, {
-    provideCredentials: async () => CREDENTIALS
+    provideCredentials: async realm => {
+      if (realm['Basic realm'] === BASIC_REALM_NAME) {
+        return CREDENTIALS;
+      }
+      return undefined;
+    }
   });
   const scheme = new HTTPScheme();
   const response = await scheme.stat(
@@ -23,7 +29,7 @@ test('http can stat with auth', async t => {
 
 test.before(t => {
   const server = createServer((req, res) => {
-    const auth = req.headers['authorization']; // auth is in base64(username:password)  so we need to decode the base64
+    const auth = req.headers['authorization'];
 
     if (auth) {
       const tmp = auth.split(' ');
@@ -36,7 +42,7 @@ test.before(t => {
         res.end('<html><body>Congratulations</body></html>');
       } else {
         res.statusCode = 401; // Force them to retry authentication
-        res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
+        res.setHeader('WWW-Authenticate', `Basic realm="${BASIC_REALM_NAME}"`);
         res.end('<html><body>You shall not pass</body></html>');
       }
     } else {

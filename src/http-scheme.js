@@ -60,12 +60,6 @@ export class HTTPScheme extends URLScheme {
         : new HttpProxyAgent(options.proxy);
     }
 
-    if (options.credentials !== undefined) {
-      this.httpOptions.headers.authorization =
-        'Basic ' +
-        btoa(options.credentials.user + ':' + options.credentials.password);
-    }
-
     super.setOptions(options);
   }
 
@@ -86,7 +80,7 @@ export class HTTPScheme extends URLScheme {
       if (response.status < 200 || response.status >= 300) {
         switch (response.status) {
           case 401:
-            this.authorizationHeader(
+            this.addAuthorizationHeader(
               options.headers,
               await this.provideCredentials(
                 context,
@@ -161,12 +155,12 @@ export class HTTPScheme extends URLScheme {
 
   /**
    * inserts the authorization data into the reguest header
-   * @param {Object} headers http
+   * @param {Object} headers http credentials will be inserted into
    * @param {Object} credentials
    *
    * @return {boolean} true if auth info has been written into headers
    */
-  authorizationHeader(headers, credentials) {
+  addAuthorizationHeader(headers, credentials) {
     if (credentials !== undefined) {
       if (
         credentials.user !== undefined &&

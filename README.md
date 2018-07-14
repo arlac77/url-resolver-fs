@@ -57,7 +57,7 @@ resolves urls and provides fs like access
         -   [Parameters](#parameters-12)
     -   [stat](#stat)
         -   [Parameters](#parameters-13)
-    -   [authorizationHeader](#authorizationheader)
+    -   [addAuthorizationHeader](#addauthorizationheader)
         -   [Parameters](#parameters-14)
     -   [name](#name)
     -   [defaultPort](#defaultport)
@@ -270,13 +270,13 @@ Execute a HEAD request
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** response object
 
-### authorizationHeader
+### addAuthorizationHeader
 
 inserts the authorization data into the reguest header
 
 #### Parameters
 
--   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** http
+-   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** http credentials will be inserted into
 -   `credentials` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if auth info has been written into headers
