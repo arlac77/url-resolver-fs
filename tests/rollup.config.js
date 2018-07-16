@@ -16,7 +16,18 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: ['stage-3'],
+      presets: [
+        'stage-3',
+        [
+          'env',
+          {
+            targets: {
+              node: '10'
+            },
+            modules: false
+          }
+        ]
+      ],
       exclude: 'node_modules/**'
     }),
     multiEntry()

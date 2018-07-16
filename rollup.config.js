@@ -28,8 +28,21 @@ export default {
 
   plugins: [
     babel({
+      runtimeHelpers: false,
+      externalHelpers: true,
       babelrc: false,
-      presets: ['stage-3'],
+      presets: [
+        'stage-3',
+        [
+          'env',
+          {
+            targets: {
+              node: '10'
+            },
+            modules: false
+          }
+        ]
+      ],
       plugins: [],
       exclude: 'node_modules/**'
     }),
