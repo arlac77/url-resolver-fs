@@ -1,3 +1,5 @@
+import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import multiEntry from 'rollup-plugin-multi-entry';
 import istanbul from 'rollup-plugin-istanbul';
@@ -14,28 +16,24 @@ export default {
     'https-proxy-agent'
   ],
 
-  plugins: [
-    babel({
-      babelrc: false,
-      presets: [
-        'stage-3',
-        [
-          'env',
-          {
-            targets: {
-              node: '10'
-            },
-            modules: false
-          }
-        ]
-      ],
-      exclude: 'node_modules/**'
-    }),
-    multiEntry(),
-    istanbul({
-      exclude: ['tests/**/*-test.js']
-    })
-  ],
+  plugins: [babel({
+    babelrc: false,
+    presets: [
+      'stage-3',
+      [
+        'env',
+        {
+          targets: {
+            node: '10'
+          },
+          modules: false
+        }
+      ]
+    ],
+    exclude: 'node_modules/**'
+  }), multiEntry(), istanbul({
+    exclude: ['tests/**/*-test.js']
+  }), resolve(), commonjs()],
 
   output: {
     file: 'build/bundle-test.js',
