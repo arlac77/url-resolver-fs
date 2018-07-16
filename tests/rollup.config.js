@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import multiEntry from 'rollup-plugin-multi-entry';
+import istanbul from 'rollup-plugin-istanbul';
 
 export default {
   input: 'tests/**/*-test.js',
@@ -30,7 +31,10 @@ export default {
       ],
       exclude: 'node_modules/**'
     }),
-    multiEntry()
+    multiEntry(),
+    istanbul({
+      exclude: ['tests/**/*-test.js']
+    })
   ],
 
   output: {
