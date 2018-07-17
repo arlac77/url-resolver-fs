@@ -36,3 +36,12 @@ test('provideCredentials from context options', async t => {
     }
   );
 });
+
+test('json', t => {
+  const scheme = new URLScheme({ a: 1 });
+  t.deepEqual(JSON.parse(JSON.stringify(scheme)), {
+    name: 'URLScheme',
+    secure: false,
+    options: { a: 1 }
+  });
+});
