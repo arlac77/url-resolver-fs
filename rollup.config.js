@@ -1,4 +1,3 @@
-import executable from 'rollup-plugin-executable';
 import babel from 'rollup-plugin-babel';
 import pkg from './package.json';
 import resolve from 'rollup-plugin-node-resolve';

@@ -16,24 +16,30 @@ export default {
     'https-proxy-agent'
   ],
 
-  plugins: [babel({
-    babelrc: false,
-    presets: [
-      'stage-3',
-      [
-        'env',
-        {
-          targets: {
-            node: '10'
-          },
-          modules: false
-        }
-      ]
-    ],
-    exclude: 'node_modules/**'
-  }), multiEntry(), istanbul({
-    exclude: ['tests/**/*-test.js']
-  }), resolve(), commonjs()],
+  plugins: [
+    babel({
+      babelrc: false,
+      presets: [
+        'stage-3',
+        [
+          'env',
+          {
+            targets: {
+              node: '10'
+            },
+            modules: false
+          }
+        ]
+      ],
+      exclude: 'node_modules/**'
+    }),
+    multiEntry(),
+    istanbul({
+      exclude: ['tests/**/*-test.js']
+    }),
+    resolve(),
+    commonjs()
+  ],
 
   output: {
     file: 'build/bundle-test.js',
