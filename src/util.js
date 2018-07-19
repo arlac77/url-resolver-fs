@@ -4,10 +4,10 @@
  * the algorithm attributes
  * @see rfc7235
  * @param {string} source http header 'WWW-Authenticate'
- * @return {Object}
+ * @param {Object} result where to put result into
+ * @return {Object} same as result
  */
-export function parseAuthenticate(source) {
-  const result = {};
+export function parseAuthenticate(source, result = {}) {
   let params = {};
   let m;
 

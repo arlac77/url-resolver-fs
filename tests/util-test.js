@@ -2,9 +2,20 @@ import test from 'ava';
 import { parseAuthenticate } from '../src/util';
 
 test('parseAuthenticate Basic', t => {
-  const auth = parseAuthenticate(`Basic realm="Secure Area"`);
+  const auth = parseAuthenticate('Basic realm="Secure Area"');
 
   t.deepEqual(auth, {
+    Basic: {
+      realm: 'Secure Area'
+    }
+  });
+});
+
+test('parseAuthenticate Basic with predefined result', t => {
+  const auth = parseAuthenticate('Basic realm="Secure Area"', { url: 'xxx' });
+
+  t.deepEqual(auth, {
+    url: 'xxx',
     Basic: {
       realm: 'Secure Area'
     }

@@ -11,9 +11,6 @@ import HttpsProxyAgent from 'https-proxy-agent';
  * URLScheme for http requests
  * @param {Object} options
  * @param {string} options.proxy
- * @param {Object} options.credentials
- * @param {string} options.credentials.user
- * @param {string} options.credentials.password
  *
  * @property {Object} options
  */
@@ -84,7 +81,9 @@ export class HTTPScheme extends URLScheme {
           case 401:
             const credentials = await this.provideCredentials(
               context,
-              parseAuthenticate(response.headers.get('WWW-Authenticate'))
+              parseAuthenticate(response.headers.get('WWW-Authenticate'), {
+                url
+              })
             );
             if (credentials !== undefined) {
               this.addAuthorizationHeader(options.headers, credentials);
