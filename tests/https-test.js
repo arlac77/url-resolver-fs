@@ -34,6 +34,16 @@ test.cb('https can get', t => {
   );
 });
 
+test('https (http 2.0) can stat', async t => {
+  const context = new Context();
+  const scheme = new HTTPSScheme();
+  const response = await scheme.stat(
+    context,
+    new URL('https://http2.pro/doc/api')
+  );
+  t.is(response.status, 200);
+});
+
 test('https can stat', async t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
