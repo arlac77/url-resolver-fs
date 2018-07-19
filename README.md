@@ -118,6 +118,7 @@ Holds a map of url-schemes and dispatches requests
 ### Properties
 
 -   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
+-   `authProviders` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** 
 
 ### registerScheme
 
@@ -160,13 +161,14 @@ Returns **[Context](#context)** newly created context
 
 ### provideCredentials
 
-Called when authorization is required
+Called when authorization is required.
+Forwards the request to the registered auth providers
 
 #### Parameters
 
 -   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
 
-Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** holding the credentials
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** credentials as given by one of the registered auth providers
 
 ## Context
 

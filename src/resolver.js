@@ -19,13 +19,17 @@ function generate(name) {
  * @param {Object} env environment variables as present in process.env
  *
  * @property {Map<string,URLScheme>} schemes
+ * @property {Object[]} authProviders
  */
 export class Resolver extends URLScheme {
   constructor(config = {}, predefinedConstructors = [], env = {}) {
     super(config);
 
-    Object.defineProperty(this, 'schemes', {
-      value: new Map()
+    Object.defineProperties(this, {
+      schemes: {
+        value: new Map()
+      },
+      authProviders: { value: [] }
     });
 
     predefinedConstructors.forEach(schemeConstructor => {
@@ -104,11 +108,19 @@ export class Resolver extends URLScheme {
   }
 
   /**
-   * Called when authorization is required
+   * Called when authorization is required.
+   * Forwards the request to the registered auth providers
    * @param {string} realm requested realm
-   * @return {Object} holding the credentials
+   * @return {Object} credentials as given by one of the registered auth providers
    */
   async provideCredentials(realm) {
+    for (const provider of this.authProviders) {
+      const credentials = await provider.provideCredentials(realm);
+      if (credentials !== undefined) {
+        return credentials;
+      }
+    }
+
     return undefined;
   }
 }
