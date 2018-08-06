@@ -1,3 +1,4 @@
+import cleanup from 'rollup-plugin-cleanup';
 import executable from 'rollup-plugin-executable';
 import babel from 'rollup-plugin-babel';
 import pkg from './package.json';
