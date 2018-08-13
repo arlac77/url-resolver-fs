@@ -68,14 +68,16 @@ test('handles unknown', t => {
   );
 });
 
-test('unknown reject get', async t => {
+test.only('unknown reject get', async t => {
   const context = new Context();
   const resolver = new Resolver();
 
-  const error = await t.throws(
-    resolver.get(context, new URL('something:index.html'))
-  );
-  t.is(error.message, 'Unknown scheme something:index.html');
+  try {
+    await resolver.get(context, new URL('something:index.html'));
+    t.truthy(false, 'should not be reached');
+  } catch (e) {
+    t.is(e.message, 'Unknown scheme something:index.html');
+  }
 });
 
 test('unknown reject stat', async t => {
