@@ -1,6 +1,4 @@
-function notImplementedError() {
-  return Promise.reject(new Error('Not implemented'));
-}
+import { notImplementedError } from './util';
 
 /**
  * @param {Object} options raw config

@@ -1,3 +1,7 @@
+export function notImplementedError() {
+  return Promise.reject(new Error('Not implemented'));
+}
+
 /**
  * Parse WWW-Authenticate header and provide parts as object.
  * provides a two level structure 1st. the algorithm and then
