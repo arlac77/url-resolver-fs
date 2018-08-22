@@ -1,7 +1,6 @@
-import { URLScheme } from './url-scheme';
-import { Context } from './context';
-import { URLMapperScheme } from './url-mapper-scheme';
-import { URL } from 'url';
+import { URLScheme } from "./url-scheme";
+import { Context } from "./context";
+import { URLMapperScheme } from "./url-mapper-scheme";
 
 function generate(name) {
   return function(context, url, ...args) {
@@ -84,7 +83,7 @@ export class Resolver extends URLScheme {
       return undefined;
     }
 
-    return this.schemes.get(protocol.replace(/:/, ''));
+    return this.schemes.get(protocol.replace(/:/, ""));
   }
 
   /**

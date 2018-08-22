@@ -1,5 +1,5 @@
 export function notImplementedError() {
-  return Promise.reject(new Error('Not implemented'));
+  return Promise.reject(new Error("Not implemented"));
 }
 
 /**
@@ -32,3 +32,8 @@ export function parseAuthenticate(source, result = {}) {
 
   return result;
 }
+
+/**
+ * general fetch response error
+ */
+export class ResponseError extends Error {}

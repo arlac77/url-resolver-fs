@@ -1,32 +1,32 @@
-import test from 'ava';
-import { HTTPSScheme } from '../src/https-scheme';
-import { Context } from '../src/context';
-import { URL } from 'url';
+import test from "ava";
+import { HTTPSScheme } from "../src/https-scheme";
+import { Context } from "../src/context";
+import { ResponseError } from "../src/util";
 
-test('https has name', t => {
+test("https has name", t => {
   const scheme = new HTTPSScheme();
-  t.is(scheme.name, 'https');
+  t.is(scheme.name, "https");
 });
 
-test('https is secure', t => {
+test("https is secure", t => {
   const scheme = new HTTPSScheme();
   t.is(scheme.isSecure, true);
 });
 
-test('https default port', t => {
+test("https default port", t => {
   const scheme = new HTTPSScheme();
   t.is(scheme.defaultPort, 443);
 });
 
-test.cb('https can get', t => {
+test.cb("https can get", t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
 
   t.plan(1);
 
-  scheme.get(context, new URL('https://www.heise.de/index.html')).then(stream =>
-    stream.on('data', chunk => {
-      if (chunk.includes('DOCTYPE')) {
+  scheme.get(context, new URL("https://www.heise.de/index.html")).then(stream =>
+    stream.on("data", chunk => {
+      if (chunk.includes("DOCTYPE")) {
         t.pass();
         t.end();
       }
@@ -34,40 +34,42 @@ test.cb('https can get', t => {
   );
 });
 
-test('https (http 2.0) can stat', async t => {
+test("https (http 2.0) can stat", async t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
   const response = await scheme.stat(
     context,
-    new URL('https://http2.pro/doc/api')
+    new URL("https://http2.pro/doc/api")
   );
   t.is(response.status, 200);
 });
 
-test('https can stat', async t => {
+test("https can stat", async t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
   const response = await scheme.stat(
     context,
-    new URL('https://www.heise.de/index.html')
+    new URL("https://www.heise.de/index.html")
   );
   t.is(response.status, 200);
 });
 
-test('https required auth failing stat', async t => {
+test("https required auth failing stat", async t => {
   const context = new Context();
   const scheme = new HTTPSScheme();
 
-  const error = await t.throws(
-    scheme.stat(
-      context,
-      new URL(
-        'https://subversion.assembla.com/svn/delivery_notes/data/config.json'
-      )
-    )
+  await t.throwsAsync(
+    () =>
+      scheme.stat(
+        context,
+        new URL(
+          "https://subversion.assembla.com/svn/delivery_notes/data/config.json"
+        )
+      ),
+    ResponseError
   );
 
-  t.is(error !== undefined, true);
+  //t.is(error !== undefined, true);
 });
 
 /*

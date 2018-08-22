@@ -1,5 +1,4 @@
-import { URLScheme } from './url-scheme';
-import { URL } from 'url';
+import { URLScheme } from "./url-scheme";
 
 /**
  * Holds context information

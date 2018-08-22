@@ -1,11 +1,11 @@
-import { URLScheme } from './url-scheme';
-import { parseAuthenticate } from './util';
+import { URLScheme } from "./url-scheme";
+import { parseAuthenticate, ResponseError } from "./util";
 
-import fetch from 'node-fetch';
-import btoa from 'btoa';
+import fetch from "node-fetch";
+import btoa from "btoa";
 
-import HttpProxyAgent from 'http-proxy-agent';
-import HttpsProxyAgent from 'https-proxy-agent';
+import HttpProxyAgent from "http-proxy-agent";
+import HttpsProxyAgent from "https-proxy-agent";
 
 /**
  * URLScheme for http requests
@@ -19,7 +19,7 @@ export class HTTPScheme extends URLScheme {
    * @return {string} 'http'
    */
   static get name() {
-    return 'http';
+    return "http";
   }
 
   /**
@@ -49,7 +49,7 @@ export class HTTPScheme extends URLScheme {
   }
 
   setOptions(options = {}) {
-    Object.defineProperty(this, 'httpOptions', { value: { headers: {} } });
+    Object.defineProperty(this, "httpOptions", { value: { headers: {} } });
 
     if (options.proxy !== undefined) {
       this.httpOptions.agent = this.isSecure
@@ -81,7 +81,7 @@ export class HTTPScheme extends URLScheme {
           case 401:
             const credentials = await this.provideCredentials(
               context,
-              parseAuthenticate(response.headers.get('WWW-Authenticate'), {
+              parseAuthenticate(response.headers.get("WWW-Authenticate"), {
                 url
               })
             );
@@ -90,7 +90,7 @@ export class HTTPScheme extends URLScheme {
               break;
             }
           default:
-            throw new Error(response);
+            throw new ResponseError(response);
         }
       } else {
         return response;
@@ -124,7 +124,7 @@ export class HTTPScheme extends URLScheme {
       url,
       Object.assign(
         {
-          method: 'put',
+          method: "put",
           data: stream
         },
         options
@@ -146,7 +146,7 @@ export class HTTPScheme extends URLScheme {
       url,
       Object.assign(
         {
-          method: 'head'
+          method: "head"
         },
         options
       )
@@ -167,7 +167,7 @@ export class HTTPScheme extends URLScheme {
         credentials.password !== undefined
       ) {
         headers.authorization =
-          'Basic ' + btoa(credentials.user + ':' + credentials.password);
+          "Basic " + btoa(credentials.user + ":" + credentials.password);
         return true;
       }
     }

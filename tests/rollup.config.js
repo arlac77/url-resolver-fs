@@ -1,49 +1,49 @@
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import multiEntry from 'rollup-plugin-multi-entry';
-import istanbul from 'rollup-plugin-istanbul';
+import babel from "rollup-plugin-babel";
+import multiEntry from "rollup-plugin-multi-entry";
+import resolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
+import istanbul from "rollup-plugin-istanbul";
 
 export default {
-  input: 'tests/**/*-test.js',
+  input: "tests/**/*-test.js",
   external: [
-    'ava',
-    'btoa',
-    'url',
-    'http',
-    'node-fetch',
-    'http-proxy-agent',
-    'https-proxy-agent'
+    "ava",
+    "btoa",
+    "http",
+    "url",
+    "node-fetch",
+    "http-proxy-agent",
+    "https-proxy-agent"
   ],
 
   plugins: [
     babel({
       babelrc: false,
       presets: [
-        'stage-3',
+        "stage-3",
         [
-          'env',
+          "env",
           {
             targets: {
-              node: '10'
+              node: "10"
             },
             modules: false
           }
         ]
       ],
-      exclude: 'node_modules/**'
+      exclude: "node_modules/**"
     }),
     multiEntry(),
-    istanbul({
-      exclude: ['tests/**/*-test.js']
-    }),
     resolve(),
-    commonjs()
+    commonjs(),
+    istanbul({
+      exclude: ["tests/**/*-test.js", "node_modules/**/*"]
+    })
   ],
 
   output: {
-    file: 'build/bundle-test.js',
-    format: 'cjs',
+    file: "build/bundle-test.js",
+    format: "cjs",
     sourcemap: true,
     interop: false
   }
