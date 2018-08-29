@@ -19,18 +19,7 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: [
-        "stage-3",
-        [
-          "env",
-          {
-            targets: {
-              node: "10"
-            },
-            modules: false
-          }
-        ]
-      ],
+      plugins: ["@babel/plugin-proposal-async-generator-functions"],
       exclude: "node_modules/**"
     }),
     multiEntry(),
