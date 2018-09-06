@@ -49,3 +49,21 @@ test("context can stat relative", async t => {
 
   t.is(response.status, 200);
 });
+
+test("context can list", async t => {
+  const resolver = new Resolver();
+  const http = new HTTPScheme();
+  resolver.registerScheme(http);
+
+  const context = resolver.createContext({
+    base: new URL("http://www.heise.de")
+  });
+
+  const all = new Set();
+
+  for await (const entries of context.list("index.html")) {
+    all.add(entry.name);
+  }
+
+  t.is(all.size, 0);
+});

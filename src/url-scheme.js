@@ -104,9 +104,7 @@ export class URLScheme {
    * @param {Object} options
    * @return {Promise} resolves to iterable entries
    */
-  async *list(context, url, options) {
-    return notImplementedError();
-  }
+  async *list(context, url, options) {}
 
   /**
    * Get content of a url
@@ -160,7 +158,7 @@ export class URLScheme {
    * @return {Promise} resolves to the history of the object at the given url
    */
   async *history(context, url, options) {
-    return notImplementedError();
+    yield this.stat(context, url, options);
   }
 
   /**
