@@ -1,4 +1,4 @@
-import { notImplementedError } from './util';
+import { notImplementedError } from "./util";
 
 /**
  * @param {Object} options raw config
@@ -11,7 +11,7 @@ export class URLScheme {
    * @return {string[]} 'get', 'stat', 'put', 'delete', 'list', 'history'
    */
   static get methods() {
-    return ['get', 'stat', 'put', 'delete', 'list', 'history'];
+    return ["get", "stat", "put", "delete", "list", "history"];
   }
 
   /**
@@ -60,7 +60,7 @@ export class URLScheme {
   }
 
   setOptions(options = {}) {
-    Object.defineProperty(this, 'options', { value: options });
+    Object.defineProperty(this, "options", { value: options });
   }
 
   /**

@@ -24,7 +24,7 @@ export class URLMapperScheme extends URLScheme {
   constructor(baseScheme, name, prefix, options) {
     super(options);
 
-    Object.defineProperties(this, {
+    const properties = {
       baseScheme: {
         value: baseScheme
       },
@@ -34,13 +34,15 @@ export class URLMapperScheme extends URLScheme {
       prefix: {
         value: prefix
       }
+    };
+
+    this.constructor.methods.forEach(name => {
+      properties[name] = {
+        value: generate(name)
+      };
     });
 
-    this.constructor.methods.forEach(name =>
-      Object.defineProperty(this, name, {
-        value: generate(name)
-      })
-    );
+    Object.defineProperties(this, properties);
   }
 
   toJSON() {
