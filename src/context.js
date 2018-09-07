@@ -55,6 +55,10 @@ export class Context {
   async *list(context, url, ...args) {
     return this.resolver.list(this, new URL(url, this.base), ...args);
   }
+
+  async *history(context, url, ...args) {
+    return this.resolver.history(this, new URL(url, this.base), ...args);
+  }
 }
 
 URLScheme.methods.forEach(name =>

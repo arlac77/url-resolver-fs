@@ -106,12 +106,16 @@ test("unknown reject delete", async t => {
   t.is(error.message, "Unknown scheme something:index.html");
 });
 
-test.skip("unknown reject list", async t => {
+test("unknown reject list", async t => {
   const context = new Context();
   const resolver = new Resolver();
   const error = await t.throwsAsync(async () => {
-    let entries = resolver.list(context, new URL("something:index.html"));
-    //yield entries;
+    for await (const entry of resolver.list(
+      context,
+      new URL("something:index.html")
+    )) {
+      console.log(entry);
+    }
   });
   t.is(error.message, "Unknown scheme something:index.html");
 });
@@ -119,9 +123,14 @@ test.skip("unknown reject list", async t => {
 test("unknown reject history", async t => {
   const context = new Context();
   const resolver = new Resolver();
-  const error = await t.throwsAsync(() =>
-    resolver.history(context, new URL("something:index.html"))
-  );
+  const error = await t.throwsAsync(async () => {
+    for await (const entry of resolver.history(
+      context,
+      new URL("something:index.html")
+    )) {
+      console.log(entry);
+    }
+  });
   t.is(error.message, "Unknown scheme something:index.html");
 });
 

@@ -131,6 +131,15 @@ export class Resolver extends URLScheme {
 
     return scheme.list(context, url, ...args);
   }
+
+  async *history(context, url, options) {
+    const scheme = this.schemeForURL(url);
+    if (scheme === undefined) {
+      throw new Error(`Unknown scheme ${url}`);
+    }
+
+    return scheme.history(context, url, ...args);
+  }
 }
 
 Resolver.methods.forEach(name =>
