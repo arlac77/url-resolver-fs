@@ -11,7 +11,7 @@ export class URLScheme {
    * @return {string[]} 'get', 'stat', 'put', 'delete', 'list', 'history'
    */
   static get methods() {
-    return ["get", "stat", "put", "delete", "list", "history"];
+    return ["get", "stat", "put", "delete", /* "list",*/ "history"];
   }
 
   /**

@@ -51,6 +51,10 @@ export class Context {
         .map(p => p.provideCredentials(realm))
     ))[0];
   }
+
+  async *list(context, url, ...args) {
+    return this.resolver.list(this, new URL(url, this.base), ...args);
+  }
 }
 
 URLScheme.methods.forEach(name =>
