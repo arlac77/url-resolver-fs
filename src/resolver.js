@@ -2,15 +2,6 @@ import { URLScheme } from "./url-scheme";
 import { Context } from "./context";
 import { URLMapperScheme } from "./url-mapper-scheme";
 
-function generate(name) {
-  return function(context, url, ...args) {
-    const scheme = this.schemeForURL(url);
-    return scheme === undefined
-      ? Promise.reject(new Error(`Unknown scheme ${url}`))
-      : scheme[name](context, url, ...args);
-  };
-}
-
 /**
  * Holds a map of url-schemes and dispatches requests
  * @param {Object} config
@@ -140,6 +131,15 @@ export class Resolver extends URLScheme {
 
     return scheme.history(context, url, ...args);
   }
+}
+
+function generate(name) {
+  return function(context, url, ...args) {
+    const scheme = this.schemeForURL(url);
+    return scheme === undefined
+      ? Promise.reject(new Error(`Unknown scheme ${url}`))
+      : scheme[name](context, url, ...args);
+  };
 }
 
 Resolver.methods.forEach(name =>
