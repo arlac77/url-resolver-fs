@@ -64,14 +64,13 @@
   "homepage": "https://github.com/arlac77/url-resolver-fs#readme",
   "ava": {
     "files": [
-      "build/*-test.js"
+      "tests/*-test.js"
     ],
     "require": [
-      "babel-register"
-    ]
-  },
-  "xo": {
-    "space": true
+      "esm"
+    ],
+    "babel": false,
+    "compileEnhancements": false
   },
   "template": {
     "repository": {
