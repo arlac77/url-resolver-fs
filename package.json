@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "btoa": "^1.2.1",
-    "http-proxy-agent": "^2.0.0",
+    "http-proxy-agent": "^2.1.0",
     "https-proxy-agent": "^2.2.1",
-    "node-fetch": "^2.4.1"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "ava": "^2.0.0",
