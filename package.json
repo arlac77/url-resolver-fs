@@ -25,13 +25,16 @@
     "docs": "documentation readme src/module.mjs --section=API",
     "lint": "documentation lint src/module.mjs",
     "posttest": "markdown-doctest",
-    "test": "ava"
+    "test": "ava",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "btoa": "^1.2.1",
     "http-proxy-agent": "^2.1.0",
     "https-proxy-agent": "^2.2.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "snyk": "^1.231.0"
   },
   "devDependencies": {
     "ava": "^2.4.0",
@@ -69,5 +72,6 @@
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
     }
-  }
+  },
+  "snyk": true
 }
