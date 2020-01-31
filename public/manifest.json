@@ -1,0 +1,10 @@
+{
+  "name": "url-resolver-fs",
+  "description": "resolves urls and provides fs like access",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}
