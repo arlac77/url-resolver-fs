@@ -30,7 +30,7 @@
   "dependencies": {
     "btoa": "^1.2.1",
     "http-proxy-agent": "^4.0.0",
-    "https-proxy-agent": "^3.0.0",
+    "https-proxy-agent": "^5.0.0",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
