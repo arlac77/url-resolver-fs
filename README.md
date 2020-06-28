@@ -500,7 +500,8 @@ Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** remapped u
 
 ## parseAuthenticate
 
--   **See: rfc7235**
+-   **See: rfc7235
+    **
 
 Parse WWW-Authenticate header and provide parts as object.
 provides a two level structure 1st. the algorithm and then
