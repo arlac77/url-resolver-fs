@@ -19,151 +19,84 @@ resolves urls and provides fs like access
 
 ### Table of Contents
 
--   [Resolver](#resolver)
+-   [Context](#context)
     -   [Parameters](#parameters)
     -   [Properties](#properties)
-    -   [registerScheme](#registerscheme)
-        -   [Parameters](#parameters-1)
-    -   [schemeForURL](#schemeforurl)
-        -   [Parameters](#parameters-2)
-    -   [resolve](#resolve)
-        -   [Parameters](#parameters-3)
-    -   [createContext](#createcontext)
-        -   [Parameters](#parameters-4)
-    -   [provideCredentials](#providecredentials)
-        -   [Parameters](#parameters-5)
--   [Context](#context)
-    -   [Parameters](#parameters-6)
-    -   [Properties](#properties-1)
     -   [base](#base)
-    -   [resolve](#resolve-1)
-        -   [Parameters](#parameters-7)
-    -   [provideCredentials](#providecredentials-1)
-        -   [Parameters](#parameters-8)
+    -   [resolve](#resolve)
+        -   [Parameters](#parameters-1)
+    -   [provideCredentials](#providecredentials)
+        -   [Parameters](#parameters-2)
 -   [HTTPScheme](#httpscheme)
-    -   [Parameters](#parameters-9)
-    -   [Properties](#properties-2)
+    -   [Parameters](#parameters-3)
+    -   [Properties](#properties-1)
     -   [fetch](#fetch)
-        -   [Parameters](#parameters-10)
+        -   [Parameters](#parameters-4)
     -   [get](#get)
-        -   [Parameters](#parameters-11)
+        -   [Parameters](#parameters-5)
     -   [put](#put)
-        -   [Parameters](#parameters-12)
+        -   [Parameters](#parameters-6)
     -   [stat](#stat)
-        -   [Parameters](#parameters-13)
+        -   [Parameters](#parameters-7)
     -   [addAuthorizationHeader](#addauthorizationheader)
-        -   [Parameters](#parameters-14)
+        -   [Parameters](#parameters-8)
     -   [name](#name)
     -   [defaultPort](#defaultport)
     -   [optionsFromEnvironment](#optionsfromenvironment)
-        -   [Parameters](#parameters-15)
+        -   [Parameters](#parameters-9)
 -   [HTTPSScheme](#httpsscheme)
     -   [name](#name-1)
     -   [defaultPort](#defaultport-1)
     -   [isSecure](#issecure)
--   [URLScheme](#urlscheme)
+-   [Resolver](#resolver)
+    -   [Parameters](#parameters-10)
+    -   [Properties](#properties-2)
+    -   [registerScheme](#registerscheme)
+        -   [Parameters](#parameters-11)
+    -   [schemeForURL](#schemeforurl)
+        -   [Parameters](#parameters-12)
+    -   [resolve](#resolve-1)
+        -   [Parameters](#parameters-13)
+    -   [createContext](#createcontext)
+        -   [Parameters](#parameters-14)
+    -   [provideCredentials](#providecredentials-1)
+        -   [Parameters](#parameters-15)
+-   [URLMapperScheme](#urlmapperscheme)
     -   [Parameters](#parameters-16)
     -   [Properties](#properties-3)
+    -   [remap](#remap)
+        -   [Parameters](#parameters-17)
+-   [URLScheme](#urlscheme)
+    -   [Parameters](#parameters-18)
+    -   [Properties](#properties-4)
     -   [name](#name-2)
     -   [defaultPort](#defaultport-2)
     -   [isSecure](#issecure-1)
     -   [list](#list)
-        -   [Parameters](#parameters-17)
-    -   [get](#get-1)
-        -   [Parameters](#parameters-18)
-    -   [stat](#stat-1)
         -   [Parameters](#parameters-19)
-    -   [put](#put-1)
+    -   [get](#get-1)
         -   [Parameters](#parameters-20)
-    -   [delete](#delete)
+    -   [stat](#stat-1)
         -   [Parameters](#parameters-21)
-    -   [history](#history)
+    -   [put](#put-1)
         -   [Parameters](#parameters-22)
-    -   [provideCredentials](#providecredentials-2)
+    -   [delete](#delete)
         -   [Parameters](#parameters-23)
+    -   [history](#history)
+        -   [Parameters](#parameters-24)
+    -   [provideCredentials](#providecredentials-2)
+        -   [Parameters](#parameters-25)
     -   [methods](#methods)
     -   [isSecure](#issecure-2)
     -   [defaultPort](#defaultport-3)
     -   [defaultOptions](#defaultoptions)
     -   [optionsFromEnvironment](#optionsfromenvironment-1)
-        -   [Parameters](#parameters-24)
+        -   [Parameters](#parameters-26)
     -   [options](#options)
-        -   [Parameters](#parameters-25)
--   [URLMapperScheme](#urlmapperscheme)
-    -   [Parameters](#parameters-26)
-    -   [Properties](#properties-4)
-    -   [remap](#remap)
         -   [Parameters](#parameters-27)
 -   [parseAuthenticate](#parseauthenticate)
     -   [Parameters](#parameters-28)
 -   [ResponseError](#responseerror)
-
-## Resolver
-
-**Extends URLScheme**
-
-Holds a map of url-schemes and dispatches requests
-
-### Parameters
-
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
--   `predefinedConstructors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
--   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** environment variables as present in process.env (optional, default `{}`)
-
-### Properties
-
--   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
--   `authProviders` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** 
-
-### registerScheme
-
-Register a scheme for later lookup
-
-#### Parameters
-
--   `scheme` **[URLScheme](#urlscheme)** 
-
-### schemeForURL
-
-Get URLScheme for a given url
-
-#### Parameters
-
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
-
-Returns **[URLScheme](#urlscheme)** for a given url or undefined if nothing found
-
-### resolve
-
-Resolve for a given url.
-Passes url to the registered scheme for remapping
-
-#### Parameters
-
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be resolved
-
-Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** resolved url or original URL if no remapping found
-
-### createContext
-
-Create a new context
-
-#### Parameters
-
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** context
-
-Returns **[Context](#context)** newly created context
-
-### provideCredentials
-
-Called when authorization is required.
-Forwards the request to the registered auth providers
-
-#### Parameters
-
--   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
-
-Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** credentials as given by one of the registered auth providers
 
 ## Context
 
@@ -311,6 +244,107 @@ Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ### isSecure
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true
+
+## Resolver
+
+**Extends URLScheme**
+
+Holds a map of url-schemes and dispatches requests
+
+### Parameters
+
+-   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+-   `predefinedConstructors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
+-   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** environment variables as present in process.env (optional, default `{}`)
+
+### Properties
+
+-   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
+-   `authProviders` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** 
+
+### registerScheme
+
+Register a scheme for later lookup
+
+#### Parameters
+
+-   `scheme` **[URLScheme](#urlscheme)** 
+
+### schemeForURL
+
+Get URLScheme for a given url
+
+#### Parameters
+
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+
+Returns **[URLScheme](#urlscheme)** for a given url or undefined if nothing found
+
+### resolve
+
+Resolve for a given url.
+Passes url to the registered scheme for remapping
+
+#### Parameters
+
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be resolved
+
+Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** resolved url or original URL if no remapping found
+
+### createContext
+
+Create a new context
+
+#### Parameters
+
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** context
+
+Returns **[Context](#context)** newly created context
+
+### provideCredentials
+
+Called when authorization is required.
+Forwards the request to the registered auth providers
+
+#### Parameters
+
+-   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** credentials as given by one of the registered auth providers
+
+## URLMapperScheme
+
+**Extends URLScheme**
+
+Remap url
+special:some/path  -> <https://myserver.com/repo/some/path>
+name: special
+baseScheme: https
+prefix: <https://myserver.com/repo/>
+
+### Parameters
+
+-   `baseScheme` **[URLScheme](#urlscheme)** 
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
+-   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
+-   `options`  
+
+### Properties
+
+-   `baseScheme` **[URLScheme](#urlscheme)** 
+-   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
+-   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
+
+### remap
+
+Remapps url by separating scheme (and direct following '/') from suffix
+and appending the suffix (in front)
+
+#### Parameters
+
+-   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be remapped
+
+Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** remapped url
 
 ## URLScheme
 
@@ -461,40 +495,6 @@ Pepare configuration by mixing together defaultOptions with actual options
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** combined options
-
-## URLMapperScheme
-
-**Extends URLScheme**
-
-Remap url
-special:some/path  -> <https://myserver.com/repo/some/path>
-name: special
-baseScheme: https
-prefix: <https://myserver.com/repo/>
-
-### Parameters
-
--   `baseScheme` **[URLScheme](#urlscheme)** 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
--   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
--   `options`  
-
-### Properties
-
--   `baseScheme` **[URLScheme](#urlscheme)** 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
--   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
-
-### remap
-
-Remapps url by separating scheme (and direct following '/') from suffix
-and appending the suffix (in front)
-
-#### Parameters
-
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be remapped
-
-Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** remapped url
 
 ## parseAuthenticate
 
