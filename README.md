@@ -3,7 +3,7 @@
 [![minified size](https://badgen.net/bundlephobia/min/url-resolver-fs)](https://bundlephobia.com/result?p=url-resolver-fs)
 [![downloads](http://img.shields.io/npm/dm/url-resolver-fs.svg?style=flat-square)](https://npmjs.org/package/url-resolver-fs)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/url-resolver-fs.svg?style=flat-square)](https://github.com/arlac77/url-resolver-fs/issues)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Furl-resolver-fs%2Fbadge&style=flat)](https://actions-badge.atrox.dev/arlac77/url-resolver-fs/goto)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Furl-resolver-fs%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/url-resolver-fs/goto)
 [![Styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/url-resolver-fs/badge.svg)](https://snyk.io/test/github/arlac77/url-resolver-fs)
@@ -19,84 +19,84 @@ resolves urls and provides fs like access
 
 ### Table of Contents
 
--   [Context](#context)
-    -   [Parameters](#parameters)
-    -   [Properties](#properties)
-    -   [base](#base)
-    -   [resolve](#resolve)
-        -   [Parameters](#parameters-1)
-    -   [provideCredentials](#providecredentials)
-        -   [Parameters](#parameters-2)
--   [HTTPScheme](#httpscheme)
-    -   [Parameters](#parameters-3)
-    -   [Properties](#properties-1)
-    -   [fetch](#fetch)
-        -   [Parameters](#parameters-4)
-    -   [get](#get)
-        -   [Parameters](#parameters-5)
-    -   [put](#put)
-        -   [Parameters](#parameters-6)
-    -   [stat](#stat)
-        -   [Parameters](#parameters-7)
-    -   [addAuthorizationHeader](#addauthorizationheader)
-        -   [Parameters](#parameters-8)
-    -   [name](#name)
-    -   [defaultPort](#defaultport)
-    -   [optionsFromEnvironment](#optionsfromenvironment)
-        -   [Parameters](#parameters-9)
--   [HTTPSScheme](#httpsscheme)
-    -   [name](#name-1)
-    -   [defaultPort](#defaultport-1)
-    -   [isSecure](#issecure)
--   [Resolver](#resolver)
-    -   [Parameters](#parameters-10)
-    -   [Properties](#properties-2)
-    -   [registerScheme](#registerscheme)
-        -   [Parameters](#parameters-11)
-    -   [schemeForURL](#schemeforurl)
-        -   [Parameters](#parameters-12)
-    -   [resolve](#resolve-1)
-        -   [Parameters](#parameters-13)
-    -   [createContext](#createcontext)
-        -   [Parameters](#parameters-14)
-    -   [provideCredentials](#providecredentials-1)
-        -   [Parameters](#parameters-15)
--   [URLMapperScheme](#urlmapperscheme)
-    -   [Parameters](#parameters-16)
-    -   [Properties](#properties-3)
-    -   [remap](#remap)
-        -   [Parameters](#parameters-17)
--   [URLScheme](#urlscheme)
-    -   [Parameters](#parameters-18)
-    -   [Properties](#properties-4)
-    -   [name](#name-2)
-    -   [defaultPort](#defaultport-2)
-    -   [isSecure](#issecure-1)
-    -   [list](#list)
-        -   [Parameters](#parameters-19)
-    -   [get](#get-1)
-        -   [Parameters](#parameters-20)
-    -   [stat](#stat-1)
-        -   [Parameters](#parameters-21)
-    -   [put](#put-1)
-        -   [Parameters](#parameters-22)
-    -   [delete](#delete)
-        -   [Parameters](#parameters-23)
-    -   [history](#history)
-        -   [Parameters](#parameters-24)
-    -   [provideCredentials](#providecredentials-2)
-        -   [Parameters](#parameters-25)
-    -   [methods](#methods)
-    -   [isSecure](#issecure-2)
-    -   [defaultPort](#defaultport-3)
-    -   [defaultOptions](#defaultoptions)
-    -   [optionsFromEnvironment](#optionsfromenvironment-1)
-        -   [Parameters](#parameters-26)
-    -   [options](#options)
-        -   [Parameters](#parameters-27)
--   [parseAuthenticate](#parseauthenticate)
-    -   [Parameters](#parameters-28)
--   [ResponseError](#responseerror)
+*   [Context](#context)
+    *   [Parameters](#parameters)
+    *   [Properties](#properties)
+    *   [base](#base)
+    *   [resolve](#resolve)
+        *   [Parameters](#parameters-1)
+    *   [provideCredentials](#providecredentials)
+        *   [Parameters](#parameters-2)
+*   [HTTPScheme](#httpscheme)
+    *   [Parameters](#parameters-3)
+    *   [Properties](#properties-1)
+    *   [fetch](#fetch)
+        *   [Parameters](#parameters-4)
+    *   [get](#get)
+        *   [Parameters](#parameters-5)
+    *   [put](#put)
+        *   [Parameters](#parameters-6)
+    *   [stat](#stat)
+        *   [Parameters](#parameters-7)
+    *   [addAuthorizationHeader](#addauthorizationheader)
+        *   [Parameters](#parameters-8)
+    *   [name](#name)
+    *   [defaultPort](#defaultport)
+    *   [optionsFromEnvironment](#optionsfromenvironment)
+        *   [Parameters](#parameters-9)
+*   [HTTPSScheme](#httpsscheme)
+    *   [name](#name-1)
+    *   [defaultPort](#defaultport-1)
+    *   [isSecure](#issecure)
+*   [Resolver](#resolver)
+    *   [Parameters](#parameters-10)
+    *   [Properties](#properties-2)
+    *   [registerScheme](#registerscheme)
+        *   [Parameters](#parameters-11)
+    *   [schemeForURL](#schemeforurl)
+        *   [Parameters](#parameters-12)
+    *   [resolve](#resolve-1)
+        *   [Parameters](#parameters-13)
+    *   [createContext](#createcontext)
+        *   [Parameters](#parameters-14)
+    *   [provideCredentials](#providecredentials-1)
+        *   [Parameters](#parameters-15)
+*   [URLMapperScheme](#urlmapperscheme)
+    *   [Parameters](#parameters-16)
+    *   [Properties](#properties-3)
+    *   [remap](#remap)
+        *   [Parameters](#parameters-17)
+*   [URLScheme](#urlscheme)
+    *   [Parameters](#parameters-18)
+    *   [Properties](#properties-4)
+    *   [name](#name-2)
+    *   [defaultPort](#defaultport-2)
+    *   [isSecure](#issecure-1)
+    *   [list](#list)
+        *   [Parameters](#parameters-19)
+    *   [get](#get-1)
+        *   [Parameters](#parameters-20)
+    *   [stat](#stat-1)
+        *   [Parameters](#parameters-21)
+    *   [put](#put-1)
+        *   [Parameters](#parameters-22)
+    *   [delete](#delete)
+        *   [Parameters](#parameters-23)
+    *   [history](#history)
+        *   [Parameters](#parameters-24)
+    *   [provideCredentials](#providecredentials-2)
+        *   [Parameters](#parameters-25)
+    *   [methods](#methods)
+    *   [isSecure](#issecure-2)
+    *   [defaultPort](#defaultport-3)
+    *   [defaultOptions](#defaultoptions)
+    *   [optionsFromEnvironment](#optionsfromenvironment-1)
+        *   [Parameters](#parameters-26)
+    *   [options](#options)
+        *   [Parameters](#parameters-27)
+*   [parseAuthenticate](#parseauthenticate)
+    *   [Parameters](#parameters-28)
+*   [ResponseError](#responseerror)
 
 ## Context
 
@@ -104,14 +104,14 @@ Holds context information
 
 ### Parameters
 
--   `resolver` **[Resolver](#resolver)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+*   `resolver` **[Resolver](#resolver)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 
 ### Properties
 
--   `resolver` **[Resolver](#resolver)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
--   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** the current base URL
+*   `resolver` **[Resolver](#resolver)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `base` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** the current base URL
 
 ### base
 
@@ -121,7 +121,7 @@ Type: [URL](https://developer.mozilla.org/docs/Web/API/URL/URL)
 
 #### Parameters
 
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
@@ -132,9 +132,9 @@ asks options.provideCredentials() and resolver.provideCredentials()
 
 #### Parameters
 
--   `realm` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** requested (decoded) realm
+*   `realm` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** requested (decoded) realm
 
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** credentials for the given realm
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** credentials for the given realm
 
 ## HTTPScheme
 
@@ -144,20 +144,21 @@ URLScheme for http requests
 
 ### Parameters
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
-    -   `options.proxy` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+    *   `options.proxy` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### Properties
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ### fetch
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** fetch result
 
@@ -167,9 +168,9 @@ Execute a GET request
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** source
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** source
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** body of the response
 
@@ -179,10 +180,10 @@ Execute a PUT request
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** destination
--   `stream` **[Stream](https://nodejs.org/api/stream.html)** content to be put to the url
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** destination
+*   `stream` **[Stream](https://nodejs.org/api/stream.html)** content to be put to the url
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ### stat
 
@@ -190,10 +191,11 @@ Execute a HEAD request
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
-    -   `options.method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+    *   `options.method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** response object
 
@@ -203,8 +205,8 @@ inserts the authorization data into the reguest header
 
 #### Parameters
 
--   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** http credentials will be inserted into
--   `credentials` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** http credentials will be inserted into
+*   `credentials` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if auth info has been written into headers
 
@@ -223,7 +225,7 @@ form the given set of environment variables
 
 #### Parameters
 
--   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** undefined if no suitable environment variables have been found
 
@@ -253,14 +255,14 @@ Holds a map of url-schemes and dispatches requests
 
 ### Parameters
 
--   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
--   `predefinedConstructors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
--   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** environment variables as present in process.env (optional, default `{}`)
+*   `config` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+*   `predefinedConstructors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[URLScheme](#urlscheme)>** schemes to start with (optional, default `[]`)
+*   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** environment variables as present in process.env (optional, default `{}`)
 
 ### Properties
 
--   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
--   `authProviders` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** 
+*   `schemes` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [URLScheme](#urlscheme)>** 
+*   `authProviders` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** 
 
 ### registerScheme
 
@@ -268,7 +270,7 @@ Register a scheme for later lookup
 
 #### Parameters
 
--   `scheme` **[URLScheme](#urlscheme)** 
+*   `scheme` **[URLScheme](#urlscheme)** 
 
 ### schemeForURL
 
@@ -276,7 +278,7 @@ Get URLScheme for a given url
 
 #### Parameters
 
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 Returns **[URLScheme](#urlscheme)** for a given url or undefined if nothing found
 
@@ -287,7 +289,7 @@ Passes url to the registered scheme for remapping
 
 #### Parameters
 
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be resolved
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be resolved
 
 Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** resolved url or original URL if no remapping found
 
@@ -297,7 +299,7 @@ Create a new context
 
 #### Parameters
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** context
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** context
 
 Returns **[Context](#context)** newly created context
 
@@ -308,7 +310,7 @@ Forwards the request to the registered auth providers
 
 #### Parameters
 
--   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
+*   `realm` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** requested realm
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** credentials as given by one of the registered auth providers
 
@@ -317,23 +319,23 @@ Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 **Extends URLScheme**
 
 Remap url
-special:some/path  -> <https://myserver.com/repo/some/path>
+special:some/path  -> https://myserver.com/repo/some/path
 name: special
 baseScheme: https
-prefix: <https://myserver.com/repo/>
+prefix: https://myserver.com/repo/
 
 ### Parameters
 
--   `baseScheme` **[URLScheme](#urlscheme)** 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
--   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
--   `options`  
+*   `baseScheme` **[URLScheme](#urlscheme)** 
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
+*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
+*   `options`  
 
 ### Properties
 
--   `baseScheme` **[URLScheme](#urlscheme)** 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
--   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
+*   `baseScheme` **[URLScheme](#urlscheme)** 
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the newly created scheme
+*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** urls will be prefixed by this value
 
 ### remap
 
@@ -342,7 +344,7 @@ and appending the suffix (in front)
 
 #### Parameters
 
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be remapped
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** to be remapped
 
 Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** remapped url
 
@@ -350,11 +352,11 @@ Returns **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** remapped u
 
 ### Parameters
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
 
 ### Properties
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
 
 ### name
 
@@ -376,9 +378,9 @@ List collection (directory)
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to iterable entries
 
@@ -388,9 +390,9 @@ Get content of a url
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the content
 
@@ -400,9 +402,9 @@ Delivers meta information for a given url
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to one entry
 
@@ -412,10 +414,10 @@ Put the content of a stream to a given url
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `stream` **[Stream](https://nodejs.org/api/stream.html)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `stream` **[Stream](https://nodejs.org/api/stream.html)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves if stream has ben put to the url
 
@@ -425,8 +427,8 @@ Deletes object at a given url
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the history of the object at the given url
 
@@ -436,9 +438,9 @@ Deliver history information for a given url
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `context` **[Context](#context)** execution context
+*   `url` **[URL](https://developer.mozilla.org/docs/Web/API/URL/URL)** 
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** resolves to the history of the object at the given url
 
@@ -450,16 +452,16 @@ then calls provideCredentials() on the context.
 
 #### Parameters
 
--   `context` **[Context](#context)** execution context
--   `realm` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** requested (decoded) realm
+*   `context` **[Context](#context)** execution context
+*   `realm` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** requested (decoded) realm
 
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** holding the credentials
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** holding the credentials
 
 ### methods
 
 supported methods
 
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 'get', 'stat', 'put', 'delete', 'list', 'history'
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 'get', 'stat', 'put', 'delete', 'list', 'history'
 
 ### isSecure
 
@@ -482,7 +484,7 @@ form the given set of environment variables
 
 #### Parameters
 
--   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `env` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** undefined if no suitable environment variables have been found
 
@@ -492,14 +494,13 @@ Pepare configuration by mixing together defaultOptions with actual options
 
 #### Parameters
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
+*   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** raw config
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** combined options
 
 ## parseAuthenticate
 
--   **See: rfc7235
-    **
+*   **See**: rfc7235
 
 Parse WWW-Authenticate header and provide parts as object.
 provides a two level structure 1st. the algorithm and then
@@ -507,8 +508,8 @@ the algorithm attributes
 
 ### Parameters
 
--   `source` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** http header 'WWW-Authenticate'
--   `result` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** where to put result into (optional, default `{}`)
+*   `source` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** http header 'WWW-Authenticate'
+*   `result` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** where to put result into (optional, default `{}`)
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** same as result
 
