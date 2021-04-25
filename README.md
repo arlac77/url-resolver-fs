@@ -319,10 +319,10 @@ Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 **Extends URLScheme**
 
 Remap url
-special:some/path  -> https://myserver.com/repo/some/path
+special:some/path  -> <https://myserver.com/repo/some/path>
 name: special
 baseScheme: https
-prefix: https://myserver.com/repo/
+prefix: <https://myserver.com/repo/>
 
 ### Parameters
 
