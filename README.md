@@ -2,12 +2,12 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![minified size](https://badgen.net/bundlephobia/min/url-resolver-fs)](https://bundlephobia.com/result?p=url-resolver-fs)
 [![downloads](http://img.shields.io/npm/dm/url-resolver-fs.svg?style=flat-square)](https://npmjs.org/package/url-resolver-fs)
-[![GitHub Issues](https://img.shields.io/github/issues/arlac77/url-resolver-fs.svg?style=flat-square)](https://github.com/arlac77/url-resolver-fs/issues)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Furl-resolver-fs%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/url-resolver-fs/goto)
+[![GitHub Issues](https://img.shields.io/github/issues/url-resolver-fs/url-resolver-fs.svg?style=flat-square)](https://github.com/url-resolver-fs/url-resolver-fs/issues)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Furl-resolver-fs%2Furl-resolver-fs%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/url-resolver-fs/url-resolver-fs/goto)
 [![Styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Known Vulnerabilities](https://snyk.io/test/github/arlac77/url-resolver-fs/badge.svg)](https://snyk.io/test/github/arlac77/url-resolver-fs)
-[![Coverage Status](https://coveralls.io/repos/arlac77/url-resolver-fs/badge.svg)](https://coveralls.io/github/arlac77/url-resolver-fs)
+[![Known Vulnerabilities](https://snyk.io/test/github/url-resolver-fs/url-resolver-fs/badge.svg)](https://snyk.io/test/github/url-resolver-fs/url-resolver-fs)
+[![Coverage Status](https://coveralls.io/repos/url-resolver-fs/url-resolver-fs/badge.svg)](https://coveralls.io/github/url-resolver-fs/url-resolver-fs)
 
 ## url-resolver-fs
 
