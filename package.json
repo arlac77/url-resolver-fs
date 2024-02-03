@@ -2,7 +2,8 @@
   "name": "url-resolver-fs",
   "version": "0.0.0-semantic-release",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "type": "module",
   "main": "./src/module.mjs",
